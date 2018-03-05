@@ -1,0 +1,12 @@
+<view class="section">
+  <input placeholder="请输入用户昵称" bindinput='nickNameInput'/>
+  <button type="primary" bindtap='searchButtonTap'>搜索</button>
+</view>
+ <view class="page__bd">
+    <view class="section section_gap" wx:for="{{array}}" wx:for-item="item">
+      <view class="section__ctn">
+        <image style="width: 200px; height: 200px; background-color: #eeeeee;" userid="{{item.userId}}" src="{{item.avatar}}"></image>
+        <span>{{item.nickName}}</span>
+      </view>
+    </view>
+  </view>
