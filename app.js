@@ -10,18 +10,12 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: this.globalData.serverUrl+'/wx/getUerJob',
-          data: {
-            code: res.code
-          },
-          header: {
-            'content-type': 'application/json'
-          },
-          success: function (res) {
-            console.log(res.data.length)
-          }
-        })
+        // 登录时查询该openid是否绑定爬虫任务
+        this.globalData.code = res.code;
+        if (this.codeReadyCallback) {
+          this.codeReadyCallback(res)
+        }
+        
       }
     })
     // 获取用户信息
@@ -47,6 +41,11 @@ App({
   },
   globalData: {
     userInfo: null,
-    serverUrl: 'https://127.0.0.1:8443'
+    serverUrl: 'https://wxapp.olook.me',
+    timerJob: null,
+    code: null,
+    openId: null,
+    unionId: null,
+    sessionKey: null
   }
 })

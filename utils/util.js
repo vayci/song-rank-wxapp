@@ -6,8 +6,13 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
+
+function formatTimeStamp(number) {
+  var data = new Date(number);
+  return formatTime(data);
+}  
 
 const formatNumber = n => {
   n = n.toString()
@@ -15,5 +20,6 @@ const formatNumber = n => {
 }
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  formatTimeStamp: formatTimeStamp
 }

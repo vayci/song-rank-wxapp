@@ -4,7 +4,11 @@
   flex-direction: column;
   align-items: center;
 }
-
+.tagetuserinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
@@ -17,5 +21,19 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 30px;
+}
+.flex-wrp{
+  /* margin-top: 60rpx; */
+  display:flex;
+}
+.flex-item{
+  width: 200rpx;
+  height: 300rpx;
+  font-size: 26rpx;
+}
+.flex-item-V{
+  margin: 0 auto;
+  width: 300rpx;
+  height: 200rpx;
 }

@@ -7,7 +7,8 @@ Page({
     motto: '您还没添加订阅的人',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    jobs: []
   },
   //事件处理函数
   bindViewTap: function() {
@@ -16,12 +17,33 @@ Page({
     })
   },
   searchUser: function(){
-    wx.redirectTo({
+    console.log(app.globalData.code);
+    wx.navigateTo({
       url: '../search/search'
     })
   },
+  //显示主页面时刷新用户任务数据
+  onShow: function(){
+    if (app.globalData.openId!=null){
+      this.getTimerJobs(app.globalData.openId);
+    }else{
+      this.openIdReadyCallback = res => {
+        this.getTimerJobs(app.globalData.openId);
+      }
+    }
+  },
   onLoad: function () {
-    console.log("load");
+    //判断登录凭证code 调用获取用户关联任务
+    if(app.globalData.code){
+      console.log(app.globalData.code);
+      this.jsCode2Session(app.globalData.code);
+    } else if (this.data.canIUse){
+      app.codeReadyCallback = res => {
+        console.log("codeReadyCallback:"+res.code);
+        this.jsCode2Session(res.code);
+      }
+    }
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -56,6 +78,62 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  //获取用户关联爬虫任务
+  getTimerJobs(openid){
+    var indexPage = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/wx/getUerJob',
+      data: {
+        openid: openid
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data);
+        indexPage.showTimerJobs(res.data);
+      }
+    })
+  },
+  //根据返回关联任务数据显示
+  showTimerJobs(timerJobs){
+      if(timerJobs.length>0){
+        this.setData({
+          motto: "您已订阅" + timerJobs.length+"名用户",
+          jobs: timerJobs
+        })
+      }else{
+        this.setData({
+          motto: "您尚未添加订阅用户"
+        })
+      }
+  },
+  getRankRecord(e){
+    var targetid = e.currentTarget.id;
+    wx.navigateTo({
+      url: '../record/record?userId=' + targetid
+    })
+  },
+  jsCode2Session(code){
+    var indexPage = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/wx/jsCode2Session',
+      data: {
+        code: app.globalData.code
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        app.globalData.openId = res.data.openid;
+        app.globalData.sessionKey = res.data.session_key;
+        console.log(indexPage.openIdReadyCallback)
+        if (indexPage.openIdReadyCallback) {
+          indexPage.openIdReadyCallback(res.data.openid);
+        }
+      }
     })
   }
 })
