@@ -1,6 +1,42 @@
+/**rpx*/
+.search_box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.s_input{
+  font-size: 30rpx;
+  border-radius: 10rpx;
+  border: solid #aaa 1px;
+  line-height: 50rpx;
+  width: 420rpx;
+  height: 90rpx;
+  text-align: center;
+}
+.s_button{
+  background: #666666;
+  color: #ffffff;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-left: 20rpx;
+}
+.userinfo{
+   width: 580rpx;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: flex-start;
+   border: dashed #aaa 3rpx;
+   border-radius: 10rpx;
+   margin-top: 10rpx;
+   color: #aaa;
+   font-size: 30rpx;
+}
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 80rpx;
+  height: 80rpx;
   margin: 20rpx;
-  border-radius: 50%;
+}
+.search_bd{
+  margin-top: 80rpx;
 }

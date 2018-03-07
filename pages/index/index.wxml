@@ -4,20 +4,15 @@
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">亲爱的{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname">亲爱的{{userInfo.nickName}} , {{motto}}</text>
     </block>
   </view>
 </view>
-
-<view class="usermotto" bindtap='searchUser'>
-    <text class="user-motto">{{motto}}</text>
-  </view>
   <view class='tagetuserinfo'>
-  
-    <view  wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId">
-      <view  bindtap='getRankRecord' id='{{job.targetUserId}}'>
+      <view class='tagetuser' wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId" 
+      bindtap='getRankRecord' id='{{job.targetUserId}}'>
         <image src='{{job.targetAvatar}}' class="userinfo-avatar" background-size="cover"></image>
-         <!-- <text class="targetNickname">{{job.targetNickname}}</text>  -->
+        <text>{{job.targetNickname}}</text>
       </view>
-    </view>
  </view>
+<button class='add_btn' bindtap='searchUser'>订阅</button>

@@ -1,13 +1,13 @@
-<view class="section">
-  <input placeholder="请输入用户昵称" bindinput='nickNameInput'/>
-  <button type="primary" bindtap='searchButtonTap'>搜索</button>
+<view class='container'>
+<view class="search_box">
+  <input class='s_input' placeholder="请输入用户昵称" bindinput='nickNameInput'/>
+  <button class='s_button'  bindtap='searchButtonTap'>搜索</button>
 </view>
- <view class="page__bd">
-    <view class="section section_gap" bindtap='selectUser' wx:for="{{array}}" id='{{item.userId}}'
+ <view class="search_bd">
+    <view class="userinfo" bindtap='selectUser' wx:for="{{array}}" id='{{item.userId}}'
     data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' wx:for-item="item">
-      <view class="section__ctn">
         <image  class="userinfo-avatar"  userid="{{item.userId}}" src="{{item.avatar}}"></image>
         <span>{{item.nickName}}</span>
-      </view>
     </view>
+  </view>
   </view>

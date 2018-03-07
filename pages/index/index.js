@@ -135,5 +135,20 @@ Page({
         }
       }
     })
+  },onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    return {
+      title: '想不到吧，你听歌都会被我抓到噢！',
+      path: 'pages/index/index',
+      imageUrl: './1.jpg',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

@@ -1,5 +1,22 @@
 /* pages/record/record.wxss */
-.userinfo-nickname{
-  font-size: 26rpx;
-  margin-left: 10px;
+.record_text{
+    font-size: 26rpx;
+    color: #aaa;
+}
+.box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  padding-top:8px;
+}
+.leftview{
+  margin-left: 20px;
+}
+.rightview{
+  margin-right: 20px;
+} 
+.tips{
+  color: #aaa;
+  font-size: 38rpx;
 }

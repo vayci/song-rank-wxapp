@@ -17,7 +17,7 @@ Page({
       },
       success: function (res) {
         if (res.data.list==undefined){
-          recordPage.data.tips = "最近好像没有听歌噢~";
+          recordPage.data.tips = "暂时还没有Ta的听歌记录，再等等噢~";
           recordPage.setData({
             tips: recordPage.data.tips
           })
