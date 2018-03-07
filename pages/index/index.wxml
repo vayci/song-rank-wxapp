@@ -17,7 +17,7 @@
     <view  wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId">
       <view  bindtap='getRankRecord' id='{{job.targetUserId}}'>
         <image src='{{job.targetAvatar}}' class="userinfo-avatar" background-size="cover"></image>
-        <!-- <text class="userinfo-nickname">{{job.targetNickname}}</text> -->
+         <!-- <text class="targetNickname">{{job.targetNickname}}</text>  -->
       </view>
     </view>
  </view>

@@ -1,1 +1,5 @@
 /* pages/record/record.wxss */
+.userinfo-nickname{
+  font-size: 26rpx;
+  margin-left: 10px;
+}

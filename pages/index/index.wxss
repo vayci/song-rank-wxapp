@@ -19,7 +19,10 @@
 .userinfo-nickname {
   color: #aaa;
 }
-
+.targetNickname{
+    color: #aaa;
+    font-size: 30rpx;
+}
 .usermotto {
   margin-top: 30px;
 }

@@ -2,7 +2,8 @@
 <view><text>{{tips}}</text></view>
 <view class="userinfo" wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
       <view>
-        <text class="userinfo-nickname">{{recrod.song}}</text>-
+        <text class="userinfo-nickname">{{recrod.song}}</text>
+        <text class="userinfo-nickname">—</text>
         <text class="userinfo-nickname">{{recrod.singer}}</text>
         <text class="userinfo-nickname">{{recrod.changeTime}}</text>
          <!-- <text class="userinfo-nickname">{{recrod.rankChange}}</text>-->
