@@ -1,5 +1,5 @@
 <!--pages/record/record.wxml-->
-<view class="record_container">
+<view>
   <view class='container'><text class='tips'>{{tips}}</text></view>
   <view>
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
@@ -14,5 +14,14 @@
           <!-- <text class="record_text">{{recrod.rankChange}}</text>-->
         </view>
   </view>
+  </view>
+  <form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+    <view class="btn-area">
+    <button class='add_btn' formType="submit">订阅通知</button>
+    
+  </view>
+</form>
+ <view class='record_container'>
+  <text class="record_text">订阅后，好友本周内首次听歌你将会收到通知</text>
   </view>
 </view>

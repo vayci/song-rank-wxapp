@@ -35,6 +35,31 @@ Page({
       }
     })
   },
+  formSubmit: function (e) {
+    console.log(e.detail.formId);
+    var recordPage =this;
+    wx.request({
+      url: app.globalData.serverUrl + '/msg',
+      method: 'POST',
+      data: {
+        formId: e.detail.formId,
+        isValid: 0,
+        openid: app.globalData.openId,
+        targetUserId: recordPage.data.userId
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        wx.showToast({
+          title: res.data,
+          icon: 'none',
+          duration: 2000
+        })
+
+      }
+    })
+  },
   data: {
     userId:null,
     isBatchUpdate:0,
