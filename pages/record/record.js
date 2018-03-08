@@ -2,6 +2,28 @@
 const app = getApp();
 var utils = require('../../utils/util.js')
 Page({
+
+
+  onShow: function () {
+    this.data.showTmpMsg = false;
+    var recordPage = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/msg/check?openid=' + app.globalData.openId + "&targetUserId=" + recordPage.data.userId,
+      data: {
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        if(res.statusCode==200){
+          recordPage.data.showTmpMsg = true;
+          recordPage.setData({
+            showTmpMsg: true
+          })
+        }
+      }
+    })
+  },
   onLoad: function (options) {
     this.setData({
       userId: options.userId
@@ -56,7 +78,10 @@ Page({
           icon: 'none',
           duration: 2000
         })
-
+        recordPage.data.showTmpMsg = false;
+        recordPage.setData({
+          showTmpMsg: false
+        })
       }
     })
   },
@@ -64,6 +89,7 @@ Page({
     userId:null,
     isBatchUpdate:0,
     recordList:[],
-    tips: "Ta最近在听:"
+    tips: "Ta最近在听:",
+    showTmpMsg: false
   }
 })  

@@ -15,4 +15,4 @@
         <text>{{job.targetNickname}}</text>
       </view>
  </view>
-<button class='add_btn' bindtap='searchUser'>订阅</button>
+<button class='add_btn' bindtap='searchUser'>添加</button>

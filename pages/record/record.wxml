@@ -15,13 +15,19 @@
         </view>
   </view>
   </view>
-  <form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
-    <view class="btn-area">
-    <button class='add_btn' formType="submit">订阅通知</button>
-    
-  </view>
-</form>
- <view class='record_container'>
-  <text class="record_text">订阅后，好友本周内首次听歌你将会收到通知</text>
-  </view>
+  <view wx:if="{{showTmpMsg}}">
+    <form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+      <view class="btn-area">
+        <button class='add_btn' formType="submit">订阅通知</button> 
+      </view>
+    </form>
+    <view class='record_container'>
+      <text class="record_text">订阅后，好友本周内首次听歌您将会收到通知</text>
+    </view>
+    </view>
+    <view wx:else>
+    <view class='record_container'>
+      <text class="record_text">您已经完成订阅，Ta本周内首次听歌您将会收到通知</text>
+    </view>
+    </view>
 </view>

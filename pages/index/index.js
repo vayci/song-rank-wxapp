@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: '您还没添加订阅的人',
+    motto: '您尚未关注任何用户',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -101,12 +101,12 @@ Page({
   showTimerJobs(timerJobs){
       if(timerJobs.length>0){
         this.setData({
-          motto: "您已订阅" + timerJobs.length+"名用户",
+          motto: "您已经关注" + timerJobs.length+"名用户",
           jobs: timerJobs
         })
       }else{
         this.setData({
-          motto: "您尚未添加订阅用户"
+          motto: "您尚未关注任何用户"
         })
       }
   },
