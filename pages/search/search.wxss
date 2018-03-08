@@ -7,18 +7,25 @@
 .s_input{
   font-size: 30rpx;
   border-radius: 10rpx;
-  border: solid #aaa 1px;
+  border: solid #fff 1px;
   line-height: 50rpx;
   width: 420rpx;
   height: 90rpx;
   text-align: center;
+  color: #fff;
+}
+.phcolor{
+   color:#fff;
 }
 .s_button{
-  background: #666666;
-  color: #ffffff;
+  background: #fff;
+  color: #4995eb;
   height: 90rpx;
   line-height: 90rpx;
   margin-left: 20rpx;
+}
+.s_button:active{
+  background: #A2B4BA;
 }
 .userinfo{
    width: 580rpx;
@@ -26,10 +33,10 @@
    flex-direction: row;
    align-items: center;
    justify-content: flex-start;
-   border: dashed #aaa 3rpx;
+   border: dashed #fff 3.5rpx;
    border-radius: 10rpx;
    margin-top: 10rpx;
-   color: #aaa;
+   color: #fff;
    font-size: 30rpx;
 }
 .userinfo-avatar {

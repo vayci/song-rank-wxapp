@@ -1,7 +1,7 @@
 /* pages/record/record.wxss */
 .record_text{
     font-size: 26rpx;
-    color: #aaa;
+    color: #fff;
 }
 .box{
   display: flex;
@@ -12,12 +12,13 @@
 }
 .leftview{
   margin-left: 20px;
+  max-width: 350rpx;
 }
 .rightview{
   margin-right: 20px;
 } 
 .tips{
-  color: #aaa;
+  color: #fff;
   font-size: 38rpx;
 }
 .add_btn{
@@ -25,8 +26,9 @@
     width: 120px;
     height: 28px;
     line-height: 28px;
-    color: #aaa;
+    color: #4995eb;
     margin-top: 60px;
+    font-size: 30rpx;
 }
 .record_container {
   height: 100%;
@@ -37,3 +39,4 @@
   box-sizing: border-box;
   padding-top: 20rpx;
 } 
+

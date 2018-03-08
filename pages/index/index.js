@@ -24,6 +24,7 @@ Page({
   },
   //显示主页面时刷新用户任务数据
   onShow: function(){
+    
     if (app.globalData.openId!=null){
       this.getTimerJobs(app.globalData.openId);
     }else{
@@ -33,6 +34,7 @@ Page({
     }
   },
   onLoad: function () {
+
     //判断登录凭证code 调用获取用户关联任务
     if(app.globalData.code){
       console.log(app.globalData.code);
@@ -44,12 +46,28 @@ Page({
       }
     }
 
+    if (app.globalData.authorize==false){
+      app.userAuthorizeCallback = res => {
+        wx.getUserInfo({
+          success: res => {
+            app.globalData.userInfo = res.userInfo
+            this.setData({
+              userInfo: res.userInfo,
+              hasUserInfo: true
+            })
+          }
+        })
+      }
+    }
+
     if (app.globalData.userInfo) {
+      console.log(111);
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
     } else if (this.data.canIUse){
+      console.log(222);
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -72,8 +90,6 @@ Page({
     }
   },
   getUserInfo: function(e) {
-   
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -92,7 +108,6 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data);
         indexPage.showTimerJobs(res.data);
       }
     })
@@ -129,7 +144,6 @@ Page({
       success: function (res) {
         app.globalData.openId = res.data.openid;
         app.globalData.sessionKey = res.data.session_key;
-        console.log(indexPage.openIdReadyCallback)
         if (indexPage.openIdReadyCallback) {
           indexPage.openIdReadyCallback(res.data.openid);
         }

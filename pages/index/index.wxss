@@ -12,7 +12,7 @@
 }
 
 .userinfo-nickname {
-  color: #aaa;
+  color: #fff;
 }
 
 .usermotto {
@@ -32,13 +32,17 @@
     flex-wrap:wrap;
     justify-content:center;
     font-size: 15px;
-    color: #aaa;
+    color: #fff;
 }
 .add_btn{
     border-radius: 0.9;
     width: 80px;
     height: 28px;
     line-height: 28px;
-    color: #aaa;
+    color: #4995eb;
     margin-top: 60px;
+    font-size: 30rpx;
+}
+page{
+  background: -webkit-radial-gradient(circle,#47adef,#4995eb);
 }

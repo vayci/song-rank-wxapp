@@ -38,6 +38,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        console.log(res);
         if (res.data.list==undefined){
           recordPage.data.tips = "暂时还没有Ta的听歌记录，再等等噢~";
           recordPage.setData({
@@ -46,7 +47,12 @@ Page({
           return;
         }
         for (var i = 0; i < res.data.list.length; i++) {
-          res.data.list[i].changeTime = utils.formatTimeStamp(res.data.list[i].changeTime);
+          if (res.data.list[i].isBatchUpdate==0){
+            res.data.list[i].changeTime = utils.formatTimeStamp(res.data.list[i].changeTime);
+          }else{
+            res.data.list[i].changeTime = utils.formatTimeStampToDate(res.data.list[i].changeTime);
+          }
+          
         }  
         recordPage.data.recordList = res.data.list;
         recordPage.data.isBatchUpdate = res.data.isBatchUpdate;

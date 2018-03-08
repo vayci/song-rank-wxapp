@@ -18,21 +18,54 @@ App({
         
       }
     })
-    // 获取用户信息
+    // 查看用户是否授权
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          console.log(5555);
           wx.getUserInfo({
             success: res => {
+              console.log(444);
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
+            }
+          })
+        }else{
+          console.log("弹授权");
+          var appJs = this;
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success() {
+              console.log(appJs.userAuthorizeCallback)
+              if (appJs.userAuthorizeCallback) {
+                appJs.userAuthorizeCallback(res)
+              }
+            },
+            fail(){
+              wx.showModal({
+                title: '纳尼?',
+                content: '头像昵称都不给我！',
+                confirmText: '我错了',
+                confirmColor: '#aaa',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.openSetting({
+                      success: (res) => {
+                        res.authSetting = {
+                          "scope.userInfo": true,
+                        }
+                      }
+                    })
+                  }
+                }
+              })
+              
             }
           })
         }
@@ -46,6 +79,7 @@ App({
     code: null,
     openId: null,
     unionId: null,
-    sessionKey: null
+    sessionKey: null,
+    authorize: false
   }
 })

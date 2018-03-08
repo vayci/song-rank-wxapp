@@ -6,6 +6,14 @@ Page({
   },
   searchButtonTap:function(){
     console.log(this.data.nickname);
+    if ('' == this.data.nickname){
+      wx.showToast({
+        title: "昵称都不输入，肯定找不到对象~",
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
     var pageobj = this;
     wx.request({
       url: app.globalData.serverUrl + '/wx/getNeteaseUser',

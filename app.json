@@ -7,8 +7,8 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#4995eb",
     "navigationBarTitleText": "你在听歌吗",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   }
 }

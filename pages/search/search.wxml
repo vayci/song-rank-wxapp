@@ -1,6 +1,6 @@
 <view class='container'>
 <view class="search_box">
-  <input class='s_input' placeholder="请输入用户昵称" bindinput='nickNameInput'/>
+  <input class='s_input' placeholder-class="phcolor" placeholder="请输入网易云用户昵称" bindinput='nickNameInput'/>
   <button class='s_button'  bindtap='searchButtonTap'>搜索</button>
 </view>
  <view class="search_bd">

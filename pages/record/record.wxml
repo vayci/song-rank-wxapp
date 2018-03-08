@@ -4,8 +4,7 @@
   <view>
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
         <view class='leftview'>
-          <text class="record_text" wx:if="{{recrod.song.length<-1}}">处理过长歌曲名</text>
-          <text class="record_text" wx:else>{{recrod.song}} - </text>
+          <text class="record_text">{{recrod.song}} - </text>
           <!-- <text class="record_text">{{recrod.song}}</text>- -->
           <text class="record_text">{{recrod.singer}}</text>
         </view>

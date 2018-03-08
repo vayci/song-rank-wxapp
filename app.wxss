@@ -8,3 +8,6 @@
   padding: 100rpx 0;
   box-sizing: border-box;
 } 
+page{
+  background: -webkit-radial-gradient(circle,#47adef,#4995eb);
+}
