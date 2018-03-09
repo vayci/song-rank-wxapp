@@ -1,5 +1,4 @@
 //index.js
-//获取应用实例
 const app = getApp()
 
 Page({
@@ -10,42 +9,43 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     jobs: []
   },
-  //事件处理函数
+  //点击个人头像
   bindViewTap: function() {
     // wx.navigateTo({
     //   url: '../logs/logs'
     // })
   },
+  //点击添加
   searchUser: function(){
     console.log(app.globalData.code);
     wx.navigateTo({
       url: '../search/search'
     })
   },
-  //显示主页面时刷新用户任务数据
+  
   onShow: function(){
-    
+    //appjs获取到openid后回调获取用户任务
     if (app.globalData.openId!=null){
-      this.getTimerJobs(app.globalData.openId);
+        this.getTimerJobs(app.globalData.openId);
     }else{
       this.openIdReadyCallback = res => {
         this.getTimerJobs(app.globalData.openId);
       }
     }
   },
+
   onLoad: function () {
 
-    //判断登录凭证code 调用获取用户关联任务
+    //appjs获取到code后回调获取openid sessionKey
     if(app.globalData.code){
-      console.log(app.globalData.code);
-      this.jsCode2Session(app.globalData.code);
+        this.jsCode2Session(app.globalData.code);
     } else if (this.data.canIUse){
       app.codeReadyCallback = res => {
-        console.log("codeReadyCallback:"+res.code);
         this.jsCode2Session(res.code);
       }
     }
 
+    //若用户未授权，添加授权后回调获取用户信息
     if (app.globalData.authorize==false){
       app.userAuthorizeCallback = res => {
         wx.getUserInfo({
@@ -60,14 +60,13 @@ Page({
       }
     }
 
+    //加载用户信息
     if (app.globalData.userInfo) {
-      console.log(111);
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
     } else if (this.data.canIUse){
-      console.log(222);
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -89,6 +88,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -125,12 +125,14 @@ Page({
         })
       }
   },
+  //点击关注头像 跳转至听歌记录页面
   getRankRecord(e){
     var targetid = e.currentTarget.id;
     wx.navigateTo({
       url: '../record/record?userId=' + targetid
     })
   },
+  //code换取openid sessionKey
   jsCode2Session(code){
     var indexPage = this;
     wx.request({
@@ -149,7 +151,9 @@ Page({
         }
       }
     })
-  },onShareAppMessage: function (res) {
+  },
+  //点击转发
+  onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
     }
@@ -158,10 +162,8 @@ Page({
       path: 'pages/index/index',
       imageUrl: './1.jpg',
       success: function (res) {
-        // 转发成功
       },
       fail: function (res) {
-        // 转发失败
       }
     }
   }

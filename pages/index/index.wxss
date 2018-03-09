@@ -43,6 +43,9 @@
     margin-top: 60px;
     font-size: 30rpx;
 }
+.nickname{
+  font-size: 26rpx;
+}
 page{
   background: -webkit-radial-gradient(circle,#47adef,#4995eb);
 }

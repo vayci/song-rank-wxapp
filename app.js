@@ -23,10 +23,8 @@ App({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          console.log(5555);
           wx.getUserInfo({
             success: res => {
-              console.log(444);
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
 
@@ -36,7 +34,6 @@ App({
             }
           })
         }else{
-          console.log("弹授权");
           var appJs = this;
           wx.authorize({
             scope: 'scope.userInfo',

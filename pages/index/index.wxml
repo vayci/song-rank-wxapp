@@ -12,7 +12,7 @@
       <view class='tagetuser' wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId" 
       bindtap='getRankRecord' id='{{job.targetUserId}}'>
         <image src='{{job.targetAvatar}}' class="userinfo-avatar" background-size="cover"></image>
-        <text>{{job.targetNickname}}</text>
+        <text class='nickname'>{{job.targetNickname}}</text>
       </view>
  </view>
 <button class='add_btn' bindtap='searchUser'>添加</button>

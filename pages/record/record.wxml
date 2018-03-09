@@ -1,16 +1,14 @@
 <!--pages/record/record.wxml-->
 <view>
-  <view class='container'><text class='tips'>{{tips}}</text></view>
+  <view class='record_container'><text class='tips'>{{tips}}</text></view>
   <view>
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
         <view class='leftview'>
           <text class="record_text">{{recrod.song}} - </text>
-          <!-- <text class="record_text">{{recrod.song}}</text>- -->
           <text class="record_text">{{recrod.singer}}</text>
         </view>
         <view class='rightview'>
           <text class="record_text">{{recrod.changeTime}}</text>
-          <!-- <text class="record_text">{{recrod.rankChange}}</text>-->
         </view>
   </view>
   </view>

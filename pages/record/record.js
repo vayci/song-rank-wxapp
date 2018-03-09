@@ -1,14 +1,14 @@
-
 const app = getApp();
 var utils = require('../../utils/util.js')
+
 Page({
-
-
   onShow: function () {
     this.data.showTmpMsg = false;
     var recordPage = this;
+    //是否显示订阅按钮
     wx.request({
-      url: app.globalData.serverUrl + '/msg/check?openid=' + app.globalData.openId + "&targetUserId=" + recordPage.data.userId,
+      url: app.globalData.serverUrl + '/msg/check?openid=' 
+      + app.globalData.openId + "&targetUserId=" + recordPage.data.userId,
       data: {
       },
       header: {
@@ -29,6 +29,7 @@ Page({
       userId: options.userId
     })  
     var recordPage = this;
+    //获取听歌记录
     wx.request({
       url: app.globalData.serverUrl + '/wx/getRecord',
       data: {
@@ -38,7 +39,6 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res);
         if (res.data.list==undefined){
           recordPage.data.tips = "暂时还没有Ta的听歌记录，再等等噢~";
           recordPage.setData({
@@ -46,11 +46,14 @@ Page({
           })
           return;
         }
+        //根据是否为系统自动批量更新的记录，对时间进行不同的format
         for (var i = 0; i < res.data.list.length; i++) {
           if (res.data.list[i].isBatchUpdate==0){
-            res.data.list[i].changeTime = utils.formatTimeStamp(res.data.list[i].changeTime);
+            res.data.list[i].changeTime 
+              = utils.formatTimeStamp(res.data.list[i].changeTime);
           }else{
-            res.data.list[i].changeTime = utils.formatTimeStampToDate(res.data.list[i].changeTime);
+            res.data.list[i].changeTime 
+              = utils.formatTimeStampToDate(res.data.list[i].changeTime);
           }
           
         }  
@@ -63,8 +66,8 @@ Page({
       }
     })
   },
+  //点击订阅，生成模板消息记录
   formSubmit: function (e) {
-    console.log(e.detail.formId);
     var recordPage =this;
     wx.request({
       url: app.globalData.serverUrl + '/msg',
