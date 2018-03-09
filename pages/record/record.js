@@ -94,6 +94,11 @@ Page({
       }
     })
   },
+  backIndex: function(e){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   data: {
     userId:null,
     isBatchUpdate:0,

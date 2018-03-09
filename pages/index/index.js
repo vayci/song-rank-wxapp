@@ -7,7 +7,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    jobs: []
+    jobs: [],
+    subscribe: []
   },
   //点击个人头像
   bindViewTap: function() {
@@ -108,7 +109,34 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        indexPage.showTimerJobs(res.data);
+        indexPage.data.jobs = res.data;
+        indexPage.getSubscribe(openid);
+        //indexPage.showTimerJobs(res.data);
+      }
+    })
+  },
+  getSubscribe(openid) {
+    var indexPage = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/msg/getSubscribe',
+      data: {
+        openid: openid
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        for(var i = 0 ; i < res.data.length ; i++){
+            for (var j = 0; j < indexPage.data.jobs.length; j++) {
+              if (indexPage.data.jobs[j].targetUserId == res.data[i].targetUserId){
+                indexPage.data.jobs[j].s_flag = true
+            }
+          }
+        }
+        indexPage.setData({
+          jobs: indexPage.data.jobs
+        })
+        indexPage.showTimerJobs(indexPage.data.jobs);
       }
     })
   },

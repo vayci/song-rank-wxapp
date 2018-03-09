@@ -27,7 +27,7 @@
     height: 28px;
     line-height: 28px;
     color: #4995eb;
-    margin-top: 60px;
+    margin-top: 50rpx;
     font-size: 30rpx;
 }
 .record_container {

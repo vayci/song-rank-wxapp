@@ -46,6 +46,19 @@
 .nickname{
   font-size: 26rpx;
 }
+.green_avatar{
+    border: solid #3fe645 2px;
+}
+.tips{
+  padding-top: 20rpx;
+  color: #fff;
+  font-size: 25rpx;
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap:wrap;
+    justify-content:center;
+}
 page{
   background: -webkit-radial-gradient(circle,#47adef,#4995eb);
 }

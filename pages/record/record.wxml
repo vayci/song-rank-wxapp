@@ -13,18 +13,18 @@
   </view>
   </view>
   <view wx:if="{{showTmpMsg}}">
-    <form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
-      <view class="btn-area">
-        <button class='add_btn' formType="submit">订阅通知</button> 
+      <form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
+        <view class="btn-area">
+          <button class='add_btn' formType="submit">订阅通知</button> 
+        </view>
+      </form>
+      <view class='record_container'>
+        <text class="record_text" bindtap='backIndex'>订阅后，Ta下次听歌您将会收到提醒，点击返回首页</text>
       </view>
-    </form>
+  </view>
+  <view wx:else>
     <view class='record_container'>
-      <text class="record_text">订阅后，Ta下次听歌您将会收到通知</text>
+      <text class="record_text" bindtap='backIndex'>该好友听歌您将会收到提醒，点击返回首页</text>
     </view>
-    </view>
-    <view wx:else>
-    <view class='record_container'>
-      <text class="record_text">您已经完成订阅，Ta下次听歌您将会收到通知</text>
-    </view>
-    </view>
+</view>
 </view>

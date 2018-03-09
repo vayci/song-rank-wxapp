@@ -11,8 +11,13 @@
   <view class='tagetuserinfo'>
       <view class='tagetuser' wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId" 
       bindtap='getRankRecord' id='{{job.targetUserId}}'>
-        <image src='{{job.targetAvatar}}' class="userinfo-avatar" background-size="cover"></image>
+        <image src='{{job.targetAvatar}}' wx:if="{{job.s_flag}}"  class="userinfo-avatar green_avatar" background-size="cover"></image>
+        <image src='{{job.targetAvatar}}' wx:else="{{job.s_flag}}"  class="userinfo-avatar" background-size="cover"></image>
         <text class='nickname'>{{job.targetNickname}}</text>
       </view>
  </view>
-<button class='add_btn' bindtap='searchUser'>添加</button>
+ <button class='add_btn' bindtap='searchUser'>添加</button>
+ <view class='tips'>
+<text >绿色头像的好友听歌您会收到通知</text>
+</view>
+
