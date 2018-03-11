@@ -8,7 +8,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content:space-between;
-  padding-bottom:15rpx;
+  padding-bottom:20rpx;
+    padding-top:20rpx;
   font-size:26rpx;
 }
 .leftview{
@@ -33,6 +34,16 @@
     font-size: 30rpx;
     background: #F17252;
 }
+.disabled_add_btn{
+      border-radius: 0.9;
+    width: 120px;
+    height: 28px;
+    line-height: 28px;
+    color: #fff;
+    margin-top: 50rpx;
+    font-size: 30rpx;
+    background: #666A73;
+}
 .record_container {
   height: 100%;
   display: flex;
@@ -40,7 +51,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding-top: 30rpx;
-  padding-bottom: 30rpx;
+  padding-top: 60rpx;
+  padding-bottom: 60rpx;
 } 
 
