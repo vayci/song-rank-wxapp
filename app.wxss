@@ -9,5 +9,5 @@
   box-sizing: border-box;
 } 
 page{
-  background: -webkit-radial-gradient(circle,#47adef,#4995eb);
+  background: -webkit-radial-gradient(circle,#302D42,#302D42);
 }

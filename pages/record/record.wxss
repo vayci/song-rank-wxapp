@@ -8,7 +8,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content:space-between;
-  padding-top:8px;
+  padding-bottom:15rpx;
+  font-size:26rpx;
 }
 .leftview{
   margin-left: 20px;
@@ -16,9 +17,10 @@
 }
 .rightview{
   margin-right: 20px;
+  max-width: 300rpx;
 } 
 .tips{
-  color: #fff;
+  color: #F17252;
   font-size: 38rpx;
 }
 .add_btn{
@@ -26,9 +28,10 @@
     width: 120px;
     height: 28px;
     line-height: 28px;
-    color: #4995eb;
+    color: #fff;
     margin-top: 50rpx;
     font-size: 30rpx;
+    background: #F17252;
 }
 .record_container {
   height: 100%;
@@ -37,7 +40,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding-top: 70rpx;
-  padding-bottom: 50rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
 } 
 

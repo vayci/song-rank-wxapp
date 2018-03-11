@@ -83,7 +83,7 @@ Page({
       },
       success: function (res) {
         wx.showToast({
-          title: res.data,
+          title: '订阅成功！Ta下次听歌我会通知您噢~',
           icon: 'none',
           duration: 2000
         })
@@ -96,7 +96,7 @@ Page({
   },
   backIndex: function(e){
     wx.navigateBack({
-      delta: 1
+      url: '../index/index'
     })
   },
   data: {

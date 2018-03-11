@@ -19,7 +19,7 @@
 }
 .s_button{
   background: #fff;
-  color: #4995eb;
+  color: #666A73;
   height: 90rpx;
   line-height: 90rpx;
   margin-left: 20rpx;

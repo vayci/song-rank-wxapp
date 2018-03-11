@@ -3,7 +3,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: '您尚未关注任何用户',
+    motto: '您尚未关注任何好友',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -25,6 +25,7 @@ Page({
   },
   
   onShow: function(){
+    console.log(app.globalData.openId);
     //appjs获取到openid后回调获取用户任务
     if (app.globalData.openId!=null){
         this.getTimerJobs(app.globalData.openId);
@@ -36,7 +37,7 @@ Page({
   },
 
   onLoad: function () {
-
+    console.log('load');
     //appjs获取到code后回调获取openid sessionKey
     if(app.globalData.code){
         this.jsCode2Session(app.globalData.code);
@@ -144,12 +145,12 @@ Page({
   showTimerJobs(timerJobs){
       if(timerJobs.length>0){
         this.setData({
-          motto: "您已经关注" + timerJobs.length+"名用户",
+          motto: "您已经关注" + timerJobs.length+"名好友",
           jobs: timerJobs
         })
       }else{
         this.setData({
-          motto: "您尚未关注任何用户"
+          motto: "您尚未关注任何好友，点击按钮添加关注"
         })
       }
   },
