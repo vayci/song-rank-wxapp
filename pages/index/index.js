@@ -159,8 +159,10 @@ Page({
   getRankRecord(e){
     if(!this.data.lock){
       var targetid = e.currentTarget.id;
+      console.log(e.currentTarget.dataset);
+      var tusername = e.currentTarget.dataset.tusername;
       wx.navigateTo({
-        url: '../record/record?userId=' + targetid
+        url: '../record/record?userId=' + targetid + '&tusername=' + tusername
       })
     }
     

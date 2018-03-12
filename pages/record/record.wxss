@@ -45,13 +45,15 @@
     background: #666A73;
 }
 .record_container {
-  height: 100%;
+  height: 12vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding-top: 60rpx;
-  padding-bottom: 60rpx;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
 } 
-
+.record_list{
+  height: 65vh;
+}

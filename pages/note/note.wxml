@@ -1,5 +1,4 @@
 <!--pages/note/note.wxml-->
-<scroll-view class='view_wrap'>
 <view class="container">
   <view class="page-body">
       <view class="text-box" >
@@ -25,4 +24,3 @@
       </view>
   </view>
 </view>
-</scroll-view>

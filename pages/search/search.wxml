@@ -1,4 +1,3 @@
-<scroll-view class='view_wrap'>
 <view class='container'>
 <view class="search_box">
   <input class='s_input' placeholder-class="phcolor" placeholder="请输入网易云用户昵称" bindinput='nickNameInput'/>
@@ -12,4 +11,3 @@
     </view>
   </view>
   </view>
-</scroll-view>

@@ -1,7 +1,6 @@
 <!--pages/record/record.wxml-->
-<scroll-view class='view_wrap'>
   <view class='record_container'><text class='tips'>{{tips}}</text></view>
-  <view>
+  <scroll-view class='record_list' scroll-y='true'>
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
         <view class='leftview'>
           <text class="record_text">{{recrod.song}} - </text>
@@ -11,7 +10,7 @@
           <text class="record_text">{{recrod.changeTime}}</text>
         </view>
   </view>
-  </view>
+</scroll-view>
   <view wx:if="{{showTmpMsg}}">
       <form bindsubmit="formSubmit" report-submit='true' bindreset="formReset">
         <view class="btn-area">
@@ -30,4 +29,3 @@
       <text class="record_text" bindtap='backIndex'>该好友听歌您将会收到提醒，点击返回首页</text>
     </view>
 </view>
-</scroll-view>

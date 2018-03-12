@@ -25,8 +25,11 @@ Page({
     })
   },
   onLoad: function (options) {
+    console.log(options);
     this.setData({
-      userId: options.userId
+      userId: options.userId,
+      tuserName: options.tusername,
+      tips: options.tusername+'最近在听'
     })  
     var recordPage = this;
     //获取听歌记录
@@ -99,8 +102,23 @@ Page({
       url: '../index/index'
     })
   },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    return {
+      title: this.data.tuserName+'最近的听歌记录',
+      path: 'pages/record/record?userId=' + this.data.userId + '&tusername=' + this.data.tuserName,
+      imageUrl: './1.jpg',
+      success: function (res) {
+      },
+      fail: function (res) {
+      }
+    }
+  },
   data: {
     userId:null,
+    tuserName: null,
     isBatchUpdate:0,
     recordList:[],
     tips: "Ta最近在听:",

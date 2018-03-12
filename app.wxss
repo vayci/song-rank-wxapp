@@ -1,6 +1,6 @@
 /**app.wxss**/
 .container {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,8 +10,6 @@
 } 
 page{
   background: -webkit-radial-gradient(circle,#302D42,#302D42);
-}
-.view_wrap{
-  height: 100%;
   overflow: hidden;
+  height: 100%;
 }

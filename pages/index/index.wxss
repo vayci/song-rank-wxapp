@@ -47,14 +47,25 @@
 .nickname{
   font-size: 26rpx;
 }
+.userinfo{
+ 
+    height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100rpx 0;
+  box-sizing: border-box;
+}
 .green_avatar{
     border: solid #2ecc71 2px;
 }
 .tips{
-  padding-top: 20rpx;
-  color: #fff;
-  font-size: 25rpx;
-      display: flex;
+    margin: 100rpx 0 30rpx 0;
+    padding-top: 20rpx;
+    color: #fff;
+    font-size: 25rpx;
+     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap:wrap;
