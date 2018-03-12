@@ -1,20 +1,33 @@
 <!--index.wxml-->
-<view class="userinfo">
+<view class='top'>
+  <view class='banner'>
+  <text class='title'>你在听歌吗\n</text><text class='sub_title'>随时关注好友最近听的歌</text>
+  </view>
+</view>
+
+
+
+  <view class='page_bd'>
+  <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">重新登录</button>
     <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">亲爱的{{userInfo.nickName}} , {{motto}}</text>
+      <image bindtap="bindViewTap" class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">亲爱的{{userInfo.nickName}}\n{{motto}}</text>
     </block>
 </view>
-  <view class='tagetuserinfo'>
+    <view class='tagetuserinfo'>
       <view class='tagetuser' wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId" 
       bindtap='getRankRecord' bindlongtap='deleteJob' id='{{job.targetUserId}}' data-jobid='{{job.id}}' data-tusername='{{job.targetNickname}}'>
         <image src='{{job.targetAvatar}}' wx:if="{{job.s_flag}}"  class="userinfo-avatar green_avatar" background-size="cover"></image>
         <image src='{{job.targetAvatar}}' wx:else="{{job.s_flag}}"  class="userinfo-avatar" background-size="cover"></image>
         <text class='nickname'>{{job.targetNickname}}</text>
       </view>
+    </view>
  </view>
- <button class='add_btn' bindtap='searchUser'>添加</button>
+
+ <view class='btn_view'>
+    <button class='add_btn' bindtap='searchUser'>添加</button>
+ </view>
  <view class='tips'>
     <text bindtap='getNote'>小程序说明</text>
 </view>

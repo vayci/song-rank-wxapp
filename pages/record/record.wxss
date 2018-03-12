@@ -21,28 +21,28 @@
   max-width: 300rpx;
 } 
 .tips{
-  color: #F17252;
+  color: #fff;
   font-size: 38rpx;
 }
 .add_btn{
     border-radius: 0.9;
-    width: 120px;
-    height: 28px;
+    width: 220rpx;
+    height: 58rpx;
     line-height: 28px;
     color: #fff;
     margin-top: 50rpx;
     font-size: 30rpx;
-    background: #F17252;
+    background: #74ACDC;
 }
 .disabled_add_btn{
       border-radius: 0.9;
-    width: 120px;
-    height: 28px;
+    width: 220rpx;
+    height: 58rpx;
     line-height: 28px;
     color: #fff;
     margin-top: 50rpx;
     font-size: 30rpx;
-    background: #666A73;
+    background: #808080;
 }
 .record_container {
   height: 12vh;
@@ -56,4 +56,13 @@
 } 
 .record_list{
   height: 65vh;
+  /* background: #74ACDC; */
+}
+.foot{
+  height: 22vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
 }

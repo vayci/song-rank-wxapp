@@ -4,12 +4,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 100rpx 0;
   box-sizing: border-box;
 } 
 page{
-  background: -webkit-radial-gradient(circle,#302D42,#302D42);
+  background: -webkit-radial-gradient(circle,#438ACE,#438ACE);
   overflow: hidden;
   height: 100%;
 }

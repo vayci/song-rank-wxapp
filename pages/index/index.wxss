@@ -1,29 +1,40 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
 }
-
+.avatar{
+    width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 20%;
+}
 .userinfo-nickname {
-  color: #F17252;
+  color: #fff;
+  font-size: 35rpx;
 }
 
 .usermotto {
   margin-top: 30px;
 }
+.page_bd{
+  height: 55vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .tagetuserinfo {
+
+  width: 78%;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap:wrap;
    justify-content:center;
+   border: dashed #fff 3px;
+   border-radius: 10px;
 }
 .tagetuser {
     display: flex;
@@ -33,36 +44,34 @@
     justify-content:center;
     font-size: 15px;
     color: #fff;
+    padding-bottom: 10rpx;
 }
 .add_btn{
     border-radius: 0.9;
-    width: 80px;
-    height: 28px;
+    width: 220rpx;
+    height: 58rpx;
     line-height: 28px;
     color: #fff;
-    background: #F17252;
-    margin-top: 60px;
+    background: #74ACDC;
     font-size: 30rpx;
 }
 .nickname{
   font-size: 26rpx;
 }
 .userinfo{
- 
-    height: 40vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding: 100rpx 0;
+  justify-content: center;
   box-sizing: border-box;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
 }
 .green_avatar{
     border: solid #2ecc71 2px;
 }
 .tips{
-    margin: 100rpx 0 30rpx 0;
-    padding-top: 20rpx;
+  height: 5vh;
     color: #fff;
     font-size: 25rpx;
      display: flex;
@@ -71,6 +80,38 @@
     flex-wrap:wrap;
     justify-content:center;
 }
-page{
-  background: -webkit-radial-gradient(circle,#302D42,#302D42);
+.top{
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30rpx;
+}
+.banner{
+  width: 80%;
+  height: 100%;
+  background-color: #74ACDC;
+  background-image: url('http://owkeg172k.bkt.clouddn.com/banner1.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.title{
+  font-size: 70rpx;
+  font-weight: bolder;
+}
+.sub_title{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.btn_view{
+  height: 12vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

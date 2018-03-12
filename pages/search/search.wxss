@@ -1,5 +1,6 @@
 /**rpx*/
 .search_box{
+  height: 10vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,7 +20,7 @@
 }
 .s_button{
   background: #fff;
-  color: #666A73;
+  color: #438ACE;
   height: 60rpx;
   line-height: 60rpx;
   margin-left: 20rpx;
@@ -29,16 +30,17 @@
   background: #A2B4BA;
 }
 .userinfo{
-   width: 580rpx;
+  margin-bottom: 20rpx;
+   width: 560rpx;
    display: flex;
    flex-direction: row;
    align-items: center;
    justify-content: flex-start;
-   border: dashed #fff 3.5rpx;
    border-radius: 10rpx;
    margin-top: 10rpx;
    color: #fff;
    font-size: 30rpx;
+   background: #74ACDC;
 }
 .userinfo-avatar {
   width: 80rpx;
@@ -46,5 +48,16 @@
   margin: 20rpx;
 }
 .search_bd{
+  height: 80vh;
   margin-top: 80rpx;
+  width:560rpx;
+}
+.search_tips{
+     width: 560rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #dddddf;
+  font-size: 28rpx;
 }

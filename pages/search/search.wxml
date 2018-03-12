@@ -1,7 +1,10 @@
 <view class='container'>
 <view class="search_box">
-  <input class='s_input' placeholder-class="phcolor" placeholder="请输入网易云用户昵称" bindinput='nickNameInput'/>
+  <input class='s_input' placeholder-class="phcolor" placeholder="请输入好友昵称" bindinput='nickNameInput'/>
   <button class='s_button'  bindtap='searchButtonTap'>搜索</button>
+</view>
+<view class='search_tips'>
+    <text>点击搜索结果添加关注</text>
 </view>
  <view class="search_bd">
     <view class="userinfo" bindtap='selectUser' wx:for="{{array}}" id='{{item.userId}}'
