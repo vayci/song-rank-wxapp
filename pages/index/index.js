@@ -218,6 +218,11 @@ Page({
       }
     })
   },
+  getNote: function(e){
+    wx.navigateTo({
+      url: '../note/note'
+    })
+  },
   //点击转发
   onShareAppMessage: function (res) {
     if (res.from === 'button') {

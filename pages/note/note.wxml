@@ -1,0 +1,25 @@
+<!--pages/note/note.wxml-->
+<view class="container">
+  <view class="page-body">
+      <view class="text-box" >
+        <text space='nbsp'>        你在听歌吗 是一个随时随地查看好友最近听歌记录的小程序。\n</text>
+        <text space='nbsp'>        您还可以在小程序内订阅好友，当好友在听歌时，您将会收到通知。\n</text>
+        <text space='nbsp'>\n</text>    
+        <text space='nbsp'>一、添加关注\n</text>    
+        <text space='nbsp'>        目前小程序只支持关注 网易云音乐并且听歌排行权限为所有人可见的用户。\n</text>    
+        <text space='nbsp'>\n</text>            
+        <text space='nbsp'>二、听歌记录\n</text>    
+        <text space='nbsp'>        听歌记录通常会因网易云音乐生成数据时间而延后1-3分钟或者长,记录数据仅供参考。\n</text>     
+        <text space='nbsp'>\n</text>            
+        <text space='nbsp'>三、订阅通知\n</text>    
+        <text space='nbsp'>        在关注好友的听歌记录界面可订阅该好友。订阅后，当该好友产生听歌记录数据后，您将立即收到小程序推送消息。在主页面，您关注好友的头像若为绿色边框，则表示您已经订阅该好友。\n</text>     
+        <text space='nbsp'>\n</text>            
+        <text space='nbsp'>四、取消关注\n</text>    
+        <text space='nbsp'>        在关注主页面长按您关注好友的头像，则会提示您进行取消关注操作。\n</text>
+        <text space='nbsp'>\n\n</text>  
+        <text space='nbsp'>wechat: vayci2012\n</text>    
+        <text space='nbsp'>email: vayci2012@163.com\n</text>    
+        <text space='nbsp'>Designed By Red\n</text>    
+      </view>
+  </view>
+</view>

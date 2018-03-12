@@ -18,6 +18,6 @@
  </view>
  <button class='add_btn' bindtap='searchUser'>添加</button>
  <view class='tips'>
-<text >绿色头像的好友听歌您会收到通知</text>
+<text bindtap='getNote'>小程序说明</text>
 </view>
 
