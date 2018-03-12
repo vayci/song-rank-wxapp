@@ -11,3 +11,7 @@
 page{
   background: -webkit-radial-gradient(circle,#302D42,#302D42);
 }
+.view_wrap{
+  height: 100%;
+  overflow: hidden;
+}

@@ -9,7 +9,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#302D42",
-    "navigationBarTitleText": "你在听歌吗",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle":"white"
   }
 }

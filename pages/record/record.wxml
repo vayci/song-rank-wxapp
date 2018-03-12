@@ -1,5 +1,5 @@
 <!--pages/record/record.wxml-->
-<view>
+<scroll-view class='view_wrap'>
   <view class='record_container'><text class='tips'>{{tips}}</text></view>
   <view>
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
@@ -30,4 +30,4 @@
       <text class="record_text" bindtap='backIndex'>该好友听歌您将会收到提醒，点击返回首页</text>
     </view>
 </view>
-</view>
+</scroll-view>
