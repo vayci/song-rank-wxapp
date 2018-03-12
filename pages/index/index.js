@@ -8,7 +8,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     jobs: [],
-    subscribe: []
+    subscribe: [],
+    lock: false
   },
   //点击个人头像
   bindViewTap: function() {
@@ -150,15 +151,51 @@ Page({
         })
       }else{
         this.setData({
-          motto: "您尚未关注任何好友，点击按钮添加关注"
+          motto: "您尚未关注任何好友"
         })
       }
   },
   //点击关注头像 跳转至听歌记录页面
   getRankRecord(e){
-    var targetid = e.currentTarget.id;
-    wx.navigateTo({
-      url: '../record/record?userId=' + targetid
+    if(!this.data.lock){
+      var targetid = e.currentTarget.id;
+      wx.navigateTo({
+        url: '../record/record?userId=' + targetid
+      })
+    }
+    
+  },
+  deleteJob(e){
+
+    var indexPage = this;
+    indexPage.data.lock = true;
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消关注Ta吗?',
+      success: function (res) {
+        if (res.confirm) {
+          console.log(e.currentTarget.dataset.jobid);
+          wx.request({
+            url: app.globalData.serverUrl + '/userjob/' + e.currentTarget.dataset.jobid,
+            method: 'DELETE',
+            data: {
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              indexPage.data.lock = false;
+              indexPage.getTimerJobs(app.globalData.openId);
+              wx.showToast({
+                title: res.data,
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          })
+        }
+        indexPage.data.lock = false;
+      }
     })
   },
   //code换取openid sessionKey
