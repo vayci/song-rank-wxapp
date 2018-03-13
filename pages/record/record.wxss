@@ -69,8 +69,11 @@
 .img_box{
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .bd_img{
-  width:100vw;
-  height:100vw;
+  width:85vw;
+  height:85vw;
 }

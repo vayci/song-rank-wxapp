@@ -56,9 +56,10 @@
   height: 80vh;
   margin-top: 80rpx;
   width:560rpx;
-  background-image: url("http://owkeg172k.bkt.clouddn.com/serach_img.png");
-  background-size: cover;
-  background-position: center;
+  background-image: url("http://owkeg172k.bkt.clouddn.com/s.png");
+  background-size: 490rpx 560rpx;
+  background-repeat: no-repeat;
+  background-position: top center;
 }
 .search_tips{
      width: 560rpx;
