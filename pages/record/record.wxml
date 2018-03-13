@@ -1,6 +1,6 @@
 <!--pages/record/record.wxml-->
   <view class='record_container'>
-      <text class='tips'>{{tips}}</text>
+      <text class='tips_top'>{{tips}}</text>
   </view>
   <scroll-view class='record_list' scroll-y='true'>
     <view class="img_box" wx:if="{{showImg}}">
