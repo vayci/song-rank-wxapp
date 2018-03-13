@@ -22,13 +22,13 @@
 } 
 .tips{
   color: #fff;
-  font-size: 38rpx;
+  font-size: 35rpx;
 }
 .add_btn{
     border-radius: 0.9;
     width: 220rpx;
     height: 58rpx;
-    line-height: 28px;
+    line-height: 58rpx;
     color: #fff;
     margin-top: 50rpx;
     font-size: 30rpx;
@@ -38,7 +38,7 @@
       border-radius: 0.9;
     width: 220rpx;
     height: 58rpx;
-    line-height: 28px;
+    line-height: 58rpx;
     color: #fff;
     margin-top: 50rpx;
     font-size: 30rpx;
@@ -49,7 +49,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
   padding-top: 40rpx;
   padding-bottom: 40rpx;

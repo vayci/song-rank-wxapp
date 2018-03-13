@@ -1,5 +1,7 @@
 <!--pages/record/record.wxml-->
-  <view class='record_container'><text class='tips'>{{tips}}</text></view>
+  <view class='record_container'>
+      <text class='tips'>{{tips}}</text>
+  </view>
   <scroll-view class='record_list' scroll-y='true'>
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
         <view class='leftview'>
@@ -18,7 +20,7 @@
         </view>
       </form>
       <view class='record_container'>
-        <text class="record_text" bindtap='backIndex'>订阅后，Ta下次听歌您将会收到提醒，点击返回首页</text>
+        <text class="record_text" bindtap='backIndex'>订阅通知后，Ta下次听歌您将会收到提醒</text>
       </view>
   </view>
   <view class='foot' wx:else>
@@ -26,6 +28,6 @@
           <button class='disabled_add_btn'>已订阅</button> 
         </view>
     <view class='record_container'>
-      <text class="record_text" bindtap='backIndex'>该好友听歌您将会收到提醒，点击返回首页</text>
+      <text class="record_text" bindtap='backIndex'>该好友听歌您将会收到提醒</text>
     </view>
 </view>

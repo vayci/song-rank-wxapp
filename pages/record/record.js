@@ -42,8 +42,8 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        if (res.data.list==undefined){
-          recordPage.data.tips = "暂时还没有Ta的听歌记录，再等等噢~";
+        if (res.data.list==undefined||res.data.list.length==0){
+          recordPage.data.tips = "目前还没有听歌记录，再等等吧~\n 您可以点击下方 \"订阅通知\" \nTa听歌后我会第一时间通知您";
           recordPage.setData({
             tips: recordPage.data.tips
           })
