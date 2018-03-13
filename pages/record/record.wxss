@@ -42,7 +42,7 @@
     color: #fff;
     margin-top: 50rpx;
     font-size: 30rpx;
-    background: #808080;
+    background: #A9A9A9;
 }
 .record_container {
   height: 12vh;

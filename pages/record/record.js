@@ -107,9 +107,8 @@ Page({
       // 来自页面内转发按钮
     }
     return {
-      title: this.data.tuserName+'最近的听歌记录',
+      title:'给你分享一份听歌记录',
       path: 'pages/record/record?userId=' + this.data.userId + '&tusername=' + this.data.tuserName,
-      imageUrl: './1.jpg',
       success: function (res) {
       },
       fail: function (res) {

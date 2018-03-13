@@ -58,6 +58,6 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  color: #dddddf;
+  color: #87CEEB;
   font-size: 28rpx;
 }
