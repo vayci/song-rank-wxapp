@@ -2,6 +2,7 @@
 .record_text{
     font-size: 26rpx;
     color: #fff;
+    padding-bottom: 20rpx;
 }
 .box{
   display: flex;
@@ -76,4 +77,8 @@
 .bd_img{
   width:85vw;
   height:85vw;
+}
+.tips{
+    color: #fff;
+    font-size: 25rpx;
 }

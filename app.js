@@ -38,7 +38,6 @@ App({
           wx.authorize({
             scope: 'scope.userInfo',
             success() {
-              console.log(appJs.userAuthorizeCallback)
               if (appJs.userAuthorizeCallback) {
                 appJs.userAuthorizeCallback(res)
               }

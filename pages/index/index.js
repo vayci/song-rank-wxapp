@@ -26,9 +26,13 @@ Page({
   },
   
   onShow: function(){
+  
+    if (app.globalData.openId == null || app.globalData.openId==''){
+      app.globalData.openId = wx.getStorageSync('openid');
+    }
     console.log(app.globalData.openId);
     //appjs获取到openid后回调获取用户任务
-    if (app.globalData.openId!=null){
+    if (app.globalData.openId != null && app.globalData.openId != ''){
         this.getTimerJobs(app.globalData.openId);
     }else{
       this.openIdReadyCallback = res => {
@@ -162,7 +166,7 @@ Page({
       console.log(e.currentTarget.dataset);
       var tusername = e.currentTarget.dataset.tusername;
       wx.navigateTo({
-        url: '../record/record?userId=' + targetid + '&tusername=' + tusername
+        url: '../record/record?userId=' + targetid + '&tusername=' + tusername +'&fromApp=true'
       })
     }
     
@@ -214,6 +218,10 @@ Page({
       success: function (res) {
         app.globalData.openId = res.data.openid;
         app.globalData.sessionKey = res.data.session_key;
+        wx.setStorage({
+          key: "openid",
+          data: res.data.openid
+        })
         if (indexPage.openIdReadyCallback) {
           indexPage.openIdReadyCallback(res.data.openid);
         }

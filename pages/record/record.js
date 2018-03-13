@@ -29,7 +29,8 @@ Page({
     this.setData({
       userId: options.userId,
       tuserName: options.tusername,
-      tips: options.tusername+'最近在听'
+      tips: options.tusername+'最近在听',
+      fromApp: options.fromApp,
     })  
     var recordPage = this;
     //获取听歌记录
@@ -99,8 +100,8 @@ Page({
     })
   },
   backIndex: function(e){
-    wx.navigateBack({
-      delta: 8
+    wx.redirectTo({
+      url: '/pages/index/index'
     })
   },
   onShareAppMessage: function (res) {
@@ -123,6 +124,7 @@ Page({
     recordList:[],
     tips: "Ta最近在听:",
     showTmpMsg: false,
-    showImg: false
+    showImg: false,
+    fromApp: ''
   }
 })  

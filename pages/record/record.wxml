@@ -23,7 +23,8 @@
         </view>
       </form>
       <view class='record_container'>
-        <text class="record_text" bindtap='backIndex'>订阅通知后，Ta下次听歌您将会收到提醒</text>
+        <text class="record_text">订阅通知后，Ta下次听歌您将会收到提醒</text>
+        <navigator  wx:if="{{fromApp!='true'}}"  class='tips' url='/pages/index/index' open-type='redirect'>返回首页</navigator>
       </view>
   </view>
   <view class='foot' wx:else>
@@ -31,6 +32,7 @@
           <button class='disabled_add_btn'>已订阅</button> 
         </view>
     <view class='record_container'>
-      <text class="record_text" bindtap='backIndex'>该好友听歌您将会收到提醒</text>
+      <text class="record_text">该好友听歌您将会收到提醒</text>
+      <navigator wx:if="{{fromApp!='true'}}" class='tips'  url='/pages/index/index' open-type='redirect'>返回首页</navigator>
     </view>
 </view>
