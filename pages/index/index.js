@@ -233,7 +233,7 @@ Page({
     return {
       title: '想不到吧，你听歌都会被我抓到噢！',
       path: 'pages/index/index',
-      imageUrl: './1.jpg',
+      // imageUrl: './1.jpg',
       success: function (res) {
       },
       fail: function (res) {
