@@ -100,7 +100,7 @@ Page({
   },
   backIndex: function(e){
     wx.navigateBack({
-      url: '../index/index'
+      delta: 8
     })
   },
   onShareAppMessage: function (res) {
