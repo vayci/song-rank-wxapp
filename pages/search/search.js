@@ -27,7 +27,8 @@ Page({
         console.log(res.data);
 
         pageobj.setData({
-          array: res.data
+          array: res.data,
+          show_img: false
         });
       }
     })
@@ -82,6 +83,7 @@ Page({
   },
   data:{
     nickname:'',
-    array:[]
+    array:[],
+    show_img: true
   }
 })

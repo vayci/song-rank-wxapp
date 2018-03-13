@@ -3,6 +3,9 @@
       <text class='tips'>{{tips}}</text>
   </view>
   <scroll-view class='record_list' scroll-y='true'>
+    <view class="img_box" wx:if="{{showImg}}">
+    <image src="http://owkeg172k.bkt.clouddn.com/record.png" class="bd_img"></image>
+    </view>
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
         <view class='leftview'>
           <text class="record_text">{{recrod.song}} - </text>

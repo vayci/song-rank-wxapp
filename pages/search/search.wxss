@@ -52,6 +52,14 @@
   margin-top: 80rpx;
   width:560rpx;
 }
+.search_bd_img{
+  height: 80vh;
+  margin-top: 80rpx;
+  width:560rpx;
+  background-image: url("http://owkeg172k.bkt.clouddn.com/serach_img.png");
+  background-size: cover;
+  background-position: center;
+}
 .search_tips{
      width: 560rpx;
   display: flex;

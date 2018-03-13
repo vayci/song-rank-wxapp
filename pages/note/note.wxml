@@ -20,10 +20,13 @@
         <text space='nbsp'>     在关注主页面长按您关注好友的头像，则会提示您进行取消关注操作。\n</text>
         <text space='nbsp'>\n\n</text>  
       </view>
-      <view class='foot'>
+      <!-- <view class='foot'> -->
+      <!-- <image class="qrcode" src='http://owkeg172k.bkt.clouddn.com/qrcode.png'></image> -->
+       <view class='foot_right'> 
        <text space='nbsp'>wechat: vayci2012\n</text>    
         <text space='nbsp'>vayci2012@163.com\n</text>    
         <text space='nbsp'>Designed By Red\n</text>  
+        <!-- </view> -->
       </view>
   </view>
 </view>

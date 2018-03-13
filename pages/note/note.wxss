@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   font-size: 32rpx;
-  padding:50rpx 0;
+  padding:20rpx 0;
 }
 .page-body {
   width: 80%;
@@ -18,16 +18,32 @@
 }
 
 .foot{
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.foot_right{
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   justify-content: flex-end;
+  align-items: flex-end;
+  height: 15vh;
+  margin-top: 5vh;
 }
 .text-box text{
   padding-bottom: 20rpx;
   letter-spacing: 4rpx;
 }
-.foor text{
+.foot_right text{
   padding-bottom: 10rpx;
   letter-spacing: 4rpx;
+}
+.qrcode{
+  width: 180rpx;
+  height: 180rpx;
+}
+.text-box{
+  height: 75vh;
 }
