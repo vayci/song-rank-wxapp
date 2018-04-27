@@ -9,7 +9,7 @@
 
   <view class='page_bd'>
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">重新登录</button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">刷新资料</button>
     <block wx:else>
       <image bindtap="bindViewTap" class="avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">亲爱的{{userInfo.nickName}}\n{{motto}}</text>

@@ -18,6 +18,12 @@ App({
         
       }
     })
+
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log("SDKVersion: "+res.SDKVersion);
+      }
+    })
     // 查看用户是否授权
     wx.getSetting({
       success: res => {
@@ -76,6 +82,7 @@ App({
     openId: null,
     unionId: null,
     sessionKey: null,
-    authorize: false
+    authorize: false,
+    sdk:null
   }
 })

@@ -27,10 +27,7 @@ Page({
   
   onShow: function(){
   
-    if (app.globalData.openId == null || app.globalData.openId==''){
-      app.globalData.openId = wx.getStorageSync('openid');
-    }
-    console.log(app.globalData.openId);
+    app.globalData.openId = wx.getStorageSync('openid');
     //appjs获取到openid后回调获取用户任务
     if (app.globalData.openId != null && app.globalData.openId != ''){
         this.getTimerJobs(app.globalData.openId);
@@ -42,7 +39,6 @@ Page({
   },
 
   onLoad: function () {
-    console.log('load');
     //appjs获取到code后回调获取openid sessionKey
     if(app.globalData.code){
         this.jsCode2Session(app.globalData.code);
@@ -66,13 +62,13 @@ Page({
         })
       }
     }
-
     //加载用户信息
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+      this.tryUploadUserInfo("global data");
     } else if (this.data.canIUse){
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -81,6 +77,7 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        this.tryUploadUserInfo("userinfo callback");
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -91,11 +88,48 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+          this.tryUploadUserInfo("auto get");
         }
       })
     }
   },
-
+  tryUploadUserInfo(from){
+    console.log("try upload user info : "+from)
+    //判断是否需上传用户信息
+    var isUpload = wx.getStorageSync('isUpload');
+    if (!isUpload) {
+      //用户信息已准备完成
+      if (app.globalData.userInfo != null && app.globalData.openId != null) {
+        console.log("upload user info success...")
+        //提交用户信息
+        this.uploadUserInfo(app.globalData.openId, app.globalData.userInfo)
+      }else{
+        console.log("user info not ready!")
+      }
+    }else{
+      console.log("user info already upload")
+    } 
+  },
+  uploadUserInfo(openid, userInfo) {
+    console.log(userInfo)
+    userInfo.openId = openid;
+    //提交用户信息
+    wx.request({
+      url: app.globalData.serverUrl + '/user',
+      method: 'POST',
+      data: JSON.stringify(userInfo),
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log("用户信息提交成功");
+      }
+    })
+    wx.setStorage({
+      key: "isUpload",
+      data: true
+    })
+  },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
