@@ -70,3 +70,13 @@
   color: #87CEEB;
   font-size: 28rpx;
 }
+.tips{
+  height: 5vh;
+    color: #fff;
+    font-size: 25rpx;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap:wrap;
+    justify-content:center;
+}

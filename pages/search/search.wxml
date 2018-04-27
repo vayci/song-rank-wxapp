@@ -1,10 +1,10 @@
 <view class='container'>
 <view class="search_box">
-  <input class='s_input' placeholder-class="phcolor" placeholder="请输入好友昵称" bindinput='nickNameInput'/>
+  <input class='s_input' placeholder-class="phcolor" placeholder="输入网易云音乐昵称" bindinput='nickNameInput'/>
   <button class='s_button'  bindtap='searchButtonTap'>搜索</button>
 </view>
 <view class='search_tips'>
-    <text>点击搜索结果添加关注</text>
+    <text>{{tip_words}}</text>
 </view>
  <view wx:if="{{show_img}}" class="search_bd_img">
     <view class="userinfo" bindtap='selectUser' wx:for="{{array}}" id='{{item.userId}}'
@@ -20,4 +20,7 @@
         <span>{{item.nickName}}</span>
     </view>
   </view>
+   <view class='tips'>
+    <!-- <text open-type="share">转发小程序到群，查询谁关注了你</text> -->
   </view>
+</view>

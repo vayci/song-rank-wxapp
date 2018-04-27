@@ -58,8 +58,10 @@ Page({
               userInfo: res.userInfo,
               hasUserInfo: true
             })
+            this.tryUploadUserInfo("authorize callback");
           }
         })
+
       }
     }
     //加载用户信息
@@ -111,7 +113,6 @@ Page({
     } 
   },
   uploadUserInfo(openid, userInfo) {
-    console.log(userInfo)
     userInfo.openId = openid;
     //提交用户信息
     wx.request({
@@ -122,12 +123,20 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log("用户信息提交成功");
+        if(res.statusCode == 200){
+          console.log("用户信息提交成功");
+          wx.setStorage({
+            key: "isUpload",
+            data: true
+          })
+        } else if (res.statusCode == 500){
+          console.log(res.data);
+          wx.setStorage({
+            key: "isUpload",
+            data: true
+          })
+        }
       }
-    })
-    wx.setStorage({
-      key: "isUpload",
-      data: true
     })
   },
   getUserInfo: function(e) {
@@ -197,7 +206,6 @@ Page({
   getRankRecord(e){
     if(!this.data.lock){
       var targetid = e.currentTarget.id;
-      console.log(e.currentTarget.dataset);
       var tusername = e.currentTarget.dataset.tusername;
       wx.navigateTo({
         url: '../record/record?userId=' + targetid + '&tusername=' + tusername +'&fromApp=true'
@@ -275,7 +283,7 @@ Page({
     return {
       title: '想不到吧，你听歌都会被我抓到噢！',
       path: 'pages/index/index',
-      // imageUrl: './1.jpg',
+      imageUrl: './share.jpg',
       success: function (res) {
       },
       fail: function (res) {

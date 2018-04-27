@@ -25,7 +25,6 @@ Page({
     })
   },
   onLoad: function (options) {
-    console.log(options);
     this.setData({
       userId: options.userId,
       tuserName: options.tusername,
