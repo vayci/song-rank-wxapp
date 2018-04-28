@@ -93,6 +93,16 @@ Page({
     }
     //查询谁关注了我
     else{
+      var share_count = wx.getStorageSync('share_count');
+      if (share_count >= 2){
+        wx.showToast({
+          title: "你的分享查询次数已耗尽，请联系开发者",
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
+
       wx.request({
         url: app.globalData.serverUrl + '/user/getFollow',
         data: {
@@ -111,9 +121,14 @@ Page({
                 item.nickName = res.data[i].nickName
                 array.push(item);
             }
+            console.log(array)
             thisJs.setData({
               array: array,
               tip_words: '以下微信用户关注了你噢~'
+            })
+            wx.setStorage({
+              key: "share_count",
+              data: ++share_count
             })
           }
         }
@@ -125,6 +140,13 @@ Page({
       request_url: 1
     })
     
+  },
+  shareTip: function(e){
+    wx.showToast({
+      title: "转发在右上角，点我干什么",
+      icon: 'none',
+      duration: 1000
+    })
   },
   //点击转发
   onShareAppMessage: function (res) {
@@ -178,6 +200,7 @@ Page({
     tip_words:'点击搜索结果添加关注',
     flag: true,
     wx_user: null,
-    request_url: 1
+    request_url: 1,
+    share_count: 0
   }
 })

@@ -21,6 +21,6 @@
     </view>
   </view>
    <view class='tips'>
-    <!-- <text open-type="share">转发小程序到群，查询谁关注了你</text> -->
+    <text bindtap='shareTip'>转发小程序到群，查询谁关注了你</text>
   </view>
 </view>
