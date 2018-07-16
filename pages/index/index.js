@@ -11,12 +11,6 @@ Page({
     subscribe: [],
     lock: false
   },
-  //点击个人头像
-  bindViewTap: function() {
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
-  },
   //点击添加
   searchUser: function(){
     console.log(app.globalData.code);
@@ -47,72 +41,25 @@ Page({
         this.jsCode2Session(res.code);
       }
     }
-
-    //若用户未授权，添加授权后回调获取用户信息
-    if (app.globalData.authorize==false){
-      app.userAuthorizeCallback = res => {
-        wx.getUserInfo({
-          success: res => {
-            app.globalData.userInfo = res.userInfo
-            this.setData({
-              userInfo: res.userInfo,
-              hasUserInfo: true
-            })
-            this.tryUploadUserInfo("authorize callback");
-          }
-        })
-
-      }
-    }
-    //加载用户信息
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-      this.tryUploadUserInfo("global data");
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-        this.tryUploadUserInfo("userinfo callback");
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-          this.tryUploadUserInfo("auto get");
-        }
-      })
-    }
   },
-  tryUploadUserInfo(from){
-    console.log("try upload user info : "+from)
-    //判断是否需上传用户信息
+
+  onGotUserInfo(userInfo){
+    app.globalData.userInfo = userInfo.detail.rawData;
     var isUpload = wx.getStorageSync('isUpload');
+    console.log(isUpload);
     if (!isUpload) {
       //用户信息已准备完成
       if (app.globalData.userInfo != null && app.globalData.openId != null) {
-        console.log("upload user info success...")
-        //提交用户信息
         this.uploadUserInfo(app.globalData.openId, app.globalData.userInfo)
-      }else{
-        console.log("user info not ready!")
       }
-    }else{
-      console.log("user info already upload")
     } 
+    wx.navigateTo({
+        url: '/pages/search/search'
+      })
   },
+
   uploadUserInfo(openid, userInfo) {
+    userInfo = JSON.parse(userInfo);
     userInfo.openId = openid;
     //提交用户信息
     wx.request({
@@ -133,17 +80,10 @@ Page({
           console.log(res.data);
           wx.setStorage({
             key: "isUpload",
-            data: true
+            data: false
           })
         }
       }
-    })
-  },
-  getUserInfo: function(e) {
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
     })
   },
   //获取用户关联爬虫任务
@@ -213,8 +153,8 @@ Page({
     }
     
   },
-  deleteJob(e){
 
+  deleteJob(e){
     var indexPage = this;
     indexPage.data.lock = true;
     wx.showModal({
