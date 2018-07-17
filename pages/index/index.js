@@ -1,6 +1,5 @@
-//index.js
+ //index.js
 const app = getApp()
-
 Page({
   data: {
     motto: '您尚未关注任何好友',
@@ -9,20 +8,25 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     jobs: [],
     subscribe: [],
-    lock: false
+    lock: false,
+    offline: false
   },
-  //点击添加
-  searchUser: function(){
-    console.log(app.globalData.code);
-    wx.navigateTo({
-      url: '../search/search'
-    })
+
+  onLoad: function () {
+    //appjs获取到code后回调获取openid sessionKey
+    if (app.globalData.code) {
+      this.jsCode2Session(app.globalData.code);
+    } else if (this.data.canIUse) {
+      app.codeReadyCallback = res => {
+        this.jsCode2Session(res.code);
+      }
+    }
+    this.getAppNotice();
   },
-  
+
   onShow: function(){
-  
     app.globalData.openId = wx.getStorageSync('openid');
-    //appjs获取到openid后回调获取用户任务
+    //jsCode2Session 获取到openid后回调获取用户任务
     if (app.globalData.openId != null && app.globalData.openId != ''){
         this.getTimerJobs(app.globalData.openId);
     }else{
@@ -32,21 +36,43 @@ Page({
     }
   },
 
-  onLoad: function () {
-    //appjs获取到code后回调获取openid sessionKey
-    if(app.globalData.code){
-        this.jsCode2Session(app.globalData.code);
-    } else if (this.data.canIUse){
-      app.codeReadyCallback = res => {
-        this.jsCode2Session(res.code);
+  //code换取openid sessionKey
+  jsCode2Session(code) {
+    var indexPage = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/wx/jsCode2Session',
+      data: {
+        code: app.globalData.code
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        app.globalData.openId = res.data.openid;
+        app.globalData.sessionKey = res.data.session_key;
+        wx.setStorage({
+          key: "openid",
+          data: res.data.openid
+        })
+        if (indexPage.openIdReadyCallback) {
+          indexPage.openIdReadyCallback(res.data.openid);
+        }
+        indexPage.setData({
+          offline: false
+        })
+      },
+      fail: function (res) {
+        indexPage.setData({
+          offline: true
+        })
       }
-    }
+    })
   },
 
+  //点击添加按钮 上报用户信息 跳转搜索页
   onGotUserInfo(userInfo){
     app.globalData.userInfo = userInfo.detail.rawData;
     var isUpload = wx.getStorageSync('isUpload');
-    console.log(isUpload);
     if (!isUpload) {
       //用户信息已准备完成
       if (app.globalData.userInfo != null && app.globalData.openId != null) {
@@ -58,10 +84,10 @@ Page({
       })
   },
 
+  //上传用户信息
   uploadUserInfo(openid, userInfo) {
     userInfo = JSON.parse(userInfo);
     userInfo.openId = openid;
-    //提交用户信息
     wx.request({
       url: app.globalData.serverUrl + '/user',
       method: 'POST',
@@ -86,6 +112,7 @@ Page({
       }
     })
   },
+
   //获取用户关联爬虫任务
   getTimerJobs(openid){
     var indexPage = this;
@@ -104,6 +131,7 @@ Page({
       }
     })
   },
+
   getSubscribe(openid) {
     var indexPage = this;
     wx.request({
@@ -129,7 +157,8 @@ Page({
       }
     })
   },
-  //根据返回关联任务数据显示
+
+  //显示关注好友数量
   showTimerJobs(timerJobs){
       if(timerJobs.length>0){
         this.setData({
@@ -142,6 +171,7 @@ Page({
         })
       }
   },
+
   //点击关注头像 跳转至听歌记录页面
   getRankRecord(e){
     if(!this.data.lock){
@@ -154,6 +184,7 @@ Page({
     
   },
 
+  // 长按删除任务
   deleteJob(e){
     var indexPage = this;
     indexPage.data.lock = true;
@@ -186,35 +217,34 @@ Page({
       }
     })
   },
-  //code换取openid sessionKey
-  jsCode2Session(code){
+
+  //获取系统公告
+  getAppNotice(){
     var indexPage = this;
     wx.request({
-      url: app.globalData.serverUrl + '/wx/jsCode2Session',
-      data: {
-        code: app.globalData.code
-      },
+      url: app.globalData.serverUrl + '/notice/all',
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        app.globalData.openId = res.data.openid;
-        app.globalData.sessionKey = res.data.session_key;
-        wx.setStorage({
-          key: "openid",
-          data: res.data.openid
-        })
-        if (indexPage.openIdReadyCallback) {
-          indexPage.openIdReadyCallback(res.data.openid);
-        }
+        var notice_arr = [];
+        res.data.forEach(function (value) {
+          notice_arr.push({id: value.id,url:"url", title: value.content});
+        });
+        indexPage.setData({
+          msgList: notice_arr
+        });
       }
     })
   },
+
+  //小程序说明跳转
   getNote: function(e){
     wx.navigateTo({
       url: '../note/note'
     })
   },
+
   //点击转发
   onShareAppMessage: function (res) {
     if (res.from === 'button') {

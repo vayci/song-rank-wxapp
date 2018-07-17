@@ -1,7 +1,18 @@
 <!--index.wxml-->
+<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="5000">
+  <block wx:for="{{msgList}}" wx:key="id">
+   <!-- <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate"> -->
+   <navigator>
+    <swiper-item>
+     <view class="swiper_item">{{item.title}}</view>
+    </swiper-item>
+   </navigator>
+  </block>
+ </swiper>
+
 <view class='top'>
   <view class='banner'>
-  <text class='title'>你在听歌吗\n</text><text class='sub_title'>随时关注好友最近听的歌</text>
+  <!-- <text class='title'>你在听歌吗\n</text><text class='sub_title'>随时关注好友最近听的歌</text> -->
   </view>
 </view>
 
@@ -23,11 +34,16 @@
         <text class='nickname'>{{job.targetNickname}}</text>
       </view>
     </view>
+    <view wx:if="{{offline}}" class='update_info'>服务器正在更新 , 请耐心等待...</view>
 </view>
 
 <view class='btn_view'>
-    <!-- <button class='add_btn' bindtap='searchUser' bindgetuserinfo="onGotUserInfo"></button> -->
-    <button class='add_btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">添加</button>
+    <view wx:if="{{offline}}">
+      <button class='add_btn disabled_add_btn'>添加</button>
+    </view>
+    <view wx:else> 
+      <button class='add_btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">添加</button>
+    </view>
 </view>
 
 <view class='tips'>

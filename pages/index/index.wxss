@@ -16,9 +16,10 @@
   color: #fff;
   font-size: 35rpx;
 }
-
-.usermotto {
-  margin-top: 30px;
+.update_info{
+  color: #fff;
+  font-size: 35rpx;
+  margin-top: 80rpx;
 }
 .page_bd{
   height: 55vh;
@@ -27,7 +28,6 @@
   flex-direction: column;
 }
 .tagetuserinfo {
-
   width: 78%;
   display: flex;
   flex-direction: row;
@@ -47,6 +47,19 @@
     color: #fff;
     padding-bottom: 10rpx;
 }
+.userinfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+}
+.userinfo_text{
+  display: flex;
+  flex-direction: column;
+}
 .add_btn{
     border-radius: 0.9;
     width: 220rpx;
@@ -56,35 +69,26 @@
     background: #74ACDC;
     font-size: 30rpx;
 }
+.disabled_add_btn{
+  background:#dadcda;
+}
 .nickname{
   font-size: 26rpx;
 }
-.userinfo{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  padding-top: 40rpx;
-  padding-bottom: 40rpx;
-}
-.userinfo_text{
-  display: flex;
-  flex-direction: column;
-}
+
 
 .green_avatar{
-    border: solid #2ecc71 2px;
+  border: solid #2ecc71 2px;
 }
 .tips{
   height: 5vh;
-    color: #fff;
-    font-size: 25rpx;
-     display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap:wrap;
-    justify-content:center;
+  color: #fff;
+  font-size: 25rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 .top{
   height: 25vh;
@@ -92,7 +96,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 30rpx;
+  padding-top: 20rpx;
 }
 .banner{
   width: 80%;
@@ -115,9 +119,23 @@
   font-weight: bold;
 }
 .btn_view{
-  height: 12vh;
+  height: 8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.swiper_container {
+  height: 55rpx;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  
+}
+.swiper_item {
+  font-size: 25rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 1px;
 }

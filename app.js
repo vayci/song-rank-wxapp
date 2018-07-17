@@ -15,7 +15,6 @@ App({
         if (this.codeReadyCallback) {
           this.codeReadyCallback(res)
         }
-        
       }
     })
 
@@ -25,11 +24,10 @@ App({
       }
     })
     // 查看用户是否授权
-    wx.getSetting({
-      success: res => {
-          console.log(res);
-      }
-    })
+    // wx.getSetting({
+    //   success: res => {
+    //   }
+    // })
   },
   globalData: {
     userInfo: null,
