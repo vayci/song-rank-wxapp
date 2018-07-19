@@ -12,7 +12,7 @@
 
 <view class='top'>
   <view class='banner'>
-  <!-- <text class='title'>你在听歌吗\n</text><text class='sub_title'>随时关注好友最近听的歌</text> -->
+  <text class='title'>你在听歌吗\n</text><text class='sub_title'>随时关注好友最近听的歌</text>
   </view>
 </view>
 

@@ -128,6 +128,11 @@ Page({
         indexPage.data.jobs = res.data;
         indexPage.getSubscribe(openid);
         //indexPage.showTimerJobs(res.data);
+        if (indexPage.data.offline){
+          indexPage.setData({
+            offline: false
+          })
+        }
       }
     })
   },
@@ -222,18 +227,20 @@ Page({
   getAppNotice(){
     var indexPage = this;
     wx.request({
-      url: app.globalData.serverUrl + '/notice/all',
+      url: app.globalData.serverUrl + '/notice/index',
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
-        var notice_arr = [];
-        res.data.forEach(function (value) {
-          notice_arr.push({id: value.id,url:"url", title: value.content});
-        });
-        indexPage.setData({
-          msgList: notice_arr
-        });
+        if(res.statusCode == 200){
+          var notice_arr = [];
+          res.data.forEach(function (value) {
+            notice_arr.push({ id: value.id, url: "url", title: value.content });
+          });
+          indexPage.setData({
+            msgList: notice_arr
+          });
+        }
       }
     })
   },
