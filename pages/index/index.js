@@ -227,7 +227,7 @@ Page({
   getAppNotice(){
     var indexPage = this;
     wx.request({
-      url: app.globalData.serverUrl + '/notice/index',
+      url: app.globalData.serverUrl + '/notice/type/index',
       header: {
         'content-type': 'application/json'
       },
