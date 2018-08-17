@@ -94,15 +94,14 @@ Page({
     //查询谁关注了我
     else{
       var share_count = wx.getStorageSync('share_count');
-      if (share_count >= 2){
-        wx.showToast({
-          title: "你的分享查询次数已耗尽，请联系开发者",
-          icon: 'none',
-          duration: 2000
-        })
-        return;
-      }
-
+      // if (share_count >= 2){
+      //   wx.showToast({
+      //     title: "你的分享查询次数已耗尽，请联系开发者",
+      //     icon: 'none',
+      //     duration: 2000
+      //   })
+      //   return;
+      // }
       wx.request({
         url: app.globalData.serverUrl + '/user/getFollow',
         data: {
@@ -155,7 +154,7 @@ Page({
       // 来自页面内转发按钮
     }
     return {
-      title: '想不到吧，你听歌都会被我抓到噢！',
+      title: '你最近听的歌我都非常喜欢',
       path: 'pages/index/index',
       imageUrl: '../index/share.jpg',
       success: function (res) {
@@ -164,12 +163,12 @@ Page({
             request_url: 2
           })
           wx.showToast({
-            title: "分享成功~",
+            title: "分享成功，喜提彩蛋~",
             icon: 'none',
             duration: 2000
           })
           searchJs.setData({
-            tip_words: "输入自己的昵称，查看谁关注了你"
+            tip_words: "恭喜你发现本小程序菜单，输入自己的微信昵称，点击搜索，查看谁关注了你"
           })
 
           // 获取转发详细信息
