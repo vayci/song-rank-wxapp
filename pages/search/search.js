@@ -165,10 +165,10 @@ Page({
           wx.showToast({
             title: "分享成功，喜提彩蛋~",
             icon: 'none',
-            duration: 2000
+            duration: 4000
           })
           searchJs.setData({
-            tip_words: "恭喜你发现本小程序菜单，输入自己的微信昵称，点击搜索，查看谁关注了你"
+            tip_words: "输入自己的微信昵称，查看谁关注了你"
           })
 
           // 获取转发详细信息
@@ -182,7 +182,7 @@ Page({
           // });
         }else{
           wx.showToast({
-            title: "分享到群聊才能获取查询机会噢~",
+            title: "分享到群聊有彩蛋噢~",
             icon: 'none',
             duration: 2000
           })
