@@ -45,7 +45,7 @@
       <button class='add_btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">添加</button>
     </view>
 </view>
-
+<!-- <button open-type="contact">联系客服</button>  -->
 <view class='tips'>
     <text bindtap='getNote'>小程序说明</text>
 </view>
