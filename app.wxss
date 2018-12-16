@@ -9,7 +9,7 @@
   box-sizing: border-box;
 } 
 page{
-  background: -webkit-radial-gradient(circle,#438ACE,#438ACE);
+  background: -webkit-linear-gradient(#fff,#fff);
   overflow: hidden;
   height: 100%;
 }

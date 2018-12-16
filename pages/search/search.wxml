@@ -5,9 +5,9 @@
     <button class='s_button'  bindtap='searchButtonTap'>搜索</button>
   </view>
 
-  <view class='search_tips'>
+  <!-- <view class='search_tips'>
       <text>{{tip_words}}</text>
-  </view>
+  </view> -->
 
   <view wx:if="{{show_img}}" class="search_bd_img">
     <view class="userinfo" bindtap='selectUser' wx:for="{{array}}" id='{{item.userId}}'

@@ -1,4 +1,12 @@
 <!--index.wxml-->
+<view class='wrapper'>
+<view class='nav_top'></view>
+<view class='top'>
+  <view class='banner'>
+  <text class='banner_title'>你在听歌吗\n</text><text class='banner_sub_title'>随时关注好友最近听的歌</text>
+  </view>
+</view>
+
 <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="5000">
   <block wx:for="{{msgList}}" wx:key="id">
    <!-- <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate"> -->
@@ -8,44 +16,28 @@
     </swiper-item>
    </navigator>
   </block>
- </swiper>
-
-<view class='top'>
-  <view class='banner'>
-  <text class='title'>你在听歌吗\n</text><text class='sub_title'>随时关注好友最近听的歌</text>
-  </view>
-</view>
+</swiper>
 
 <view class='page_bd'>
-  <view class="userinfo">
-    <view class='avatar'><open-data type="userAvatarUrl"></open-data></view>
-    <view class='userinfo_text'>
-          <view class="userinfo-nickname">亲爱的<open-data type="userNickName"></open-data></view>
-          <text class="motto" class="userinfo-nickname">{{motto}}</text>
-    </view>      
-  </view>
-  
+  <view class='sub_title'>关注用户</view>
   <view class='tagetuserinfo'>
+  <view class='tagetusers'>
       <view class='tagetuser' wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId" 
       bindtap='getRankRecord' bindlongtap='deleteJob' id='{{job.targetUserId}}' data-jobid='{{job.id}}' 
       data-tusername='{{job.targetNickname}}'>
         <image src='{{job.targetAvatar}}' wx:if="{{job.s_flag}}"  class="userinfo-avatar green_avatar"        background-size="cover"></image>
         <image src='{{job.targetAvatar}}' wx:else="{{job.s_flag}}"  class="userinfo-avatar" background-size="cover"></image>
-        <text class='nickname'>{{job.targetNickname}}</text>
+        <!-- <text class='nickname'>{{job.targetNickname}}</text> -->
+      </view>  
+
+      <view class='adduser' bindtap='onGotUserInfo'>
+        <image src='../images/add-user-un.png' class="userinfo-avatar" background-size="cover"></image>
       </view>
     </view>
-    <view wx:if="{{offline}}" class='update_info'>服务器正在更新 , 请耐心等待...</view>
-</view>
-
-<view class='btn_view'>
-    <view wx:if="{{offline}}">
-      <button class='add_btn disabled_add_btn'>添加</button>
-    </view>
-    <view wx:else> 
-      <button class='add_btn' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">添加</button>
+    <view class='update_info'>></view>
     </view>
 </view>
-<!-- <button open-type="contact">联系客服</button>  -->
-<view class='tips'>
-    <text bindtap='getNote'>小程序说明</text>
+<view class='statistics'>
+  <view class='sub_title'>最新动态</view>
+</view>
 </view>

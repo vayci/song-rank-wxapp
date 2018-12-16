@@ -1,0 +1,6 @@
+<!--pages/star/star.wxml-->
+<view class='wrapper'>
+  <image src='../images/500.png' class='system_image'></image>
+  <text>发现明星在听什么歌，正在开发中...</text>
+</view>
+

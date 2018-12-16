@@ -1,8 +1,46 @@
 /**index.wxss**/
+.wrapper{
+  height: 100vh;
+  width: 100vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.nav_top{
+  height: 12vh;
+  width: 100vw;
+}
+.top{
+  height: 20vh;
+}
+.banner_title{
+  font-size: 70rpx;
+  font-weight: bolder;
+}
+.banner_sub_title{
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #979997;
+}
+.swiper_container {
+  display: flex;
+  color: #AFB3AF;
+  width: 80vw;
+  height: 10vh;
+  text-align: left;
+  padding-top: 15pt;
+}
+.swiper_item {
+  font-size: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+  width: 120rpx;
+  height: 120rpx;
   border-radius: 50%;
 }
 .avatar{
@@ -17,35 +55,38 @@
   font-size: 35rpx;
 }
 .update_info{
-  color: #fff;
+  color: #AFB3AF;
   font-size: 35rpx;
-  margin-top: 80rpx;
 }
 .page_bd{
-  height: 55vh;
+  height: 25vh;
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
+  width: 80vw;
 }
 .tagetuserinfo {
-  width: 78%;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap:wrap;
-   justify-content:center;
-   border: dashed #fff 3px;
-   border-radius: 10px;
+  justify-content:space-between;
+  border-radius: 10px;
+  margin-top: 5pt;
+  width: 80vw;
+}
+.tagetusers{
+  display: flex;
+  flex-direction: row;
 }
 .tagetuser {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-wrap:wrap;
-    justify-content:center;
-    font-size: 15px;
-    color: #fff;
-    padding-bottom: 10rpx;
+    color: #979997;
+    border: 1px solid #f9f9f9;
+    border-radius: 50%;
+    margin-right: 10pt;
 }
 .userinfo{
   display: flex;
@@ -66,7 +107,7 @@
     height: 58rpx;
     line-height: 58rpx;
     color: #fff;
-    background: #74ACDC;
+    background: #d7d7d7;
     font-size: 30rpx;
 }
 .disabled_add_btn{
@@ -90,34 +131,19 @@
   flex-wrap:wrap;
   justify-content:center;
 }
-.top{
-  height: 25vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 20rpx;
-}
+
 .banner{
-  width: 80%;
+  width: 100vw;
   height: 100%;
-  background-color: #74ACDC;
-  background-image: url('https://olook.me/banner1.jpg');
+  background-color: #f8faf7;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #323332;
 }
-.title{
-  font-size: 70rpx;
-  font-weight: bolder;
-}
-.sub_title{
-  font-size: 30rpx;
-  font-weight: bold;
-}
+
 .btn_view{
   height: 8vh;
   display: flex;
@@ -125,17 +151,15 @@
   align-items: center;
   justify-content: center;
 }
-.swiper_container {
-  height: 55rpx;
-  width: 100%;
-  color: #fff;
-  text-align: center;
-  
+
+.sub_title {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #323332;
 }
-.swiper_item {
-  font-size: 25rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  letter-spacing: 1px;
+.statistics{
+  height: 40vh;
+  width: 80vw;
+  display: flex;
+  justify-content: left;
 }

@@ -11,7 +11,7 @@
         <text space='nbsp'>     目前小程序只支持关注听歌排行权限为所有人可见的用户。\n</text>    
         <text space='nbsp'>\n</text>            
         <text space='nbsp'>2.听歌记录\n</text>    
-        <text space='nbsp'>     听歌记录通常会因服务器生成数据时间而延后1-3分钟或者更长,记录数据仅供参考。\n</text>     
+        <text space='nbsp'>     听歌记录通常会因服务器生成数据时间而延后几分钟或者更长,记录数据仅供参考。\n</text>     
         <text space='nbsp'>\n</text>            
         <text space='nbsp'>3.订阅通知\n</text>    
         <text space='nbsp'>     在关注好友的听歌记录界面可订阅该好友。订阅后，当该好友产生听歌记录数据后，您将立即收到小程序推送消息。在主页面，您关注好友的头像若为绿色边框，则表示您已经订阅该好友。\n</text>     
@@ -24,8 +24,7 @@
       <!-- <image class="qrcode" src='http://owkeg172k.bkt.clouddn.com/qrcode.png'></image> -->
        <view class='foot_right'> 
        <text space='nbsp'>wechat: vayci2012\n</text>    
-        <text space='nbsp'>vayci2012@163.com\n</text>    
-        <text space='nbsp'>Designed By Red\n</text>  
+        <text space='nbsp'>vayci2012@gmail.com\n</text>    
         <!-- </view> -->
       </view>
   </view>

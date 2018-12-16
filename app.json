@@ -4,12 +4,46 @@
     "pages/search/search",
     "pages/record/record",
     "pages/note/note",
+    "pages/star/star",
+    "pages/subscribe/subscribe",
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#438ACE",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle":"black",
+    "navigationStyle":"custom"
+  },
+  "tabBar": {
+    "selectedColor":"#323332",
+    "backgroundColor":"#fafafa",
+    "color":"#b1b3b0",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "selectedIconPath": "pages/images/home-s.png",
+        "iconPath": "pages/images/home.png",
+        "text":"主页"
+      },
+      {
+        "pagePath": "pages/star/star",
+        "selectedIconPath": "pages/images/star-s.png",
+        "iconPath": "pages/images/star.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/subscribe/subscribe",
+        "selectedIconPath": "pages/images/msg-s.png",
+        "iconPath": "pages/images/msg.png",
+        "text": "订阅"
+      },
+      {
+        "pagePath": "pages/note/note",
+        "selectedIconPath": "pages/images/about-s.png",
+        "iconPath": "pages/images/about.png",
+        "text": "关于"
+      }
+    ]
   }
 }

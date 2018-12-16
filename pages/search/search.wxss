@@ -12,11 +12,11 @@
   line-height: 35rpx;
   width: 420rpx;
   height: 60rpx;
-  text-align: center;
-  color: #fff;
+  color: #979997;
+  background: #f5f5f5;
 }
 .phcolor{
-   color:#fff;
+   color:#979997;
 }
 .s_button{
   background: #fff;

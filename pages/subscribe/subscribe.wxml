@@ -1,0 +1,4 @@
+<!--pages/subscribe/subscribe.wxml-->
+<view class='wrapper'>
+<text>订阅好友页面</text>
+</view>

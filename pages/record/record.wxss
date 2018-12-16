@@ -1,29 +1,45 @@
 /* pages/record/record.wxss */
-.record_text{
-    font-size: 26rpx;
-    color: #fff;
-    padding-bottom: 20rpx;
+.record_song{
+    font-size: 25rpx;
+    color: #a0a5b5;
+    padding: 5rpx 0 5rpx 0;
+}
+.record_singer{
+    font-size: 20rpx;
+    color: #a0a5b5;
+    padding: 5rpx 0 5rpx 0;
+}
+.wrapper{
+  height: 100vh;
+  width: 100vw;
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
 }
 .box{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content:space-between;
-  padding-bottom:20rpx;
-    padding-top:20rpx;
-  font-size:26rpx;
+  margin-bottom:12rpx;
+  margin-top:12rpx;
+  font-size:10px;
+  width: 100%;
+  background: #f4f4f4;
 }
 .leftview{
-  margin-left: 20px;
-  max-width: 350rpx;
+  display: flex;
+  flex-direction: row;
 }
 .rightview{
-  margin-right: 20px;
-  max-width: 300rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } 
 .tips_top{
-  color: #fff;
-  font-size: 32rpx;
+  color: #646664;
+  font-size: 35rpx;
 }
 .add_btn{
     border-radius: 0.9;
@@ -52,12 +68,17 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding-top: 40rpx;
-  padding-bottom: 40rpx;
 } 
 .record_list{
-  height: 65vh;
-  /* background: #74ACDC; */
+  height: 80vh;
+  background:#ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  border-radius: 5px;
+  color: #9ba0b1;
 }
 .foot{
   height: 22vh;
@@ -81,4 +102,32 @@
 .tips{
     color: #fff;
     font-size: 25rpx;
+}
+.song_cover{
+  width: 126rpx;
+  height: 126rpx;
+}
+.song_info{
+  display: flex;
+  flex-direction: column;
+  padding-left: 5vw;
+  justify-content: center;
+}
+.song_play_btn{
+    width: 60rpx;
+  height: 60rpx;
+  padding-right: 5vw;
+}
+.width_limit{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    width: 45vw;
+}
+.gray { 
+    filter: grayscale(60%);
+}
+.song_info .song_title{
+  color: #646664;
 }

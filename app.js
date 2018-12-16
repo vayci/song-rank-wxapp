@@ -30,7 +30,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    serverUrl: 'https://127.0.0.1',
+    serverUrl: 'https://wxapp.olook.me',
     timerJob: null,
     code: null,
     openId: null,
