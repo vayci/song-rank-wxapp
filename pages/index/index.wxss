@@ -86,7 +86,7 @@
     color: #979997;
     border: 1px solid #f9f9f9;
     border-radius: 50%;
-    margin-right: 10pt;
+    margin-right: 20rpx;
 }
 .userinfo{
   display: flex;

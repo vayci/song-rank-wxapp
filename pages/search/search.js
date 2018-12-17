@@ -32,10 +32,17 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        pageobj.setData({
-          array: res.data,
-          show_img: false
-        });
+        console.log(res)
+        if (res.data.length==0){
+          pageobj.setData({
+            show_img: true
+          });
+        }else{
+          pageobj.setData({
+            array: res.data,
+            show_img: false
+          });
+        }
       }
     })
   },
@@ -195,7 +202,7 @@ Page({
   data:{
     nickname:'',
     array:[],
-    show_img: true,
+    show_img: false,
     tip_words:'点击搜索结果添加关注',
     flag: true,
     wx_user: null,

@@ -1,26 +1,32 @@
 <view class='container'>
-
+<view class='nav_top'>添加关注</view>
   <view class="search_box">
-    <input class='s_input' placeholder-class="phcolor" placeholder="输入网易云音乐昵称" bindinput='nickNameInput'/>
-    <button class='s_button'  bindtap='searchButtonTap'>搜索</button>
+    <image class='s_icon' src='../images/search.png'></image>
+    <input class='s_input' placeholder-class="phcolor" placeholder="输入网易云音乐昵称" bindconfirm='searchButtonTap' bindinput='nickNameInput'/>
+    <!-- <button class='s_button'  bindtap='searchButtonTap'>搜索</button> -->
   </view>
 
   <!-- <view class='search_tips'>
       <text>{{tip_words}}</text>
   </view> -->
 
-  <view wx:if="{{show_img}}" class="search_bd_img">
-    <view class="userinfo" bindtap='selectUser' wx:for="{{array}}" id='{{item.userId}}'
-      data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' wx:for-item="item" wx:key="userId">
-        <image  class="userinfo-avatar"  userid="{{item.userId}}" src="{{item.avatar}}?param=180y180"></image>
-        <span>{{item.nickName}}</span>
+  <view wx:if="{{show_img}}" class="search_bd">
+      <view class='no_found'>
+      <image class='back_image' src='../images/404.png'></image>
+      <view>没有找到你的好朋友呀</view>
       </view>
     </view>
   <view wx:else class="search_bd">
     <view class="userinfo" bindtap='selectUser' wx:for="{{array}}" id='{{item.userId}}'
     data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' wx:for-item="item" wx:key="userId">
+        <view class='left_view'>
         <image  class="userinfo-avatar"  userid="{{item.userId}}" src="{{item.avatar}}?param=180y180"></image>
-        <span>{{item.nickName}}</span>
+        <view class='userinfo-text'>
+          <view class='userinfo-text-name'>{{item.nickName}}</view>
+          <view class='userinfo-text-motto'>{{item.nickName}}</view>
+        </view>
+        </view>
+        <button bindtap='selectUser' class='sub_btn'>关注</button>
     </view>
   </view>
   

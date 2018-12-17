@@ -1,22 +1,38 @@
 /**rpx*/
+.nav_top{
+  height: 12vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#646664;
+  font-size:35rpx;
+
+}
 .search_box{
-  height: 10vh;
+  height: 5vh;
   display: flex;
   flex-direction: row;
   align-items: center;
+  background: #f5f5f5;
+  border-radius: 5%;
+  width: 80vw;
+}
+.s_icon{
+  height: 2.5vh;
+  width: 2.5vh;
+  margin-left: 4vw;
 }
 .s_input{
-  font-size: 26rpx;
-  border-radius: 10rpx;
-  border: solid #fff 1px;
-  line-height: 35rpx;
-  width: 420rpx;
-  height: 60rpx;
+  margin-left: 2vw;
+  font-size: 30rpx;
+  line-height: 3vh;
+  height: 3vh;
   color: #979997;
-  background: #f5f5f5;
+
 }
 .phcolor{
-   color:#979997;
+   color:#cbcdcc;
 }
 .s_button{
   background: #fff;
@@ -30,36 +46,39 @@
   background: #A2B4BA;
 }
 .userinfo{
-  margin-bottom: 20rpx;
-   width: 560rpx;
+    margin-bottom: 20rpx;
+   width: 80vw;
    display: flex;
    flex-direction: row;
    align-items: center;
-   justify-content: flex-start;
+   justify-content: space-between;
    border-radius: 10rpx;
-   margin-top: 10rpx;
-   color: #fff;
+   margin: 2vh 0 2vh 0;
+   color: #000;
    font-size: 30rpx;
-   background: #74ACDC;
 }
 .userinfo-avatar {
-  width: 80rpx;
-  height: 80rpx;
-  margin: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
 }
 .search_bd{
   height: 80vh;
-  margin-top: 80rpx;
-  width:560rpx;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  color: #AFB3AF;
 }
-.search_bd_img{
-  height: 80vh;
-  margin-top: 80rpx;
-  width:560rpx;
-  background-image: url("http://owkeg172k.bkt.clouddn.com/s.png");
-  background-size: 490rpx 560rpx;
-  background-repeat: no-repeat;
-  background-position: top center;
+.no_found{
+  padding-bottom: 5vh;
+  text-align: center;
+}
+.back_image{
+    width:60vw;
+    height:44vw;
 }
 .search_tips{
      width: 560rpx;
@@ -79,4 +98,35 @@
     align-items: center;
     flex-wrap:wrap;
     justify-content:center;
+}
+.sub_btn{
+  display: flex;
+  height: 50rpx;
+  width: 100rpx;
+  border-radius: 10%;
+  color: #AFB3AF;
+  font-size: 20rpx;
+  line-height: 50rpx;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+.left_view{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.userinfo-text{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 3vw;
+}
+.userinfo-text-name{
+  font-size: 30rpx;
+  color: #646664;
+}
+.userinfo-text-motto{
+  font-size: 22rpx;
+  color: #AFB3AF;
 }
