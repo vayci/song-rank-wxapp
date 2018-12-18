@@ -1,4 +1,5 @@
-const app = getApp();
+const app = getApp()
+const innerAudioContext = wx.createInnerAudioContext()
 var utils = require('../../utils/util.js')
 
 Page({
@@ -25,6 +26,19 @@ Page({
     })
   },
   onLoad: function (options) {
+    //注册播放错误回调
+    innerAudioContext.onError((res) => {
+      wx.showToast({
+        title: "好像没版权,播放出错啦!",
+        icon: 'none',
+        duration: 2000
+      })
+    })
+    innerAudioContext.onEnded((res)=>{
+      this.setData({
+        playing: ''
+      })
+    })
     this.setData({
       userId: options.userId,
       tuserName: options.tusername,
@@ -69,6 +83,39 @@ Page({
         }) 
       }
     })
+  },
+  click:function(e){
+    var songId = e.target.dataset.songId
+    var songUrl = "https://music.163.com/song/media/outer/url?id="+songId+".mp3"
+    if (innerAudioContext.src==''){
+      innerAudioContext.src = songUrl
+      innerAudioContext.play()
+      this.setData({
+        playing: songId
+      })
+    }else{
+      if (innerAudioContext.src==songUrl){
+        if (innerAudioContext.paused){
+          innerAudioContext.play()
+          this.setData({
+            playing: songId
+          })
+        }
+        else{
+          innerAudioContext.pause()
+          this.setData({
+            playing: ''
+          })
+        }
+      }else{
+        innerAudioContext.stop()
+        innerAudioContext.src = songUrl
+        innerAudioContext.play()
+        this.setData({
+          playing: songId
+        })
+      }
+    }
   },
   //点击订阅，生成模板消息记录
   formSubmit: function (e) {
@@ -124,6 +171,7 @@ Page({
     tips: "Ta最近在听:",
     showTmpMsg: false,
     showImg: false,
+    playing: '',
     fromApp: ''
   }
 })  

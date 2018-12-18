@@ -1,13 +1,21 @@
 /**rpx*/
-.nav_top{
+.nav_top {
   height: 12vh;
-  width: 100vw;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  color:#646664;
-  font-size:35rpx;
-
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+.back_logo{
+  width: 40rpx;
+  height: 40rpx;
+}
+.back_logo_box{
+  display: flex;
+  width: 15vw;
+  justify-content: flex-end;
+  align-items: center;
 }
 .search_box{
   height: 5vh;

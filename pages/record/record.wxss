@@ -1,4 +1,22 @@
 /* pages/record/record.wxss */
+.nav_top {
+  height: 12vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+.back_logo{
+  width: 40rpx;
+  height: 40rpx;
+}
+.back_logo_box{
+  display: flex;
+  width: 15vw;
+  justify-content: flex-end;
+  align-items: center;
+}
 .record_song{
     font-size: 25rpx;
     color: #a0a5b5;
@@ -61,14 +79,7 @@
     font-size: 30rpx;
     background: #A9A9A9;
 }
-.record_container {
-  height: 12vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-} 
+
 .record_list{
   height: 80vh;
   background:#ffffff;

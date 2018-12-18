@@ -1,5 +1,11 @@
+  <view class='nav_top'>
+    <navigator open-type='navigateBack' class='back_logo_box'>
+      <image class="back_logo" src='../images/back.png'></image>
+    </navigator>    
+      <text class='tips_top'>添加关注</text>
+      <view class='back_logo_box'></view>
+  </view>
 <view class='container'>
-<view class='nav_top'>添加关注</view>
   <view class="search_box">
     <image class='s_icon' src='../images/search.png'></image>
     <input class='s_input' placeholder-class="phcolor" placeholder="输入网易云音乐昵称" bindconfirm='searchButtonTap' bindinput='nickNameInput'/>

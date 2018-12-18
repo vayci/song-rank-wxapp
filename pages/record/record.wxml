@@ -1,6 +1,10 @@
 <!--pages/record/record.wxml-->
-  <view class='record_container'>
+  <view class='nav_top'>
+    <navigator open-type='navigateBack' class='back_logo_box'>
+      <image class="back_logo" src='../images/back.png'></image>
+    </navigator>    
       <text class='tips_top'>{{tips}}</text>
+      <view class='back_logo_box'></view>
   </view>
 
   <view class='wrapper'>
@@ -12,7 +16,8 @@
 
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
         <view class='leftview'>
-          <image src='../images/song.jpg' class='song_cover gray'></image>
+          <!--TODO 替换为songid --> 
+          <image src='../images/song.jpg' class="song_cover {{playing=='531672176'?'':'gray'}}"></image>
           <view class='song_info'>
           <text class="record_song width_limit song_title">{{recrod.song}}</text>
           <text class="record_singer width_limit">{{recrod.singer}}</text>
@@ -20,7 +25,8 @@
           </view>
         </view>
         <view class='rightview'>
-          <image src='../images/play.png' class='song_play_btn '></image>
+        <!--TODO 替换为songid --> 
+        <image src="{{playing=='531672176'?'../images/pause.png':'../images/play.png'}}" bindtap='click' data-song-id='531672176' class='song_play_btn '></image>
         </view>
   </view>
 </scroll-view>
