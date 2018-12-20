@@ -24,7 +24,7 @@ Page({
     }
     var pageobj = this;
     wx.request({
-      url: app.globalData.serverUrl + '/wx/getNeteaseUser',
+      url: app.globalData.serverUrl + '/wx/netease/user',
       data: {
         keyWord: this.data.nickname
       },
@@ -56,7 +56,7 @@ Page({
     if (this.data.request_url == 1){
       if (targetid=="")return;
       wx.request({
-        url: app.globalData.serverUrl + '/wx/checkSongRank',
+        url: app.globalData.serverUrl + '/rank/check',
         data: {
           userId: targetid
         },
@@ -66,7 +66,7 @@ Page({
         success: function (res) {
           if (res.statusCode == 200) {
             wx.request({
-              url: app.globalData.serverUrl + '/userjob',
+              url: app.globalData.serverUrl + '/task',
               method: 'POST',
               data: {
                 jobAlias: targetNickName + "的爬虫任务",

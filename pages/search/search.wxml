@@ -29,7 +29,7 @@
         <image  class="userinfo-avatar"  userid="{{item.userId}}" src="{{item.avatar}}?param=180y180"></image>
         <view class='userinfo-text'>
           <view class='userinfo-text-name'>{{item.nickName}}</view>
-          <view class='userinfo-text-motto'>{{item.nickName}}</view>
+          <view class='userinfo-text-motto'>{{item.signature}}</view>
         </view>
         </view>
         <button bindtap='selectUser' class='sub_btn'>关注</button>

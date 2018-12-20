@@ -40,7 +40,7 @@ Page({
   jsCode2Session(code) {
     var indexPage = this;
     wx.request({
-      url: app.globalData.serverUrl + '/wx/jsCode2Session',
+      url: app.globalData.serverUrl + '/wx/session',
       data: {
         code: app.globalData.code
       },
@@ -117,7 +117,7 @@ Page({
   getTimerJobs(openid){
     var indexPage = this;
     wx.request({
-      url: app.globalData.serverUrl + '/wx/getUerJob',
+      url: app.globalData.serverUrl + '/task',
       data: {
         openid: openid
       },
@@ -126,13 +126,13 @@ Page({
       },
       success: function (res) {
         indexPage.data.jobs = res.data;
-        indexPage.getSubscribe(openid);
+        //indexPage.getSubscribe(openid);
         //indexPage.showTimerJobs(res.data);
-        if (indexPage.data.offline){
           indexPage.setData({
-            offline: false
+            offline: false,
+            jobs: indexPage.data.jobs
           })
-        }
+        
       }
     })
   },
@@ -200,7 +200,7 @@ Page({
         if (res.confirm) {
           console.log(e.currentTarget.dataset.jobid);
           wx.request({
-            url: app.globalData.serverUrl + '/userjob/' + e.currentTarget.dataset.jobid,
+            url: app.globalData.serverUrl + '/task/' + e.currentTarget.dataset.jobid,
             method: 'DELETE',
             data: {
             },

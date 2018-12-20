@@ -7,23 +7,23 @@ Page({
     this.data.showTmpMsg = false;
     var recordPage = this;
     //是否显示订阅按钮
-    wx.request({
-      url: app.globalData.serverUrl + '/msg/check?openid=' 
-      + app.globalData.openId + "&targetUserId=" + recordPage.data.userId,
-      data: {
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        if(res.statusCode==200){
-          recordPage.data.showTmpMsg = true;
-          recordPage.setData({
-            showTmpMsg: true
-          })
-        }
-      }
-    })
+    // wx.request({
+    //   url: app.globalData.serverUrl + '/msg/check?openid=' 
+    //   + app.globalData.openId + "&targetUserId=" + recordPage.data.userId,
+    //   data: {
+    //   },
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     if(res.statusCode==200){
+    //       recordPage.data.showTmpMsg = true;
+    //       recordPage.setData({
+    //         showTmpMsg: true
+    //       })
+    //     }
+    //   }
+    // })
   },
   onLoad: function (options) {
     //注册播放错误回调
@@ -48,7 +48,7 @@ Page({
     var recordPage = this;
     //获取听歌记录
     wx.request({
-      url: app.globalData.serverUrl + '/wx/getRecord',
+      url: app.globalData.serverUrl + '/rank/record',
       data: {
         userId: options.userId
       },
@@ -56,7 +56,8 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        if (res.data.list==undefined||res.data.list.length==0){
+        console.log(res)
+        if (res.data==undefined||res.data.length==0){
           recordPage.data.tips = "目前还没有听歌记录，再等等吧~\n 您可以点击下方 \"订阅通知\" \nTa听歌后我会第一时间通知您";
           recordPage.setData({
             tips: recordPage.data.tips,
@@ -65,21 +66,21 @@ Page({
           return;
         }
         //根据是否为系统自动批量更新的记录，对时间进行不同的format
-        for (var i = 0; i < res.data.list.length; i++) {
-          if (res.data.list[i].isBatchUpdate==0){
-            res.data.list[i].changeTime 
-              = utils.formatTimeStamp(res.data.list[i].changeTime);
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i].isBatchUpdate==0){
+            res.data[i].changeTime 
+              = utils.formatTimeStamp(res.data[i].changeTime);
           }else{
-            res.data.list[i].changeTime 
-              = utils.formatTimeStampToDate(res.data.list[i].changeTime);
+            res.data[i].changeTime 
+              = utils.formatTimeStampToDate(res.data[i].changeTime);
           }
           
         }  
-        recordPage.data.recordList = res.data.list;
+        recordPage.data.recordList = res.data;
         recordPage.data.isBatchUpdate = res.data.isBatchUpdate;
         recordPage.setData({
           isBatchUpdate: res.data.isBatchUpdate,
-          recordList: res.data.list
+          recordList: res.data
         }) 
       }
     })
