@@ -16,7 +16,6 @@
 
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
         <view class='leftview'>
-          <!--TODO 替换为songid --> 
           <image src='{{recrod.picUrl}}?param=140y140' class="song_cover {{playing==recrod.songId?'':'gray'}}"></image>
           <view class='song_info'>
           <text class="record_song width_limit song_title">{{recrod.song}}</text>
@@ -25,7 +24,6 @@
           </view>
         </view>
         <view class='rightview'>
-        <!--TODO 替换为songid --> 
         <image src="{{playing==recrod.songId?'../images/pause.png':'../images/play.png'}}" bindtap='click' data-song-id='{{recrod.songId}}' class='song_play_btn '></image>
         </view>
   </view>

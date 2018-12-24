@@ -1,12 +1,5 @@
 /* pages/record/record.wxss */
-.nav_top {
-  height: 12vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-} 
+
 .back_logo{
   width: 40rpx;
   height: 40rpx;

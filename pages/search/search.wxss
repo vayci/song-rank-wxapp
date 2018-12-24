@@ -1,12 +1,4 @@
 /**rpx*/
-.nav_top {
-  height: 12vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-} 
 .back_logo{
   width: 40rpx;
   height: 40rpx;
@@ -75,10 +67,10 @@
   width: 80vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-size: 30rpx;
   color: #AFB3AF;
+  padding-top: 5vh;
 }
 .no_found{
   padding-bottom: 5vh;
@@ -125,10 +117,12 @@
   justify-content: center;
 }
 .userinfo-text{
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 3vw;
+  text-overflow: ellipsis;
+  width: 45vw;
 }
 .userinfo-text-name{
   font-size: 30rpx;

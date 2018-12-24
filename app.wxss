@@ -12,3 +12,12 @@ page{
   overflow: hidden;
   height: 100%;
 }
+.nav_top {
+  height: 12vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-size: 30rpx;
+} 

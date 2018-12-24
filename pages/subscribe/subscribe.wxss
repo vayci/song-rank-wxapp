@@ -1,4 +1,7 @@
 /* pages/subscribe/subscribe.wxss */
+.container {
+  height: 80vh;
+} 
 .wrapper{
   height: 100vh;
   width: 100vw;
@@ -6,4 +9,67 @@
   flex-direction:column;
   justify-content:center;
   align-items:center;
+}
+.nav_top {
+  justify-content:center;
+}
+.search_bd{
+  height: 80vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  color: #AFB3AF;
+}
+.left_view{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.userinfo-text{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 3vw;
+}
+.userinfo-text-name{
+  font-size: 30rpx;
+  color: #646664;
+}
+.userinfo-text-motto{
+  font-size: 22rpx;
+  color: #AFB3AF;
+}
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.userinfo{
+    margin-bottom: 20rpx;
+   width: 80vw;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   border-radius: 10rpx;
+   margin: 2vh 0 2vh 0;
+   color: #000;
+   font-size: 30rpx;
+}
+.sub_btn{
+  display: flex;
+  height: 50rpx;
+  width: 100rpx;
+  border-radius: 10%;
+  color: #AFB3AF;
+  font-size: 20rpx;
+  line-height: 50rpx;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+.green{
+  color: #45ce90
 }

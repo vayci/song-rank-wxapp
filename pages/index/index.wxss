@@ -12,24 +12,27 @@
   width: 100vw;
 }
 .top{
-  height: 20vh;
+  height: 24vh;
+  background-image: url('https://olook.me/banner.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 .banner_title{
-  font-size: 70rpx;
+  font-size: 80rpx;
   font-weight: bolder;
 }
 .banner_sub_title{
-  font-size: 30rpx;
+  font-size: 35rpx;
   font-weight: bold;
-  color: #979997;
+  color: #fff;
 }
 .swiper_container {
   display: flex;
   color: #AFB3AF;
   width: 80vw;
-  height: 10vh;
+  height: 3vh;
   text-align: left;
-  padding-top: 15pt;
+  margin: 3vh 0 3vh 0;
 }
 .swiper_item {
   font-size: 20rpx;
@@ -135,13 +138,11 @@
 .banner{
   width: 100vw;
   height: 100%;
-  background-color: #f8faf7;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #323332;
+  color: #fff;
 }
 
 .btn_view{
