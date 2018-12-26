@@ -1,14 +1,4 @@
 /**rpx*/
-.back_logo{
-  width: 40rpx;
-  height: 40rpx;
-}
-.back_logo_box{
-  display: flex;
-  width: 15vw;
-  justify-content: flex-end;
-  align-items: center;
-}
 .search_box{
   height: 5vh;
   display: flex;
