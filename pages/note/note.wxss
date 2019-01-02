@@ -1,7 +1,4 @@
 /* pages/note/note.wxss */
-.nav_top {
-  justify-content: center;
-} 
 .page-body {
   width: 80%;
   /* box-shadow: 0px 0px 5px 5px #F17252; */
@@ -64,4 +61,21 @@
 .more_png{
   width: 40rpx;
   height: 40rpx;
+}
+.detail_box{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+}
+.block{
+  width: 80vw;
+  font-size: 28rpx;
+  color: #AFB3AF;
+  padding: 15rpx 0 15rpx 0;
+}
+.title{
+  color: #646664;
+  font-weight: bold;
 }
