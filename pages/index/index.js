@@ -9,7 +9,8 @@ Page({
     jobs: [],
     subscribe: [],
     lock: false,
-    offline: false
+    offline: false,
+    addBtntouched:false
   },
 
   onLoad: function () {
@@ -68,7 +69,16 @@ Page({
       }
     })
   },
-
+  onButtonTap(e){
+    this.setData({
+      addBtntouched:true
+    })
+  },
+  onButtonTapCancel(e){
+    this.setData({
+      addBtntouched: false
+    })
+  },
   //点击添加按钮 上报用户信息 跳转搜索页
   onGotUserInfo(userInfo){
     app.globalData.userInfo = userInfo.detail.rawData;
@@ -79,6 +89,7 @@ Page({
         this.uploadUserInfo(app.globalData.openId, app.globalData.userInfo)
       }
     } 
+    wx.vibrateShort({})
     wx.navigateTo({
         url: '/pages/search/search'
       })
@@ -260,7 +271,7 @@ Page({
     return {
       title: '想不到吧，你听歌都会被我抓到噢！',
       path: 'pages/index/index',
-      imageUrl: './share.jpg',
+      imageUrl: '../images/pic1.jpg',
       success: function (res) {
       },
       fail: function (res) {

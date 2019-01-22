@@ -56,9 +56,8 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res)
         if (res.data==undefined||res.data.length==0){
-          recordPage.data.tips = "目前还没有听歌记录，再等等吧~\n 您可以点击下方 \"订阅通知\" \nTa听歌后我会第一时间通知您";
+          recordPage.data.tips = "正在努力获取Ta的听歌记录，请耐心等待...";
           recordPage.setData({
             tips: recordPage.data.tips,
             showImg: true
@@ -77,9 +76,9 @@ Page({
           
         }  
         recordPage.data.recordList = res.data;
-        recordPage.data.isBatchUpdate = res.data.isBatchUpdate;
+        //recordPage.data.isBatchUpdate = res.data.isBatchUpdate;
         recordPage.setData({
-          isBatchUpdate: res.data.isBatchUpdate,
+          //isBatchUpdate: res.data.isBatchUpdate,
           recordList: res.data
         }) 
       }

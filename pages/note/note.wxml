@@ -63,6 +63,10 @@
           <view class='title'>2018年7月</view>
           <view>小程序正式上架</view>
         </view>
+        <view class='block'>
+          <view class='title'>2019年1月</view>
+          <view>小程序第二个版本更新</view>
+        </view>
       </view>
       <view wx:if="{{index==5}}">
         <view class='block'>

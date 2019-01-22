@@ -3,7 +3,7 @@
     <navigator open-type='navigateBack' class='back_logo_box'>
       <image class="back_logo" src='../images/back.png'></image>
     </navigator>    
-      <text class='tips_top'>{{tips}}</text>
+      
       <view class='back_logo_box'></view>
   </view>
 
@@ -11,7 +11,8 @@
   <scroll-view class='record_list' scroll-y='true'>
     <!-- 无数据处理 -->
     <view class="img_box" wx:if="{{showImg}}">
-    <image src="http://owkeg172k.bkt.clouddn.com/record.png" class="bd_img"></image>
+    <image src="../images/pic1.jpg" class="bd_img"></image>
+    <text class='tips_top'>{{tips}}</text>
     </view>
 
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">

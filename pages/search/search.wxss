@@ -67,8 +67,8 @@
   text-align: center;
 }
 .back_image{
-    width:60vw;
-    height:44vw;
+    width:85vw;
+    height:85vw;
 }
 .search_tips{
      width: 560rpx;

@@ -31,7 +31,8 @@
       </view>  
 
       <view wx:if='{{jobs.length < 4}}' class='adduser' bindtap='onGotUserInfo'>
-        <image src='../images/add-user-un.png' class="userinfo-avatar" background-size="cover"></image>
+        <image src='{{addBtntouched?"../images/add-user.png":"../images/add-user-un.png"}}' bindtouchstart='onButtonTap' bindtouchend='onButtonTapCancel' 
+        class="userinfo-avatar" background-size="cover"></image>
       </view>
     </view>
     <!-- <view class='update_info'>></view> -->

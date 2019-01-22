@@ -16,7 +16,21 @@ App({
         }
       }
     })
-
+    const updateManager = wx.getUpdateManager()
+    updateManager.onCheckForUpdate(function (res) {
+      console.log(res.hasUpdate)
+    })
+    updateManager.onUpdateReady(function () {
+      wx.showModal({
+        title: '更新提示',
+        content: '旧版本不可用，是否重启应用更新？',
+        success(res) {
+          if (res.confirm) {
+            updateManager.applyUpdate()
+          }
+        }
+      })
+    })
     wx.getSystemInfo({
       success: function (res) {
         console.log("SDKVersion: "+res.SDKVersion);

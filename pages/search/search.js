@@ -202,7 +202,7 @@ Page({
   data:{
     nickname:'',
     array:[],
-    show_img: false,
+    show_img: true,
     tip_words:'点击搜索结果添加关注',
     flag: true,
     wx_user: null,

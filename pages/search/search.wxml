@@ -18,8 +18,8 @@
 
   <view wx:if="{{show_img}}" class="search_bd">
       <view class='no_found'>
-      <image class='back_image' src='../images/404.png'></image>
-      <view>没有找到你的好朋友呀</view>
+      <image class='back_image' src='../images/pic3.jpg'></image>
+      <!-- <view>没有找到你的好朋友呀</view> -->
       </view>
     </view>
   <view wx:else class="search_bd">

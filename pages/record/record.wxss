@@ -39,6 +39,7 @@
 } 
 .tips_top{
   color: #646664;
+  font-size: 30rpx;
 }
 .add_btn{
     border-radius: 0.9;
@@ -86,6 +87,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .bd_img{
   width:85vw;
