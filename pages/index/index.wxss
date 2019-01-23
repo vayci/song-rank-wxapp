@@ -35,7 +35,7 @@
   margin: 3vh 0 3vh 0;
 }
 .swiper_item {
-  font-size: 20rpx;
+  font-size: 22rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

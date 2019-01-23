@@ -251,7 +251,15 @@ Page({
             msgList: notice_arr
           });
         }
+      },
+      fail:function(e){
+        wx.showToast({
+          title: '服务器连接失败',
+          icon: 'none',
+          duration: 2000
+        })
       }
+      
     })
   },
 

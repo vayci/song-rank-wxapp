@@ -6,24 +6,6 @@ Page({
   onShow: function () {
     this.data.showTmpMsg = false;
     var recordPage = this;
-    //是否显示订阅按钮
-    // wx.request({
-    //   url: app.globalData.serverUrl + '/msg/check?openid=' 
-    //   + app.globalData.openId + "&targetUserId=" + recordPage.data.userId,
-    //   data: {
-    //   },
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   success: function (res) {
-    //     if(res.statusCode==200){
-    //       recordPage.data.showTmpMsg = true;
-    //       recordPage.setData({
-    //         showTmpMsg: true
-    //       })
-    //     }
-    //   }
-    // })
   },
   onLoad: function (options) {
     //注册播放错误回调
@@ -42,7 +24,7 @@ Page({
     this.setData({
       userId: options.userId,
       tuserName: options.tusername,
-      tips: options.tusername+'最近在听',
+      tips: '',
       fromApp: options.fromApp,
     })  
     var recordPage = this;
@@ -67,11 +49,13 @@ Page({
         //根据是否为系统自动批量更新的记录，对时间进行不同的format
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].isBatchUpdate==0){
+            let tmpdate = res.data[i].changeTime.replace(/-/g, '/').replace(/T/g, ' ');
             res.data[i].changeTime 
-              = utils.formatTimeStamp(new Date(res.data[i].changeTime));
+              = utils.formatTimeStamp(new Date(tmpdate));
           }else{
+            let tmpdate = res.data[i].changeTime.replace(/-/g, '/').replace(/T/g, ' ');
             res.data[i].changeTime 
-              = utils.formatTimeStampToDate(new Date(res.data[i].changeTime));
+              = utils.formatTimeStampToDate(new Date(tmpdate));
           }
           
         }  

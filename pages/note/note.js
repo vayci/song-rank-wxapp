@@ -1,5 +1,6 @@
 Page({
   jump:function(param){
+    if (!param.target.dataset.index)return;
     this.setData({
       showNav: false,
       index: param.target.dataset.index

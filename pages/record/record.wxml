@@ -3,7 +3,7 @@
     <navigator open-type='navigateBack' class='back_logo_box'>
       <image class="back_logo" src='../images/back.png'></image>
     </navigator>    
-      
+      <text>{{tuserName}}</text>
       <view class='back_logo_box'></view>
   </view>
 
