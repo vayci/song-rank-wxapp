@@ -22,8 +22,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content:space-between;
-  margin-bottom:15rpx;
-  margin-top:15rpx;
+  margin-bottom:20rpx;
+  margin-top:20rpx;
   font-size:10px;
   width: 100%;
   background: #f4f4f4;
@@ -120,7 +120,7 @@
     width: 45vw;
 }
 .gray { 
-    filter: grayscale(60%);
+    filter: grayscale(90%);
 }
 .song_info .song_title{
   color: #646664;

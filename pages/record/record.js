@@ -68,10 +68,10 @@ Page({
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].isBatchUpdate==0){
             res.data[i].changeTime 
-              = utils.formatTimeStamp(res.data[i].changeTime);
+              = utils.formatTimeStamp(new Date(res.data[i].changeTime));
           }else{
             res.data[i].changeTime 
-              = utils.formatTimeStampToDate(res.data[i].changeTime);
+              = utils.formatTimeStampToDate(new Date(res.data[i].changeTime));
           }
           
         }  
@@ -93,6 +93,7 @@ Page({
       this.setData({
         playing: songId
       })
+      wx.vibrateShort({})
     }else{
       if (innerAudioContext.src==songUrl){
         if (innerAudioContext.paused){
@@ -100,6 +101,7 @@ Page({
           this.setData({
             playing: songId
           })
+          wx.vibrateShort({})
         }
         else{
           innerAudioContext.pause()
@@ -114,6 +116,7 @@ Page({
         this.setData({
           playing: songId
         })
+        wx.vibrateShort({})
       }
     }
   },

@@ -52,7 +52,7 @@ Page({
       success: function (res) {
         if (res.statusCode == 200) {
           wx.showToast({
-            title: '订阅成功！Ta下次听歌我会通知您噢~',
+            title: '订阅成功,Ta下次听歌您将收到通知!',
             icon: 'none',
             duration: 2000
           })

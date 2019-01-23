@@ -114,7 +114,6 @@ Page({
             data: true
           })
         } else if (res.statusCode == 500){
-          console.log(res.data);
           wx.setStorage({
             key: "isUpload",
             data: false
