@@ -208,7 +208,6 @@ Page({
       content: '确定要取消关注Ta吗?',
       success: function (res) {
         if (res.confirm) {
-          console.log(e.currentTarget.dataset.jobid);
           wx.request({
             url: app.globalData.serverUrl + '/task/' + e.currentTarget.dataset.jobid,
             method: 'DELETE',

@@ -23,7 +23,7 @@
       </view>
     </view>
   <view wx:else class="search_bd">
-    <view class="userinfo" bindtap='selectUser' wx:for="{{array}}" id='{{item.userId}}'
+    <view class="userinfo" wx:for="{{array}}" id='{{item.userId}}'
     data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' wx:for-item="item" wx:key="userId">
         <view class='left_view'>
         <image  class="userinfo-avatar"  userid="{{item.userId}}" src="{{item.avatar}}?param=180y180"></image>
@@ -32,7 +32,9 @@
           <view class='userinfo-text-motto'>{{item.signature}}</view>
         </view>
         </view>
-        <button bindtap='selectUser' class='sub_btn'>关注</button>
+        <form bindsubmit="selectUser" data-id='{{item.userId}}' data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' report-submit='true'>
+          <button formType="submit" class='sub_btn'>关注</button>
+        </form>
     </view>
   </view>
   

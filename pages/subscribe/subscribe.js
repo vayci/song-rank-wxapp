@@ -36,7 +36,6 @@ Page({
   },
   addSubscribe(e){
     var self = this;
-    console.log(e)
     wx.request({
       url: app.globalData.serverUrl + '/msg',
       method: 'POST',

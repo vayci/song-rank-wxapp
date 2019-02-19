@@ -46,10 +46,32 @@ Page({
       }
     })
   },
+  addSubscribe(e) {
+    wx.request({
+      url: app.globalData.serverUrl + '/msg',
+      method: 'POST',
+      data: {
+        formId: e.detail.formId,
+        isValid: 0,
+        openid: app.globalData.openId,
+        targetUserId: e.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          //console.log('关注时订阅成功')
+        } else {
+          //console.log('关注时订阅失败')
+        }
+      }
+    })
+  },
   //选择订阅用户
   selectUser: function(e){
     var thisJs = this;
-    var targetid = e.currentTarget.id;
+    var targetid = e.currentTarget.dataset.id;
     var targetNickName = e.currentTarget.dataset.nickname;
     var targetAvatar = e.currentTarget.dataset.avatar;
 
@@ -80,6 +102,7 @@ Page({
                 'content-type': 'application/json'
               },
               success: function (res) {
+                thisJs.addSubscribe(e)
                 wx.showToast({
                   title: res.data,
                   icon: 'none',
