@@ -64,7 +64,7 @@
   width: 100rpx;
   border-radius: 10%;
   color: #AFB3AF;
-  font-size: 20rpx;
+  font-size: 18rpx;
   line-height: 50rpx;
   margin: 0;
   align-items: center;

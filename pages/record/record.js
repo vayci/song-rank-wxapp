@@ -16,7 +16,7 @@ Page({
         duration: 2000
       })
     })
-    innerAudioContext.onEnded((res)=>{
+    innerAudioContext.onEnded((res) => {
       this.setData({
         playing: ''
       })
@@ -26,7 +26,7 @@ Page({
       tuserName: options.tusername,
       tips: '',
       fromApp: options.fromApp,
-    })  
+    })
     var recordPage = this;
     //获取听歌记录
     wx.request({
@@ -38,7 +38,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        if (res.data==undefined||res.data.length==0){
+        if (res.data == undefined || res.data.length == 0) {
           recordPage.data.tips = "正在努力获取Ta的听歌记录，请耐心等待...";
           recordPage.setData({
             tips: recordPage.data.tips,
@@ -48,52 +48,50 @@ Page({
         }
         //根据是否为系统自动批量更新的记录，对时间进行不同的format
         for (var i = 0; i < res.data.length; i++) {
-          if (res.data[i].isBatchUpdate==0){
-            let tmpdate = res.data[i].changeTime.replace(/-/g, '/').replace(/T/g, ' ');
-            res.data[i].changeTime 
-              = utils.formatTimeStamp(new Date(tmpdate));
-          }else{
-            let tmpdate = res.data[i].changeTime.replace(/-/g, '/').replace(/T/g, ' ');
-            res.data[i].changeTime 
-              = utils.formatTimeStampToDate(new Date(tmpdate));
+          if (res.data[i].isBatchUpdate == 0) {
+            res.data[i].changeTime
+              = utils.formatTimeStamp(utils.str2Date(res.data[i].changeTime));
+          } else {
+            res.data[i].changeTime
+              = utils.formatTimeStampToDate(utils.str2Date(res.data[i].changeTime));
           }
-          
-        }  
+
+        }
         recordPage.data.recordList = res.data;
         //recordPage.data.isBatchUpdate = res.data.isBatchUpdate;
         recordPage.setData({
           //isBatchUpdate: res.data.isBatchUpdate,
           recordList: res.data
-        }) 
+        })
       }
     })
   },
-  click:function(e){
+  click: function (e) {
     var songId = e.target.dataset.songId
-    var songUrl = "https://music.163.com/song/media/outer/url?id="+songId+".mp3"
-    if (innerAudioContext.src==''){
+    var songUrl = "https://music.163.com/song/media/outer/url?id=" + songId + ".mp3"
+    if (innerAudioContext.src == '') {
       innerAudioContext.src = songUrl
       innerAudioContext.play()
       this.setData({
         playing: songId
       })
       wx.vibrateShort({})
-    }else{
-      if (innerAudioContext.src==songUrl){
-        if (innerAudioContext.paused){
+    } else {
+      if (innerAudioContext.src == songUrl) {
+        if (innerAudioContext.paused) {
           innerAudioContext.play()
           this.setData({
             playing: songId
           })
           wx.vibrateShort({})
         }
-        else{
+        else {
           innerAudioContext.pause()
           this.setData({
             playing: ''
           })
         }
-      }else{
+      } else {
         innerAudioContext.stop()
         innerAudioContext.src = songUrl
         innerAudioContext.play()
@@ -106,7 +104,7 @@ Page({
   },
   //点击订阅，生成模板消息记录
   formSubmit: function (e) {
-    var recordPage =this;
+    var recordPage = this;
     wx.request({
       url: app.globalData.serverUrl + '/msg',
       method: 'POST',
@@ -132,7 +130,7 @@ Page({
       }
     })
   },
-  backIndex: function(e){
+  backIndex: function (e) {
     wx.redirectTo({
       url: '/pages/index/index'
     })
@@ -142,7 +140,7 @@ Page({
       // 来自页面内转发按钮
     }
     return {
-      title:'给你分享一份听歌记录',
+      title: '给你分享一份听歌记录',
       path: 'pages/record/record?userId=' + this.data.userId + '&tusername=' + this.data.tuserName,
       success: function (res) {
       },
@@ -151,10 +149,10 @@ Page({
     }
   },
   data: {
-    userId:null,
+    userId: null,
     tuserName: null,
-    isBatchUpdate:0,
-    recordList:[],
+    isBatchUpdate: 0,
+    recordList: [],
     tips: "Ta最近在听:",
     showTmpMsg: false,
     showImg: false,
