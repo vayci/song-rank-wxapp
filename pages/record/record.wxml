@@ -1,11 +1,11 @@
 <!--pages/record/record.wxml-->
-  <view class='nav_top'>
+  <!-- <view class='nav_top'>
     <navigator open-type='navigateBack' class='back_logo_box'>
       <image class="back_logo" src='../images/back.png'></image>
     </navigator>    
       <text>{{tuserName}}</text>
       <view class='back_logo_box'></view>
-  </view>
+  </view> -->
 
   <view class='wrapper'>
   <scroll-view class='record_list' scroll-y='true'>

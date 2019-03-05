@@ -1,0 +1,76 @@
+  <view class='wrapper'>
+   <view class="detail_box" >
+      <view wx:if="{{index==1}}">
+      <view class='block'>
+        <view class='title'>为什么关注了好友没有TA的听歌记录？</view>
+        <view>小程序是从你开始关注的好友时候才会去抓取好友的听歌记录，当好友下次听歌时才会产生数据，请耐心等待</view>
+      </view>
+      <view class='block'>
+        <view class='title'>小程序中数据的时间记录准确吗？</view>
+        <view>一般情况下会出现几分钟的延迟，听歌时间仅供参考</view>
+      </view>
+      <view class='block'>
+        <view class='title'>小程序中数据的歌曲记录准确吗？</view>
+        <view>有数据TA一定听了这首歌，TA听了某首歌不一定会产生数据</view>
+      </view>
+      <view class='block'>
+        <view class='title'>记录时间中的某个时刻是什么意思？</view>
+        <view>当小程序同一个时间检测到多条记录时，记录为“某个时刻”</view>
+      </view>
+      <view class='block'>
+        <view class='title'>订阅通知后为什么不能一直进行提醒？</view>
+        <view>由于官方限制，订阅推送存在有效期并且需要用户点击进行订阅</view>
+      </view>
+      </view>
+      <view wx:if="{{index==2}}">
+        <view class='block'>
+            <view>1.点击右上角“更多”图标</view>
+        </view>
+        <view class='block'>
+          <view>2.关于你在听歌吗</view>
+        </view> 
+        <view class='block'>
+            <view>3.为该小程序点赞</view>
+        </view> 
+      </view> 
+      <view wx:if="{{index==3}}">
+        <view class='block'>
+            <view>作者太懒啦！有意见直接在“联系作者”内找TA的联系方式吧</view>
+        </view> 
+      </view>
+      <view wx:if="{{index==4}}">
+        <view class='block'>
+          <view class='title'>2018年3月</view>
+          <view>小程序创建</view>
+        </view>
+        <view class='block'>
+          <view class='title'>2018年7月</view>
+          <view>小程序正式上架</view>
+        </view>
+        <view class='block'>
+          <view class='title'>2019年1月</view>
+          <view>小程序第二个版本更新</view>
+        </view>
+      </view>
+      <view wx:if="{{index==5}}">
+        <view class='block'>
+          <view class='title'>小程序开发者</view>
+          <view>小红（英文名：Red）</view>
+          <view>93天蝎 坐标成都</view>
+        </view>
+        <view class='block'>
+          <view class='title'>在线秒回微信</view>
+          <view>Monica4399</view>
+        </view>
+        <view class='block'>
+          <view class='title'>意见反馈邮箱</view>
+          <view>vayci2012@gmail.com</view>
+        </view>
+        <view class='block'>
+          <view class='title'>小程序公众号</view>
+          <view>关注小程序同名公众号“你在听歌吗”</view>
+          <view>获取更多本小程序的使用技巧及背后故事</view>
+        </view>
+      </view>
+    </view>
+  </view>

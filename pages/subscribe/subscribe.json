@@ -1,4 +1,5 @@
 {
-  "component": true,
-  "usingComponents": {}
+  "disableScroll": true,
+  "navigationBarTitleText": "订阅通知",
+  "enablePullDownRefresh": true
 }

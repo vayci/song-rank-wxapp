@@ -1,6 +1,7 @@
 /* pages/subscribe/subscribe.wxss */
 .container {
   height: 80vh;
+  margin-top: 3vh;
 } 
 .wrapper{
   height: 100vh;

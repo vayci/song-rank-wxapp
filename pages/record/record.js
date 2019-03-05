@@ -27,6 +27,9 @@ Page({
       tips: '',
       fromApp: options.fromApp,
     })
+    wx.setNavigationBarTitle({
+      title: '♥ ' + options.tusername,
+    })
     var recordPage = this;
     //获取听歌记录
     wx.request({

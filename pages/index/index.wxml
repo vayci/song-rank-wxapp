@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class='wrapper'>
-<view class='nav_top'></view>
+<!-- <view class='nav_top'></view> -->
 <view class='top'>
   <view class='banner'>
   <text class='banner_title'>你在听歌吗\n</text><text class='banner_sub_title'>随时关注好友最近听的歌</text>

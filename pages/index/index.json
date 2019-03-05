@@ -1,3 +1,4 @@
 {
-  "disableScroll": true
+  "disableScroll": true,
+  "enablePullDownRefresh": true
 }

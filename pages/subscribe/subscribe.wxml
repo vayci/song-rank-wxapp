@@ -1,7 +1,7 @@
 <!--pages/subscribe/subscribe.wxml-->
-<view class='nav_top'>
+<!-- <view class='nav_top'>
 订阅听歌提醒
-</view>
+</view> -->
 <view class='container'>
   <view class="search_bd">
     <view class="userinfo" wx:for="{{userList}}" id='{{item.userId}}'

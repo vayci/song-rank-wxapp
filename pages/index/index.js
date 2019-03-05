@@ -2,14 +2,12 @@
 const app = getApp()
 Page({
   data: {
-    motto: '您尚未关注任何好友',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     jobs: [],
     subscribe: [],
     lock: false,
-    offline: false,
     addBtntouched:false
   },
 
@@ -58,14 +56,8 @@ Page({
         if (indexPage.openIdReadyCallback) {
           indexPage.openIdReadyCallback(res.data.openid);
         }
-        indexPage.setData({
-          offline: false
-        })
       },
       fail: function (res) {
-        indexPage.setData({
-          offline: true
-        })
       }
     })
   },
@@ -139,7 +131,6 @@ Page({
         //indexPage.getSubscribe(openid);
         //indexPage.showTimerJobs(res.data);
           indexPage.setData({
-            offline: false,
             jobs: indexPage.data.jobs
           })
         
@@ -177,12 +168,7 @@ Page({
   showTimerJobs(timerJobs){
       if(timerJobs.length>0){
         this.setData({
-          motto: "您已经关注" + timerJobs.length+"名好友",
           jobs: timerJobs
-        })
-      }else{
-        this.setData({
-          motto: "您尚未关注任何好友"
         })
       }
   },
@@ -262,20 +248,13 @@ Page({
     })
   },
 
-  //小程序说明跳转
-  getNote: function(e){
-    wx.navigateTo({
-      url: '../note/note'
-    })
-  },
-
   //点击转发
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
     }
     return {
-      title: '想不到吧，你听歌都会被我抓到噢！',
+      title: '我有一份你在网易云音乐的听歌记录!',
       path: 'pages/index/index',
       imageUrl: '../images/pic1.jpg',
       success: function (res) {

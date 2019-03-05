@@ -1,18 +1,9 @@
 Page({
   jump:function(param){
-    if (!param.target.dataset.index)return;
-    this.setData({
-      showNav: false,
-      index: param.target.dataset.index
+    //console.log(param.target.dataset.index)
+    wx.navigateTo({
+      url: '/pages/note-detail/note-detail?index=' + param.target.dataset.index
+        + '&title=' + param.target.dataset.title
     })
-  },
-  back:function(){
-    this.setData({
-      showNav: true
-    })
-  },
-  data: {
-    showNav: true,
-    index: 1
   }
 })
