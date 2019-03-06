@@ -143,7 +143,7 @@ Page({
       // 来自页面内转发按钮
     }
     return {
-      title: '给你分享一份听歌记录',
+      title: '我有一份你在网易云音乐的听歌记录!',
       path: 'pages/record/record?userId=' + this.data.userId + '&tusername=' + this.data.tuserName,
       success: function (res) {
       },
