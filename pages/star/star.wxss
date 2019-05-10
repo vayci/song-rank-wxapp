@@ -4,7 +4,6 @@
   width: 100vw;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
 }
 page {
@@ -15,4 +14,58 @@ page {
 .system_image{
   width: 85vw;
   height: 85vw;
+}
+.divLine{
+ background: #E0E3DA;
+ width: 80vw;
+ height: 5rpx;
+}
+.server{
+  color: #333;
+  height: 5vh;
+  line-height: 5vh;
+}
+.recordView{
+  padding-top: 1vh;
+}
+.leftView{
+  width: 80vw;
+  height: 5vh;
+  align-items: left;
+  line-height:5vh;
+  margin-top: 20rpx;
+  color: #333;
+}
+.topRecord{
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  width: 75vw;
+  justify-content: space-between;
+  padding: 5rpx 0 5rpx 0;
+}
+.topRecordSong{
+  width: 65vw;
+  display:block;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+
+}
+.latestRecord{
+  padding: 10rpx 0 10rpx 0;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  width: 75vw;
+}
+.dailyCount{
+  color: #45ce90;
+}
+
+.notice{
+  height: 5vh;
+  line-height: 5vh;
+  font-size: 14px;
+  margin-top: 5vh;
 }

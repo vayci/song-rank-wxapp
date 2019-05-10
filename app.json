@@ -30,7 +30,7 @@
         "pagePath": "pages/star/star",
         "selectedIconPath": "pages/images/star-s.png",
         "iconPath": "pages/images/star.png",
-        "text": "发现"
+        "text": "统计"
       },
       {
         "pagePath": "pages/subscribe/subscribe",
