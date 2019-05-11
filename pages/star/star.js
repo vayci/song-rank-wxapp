@@ -79,6 +79,8 @@ Page({
       return '#ffd153'
     if (count > 3 && count <= 10)
       return '#45ce90'
+    if (count > 10)
+      return '#45ce90'
   },
   data: {
     userList: []

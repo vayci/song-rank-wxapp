@@ -70,3 +70,6 @@ white-space:nowrap;
   font-size: 12px;
   margin-top: 5vh;
 }
+.dailyCount{
+  color: #45ce90;
+}
