@@ -31,7 +31,7 @@ page {
 }
 .recordView{
   padding-top: 1vh;
-  height: 35vh;
+  height: 40vh;
 }
 .leftView{
   width: 80vw;
