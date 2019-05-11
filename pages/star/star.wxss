@@ -7,7 +7,6 @@
   align-items:center;
 }
 page {
-  width: 80%;
   color: #898b89;
   font-size: 30rpx;
 }
@@ -24,9 +23,15 @@ page {
   color: #333;
   height: 5vh;
   line-height: 5vh;
+  font-size: 14px;
+}
+.topRecordView{
+  padding-top: 1vh;
+  height: 20vh;
 }
 .recordView{
   padding-top: 1vh;
+  height: 35vh;
 }
 .leftView{
   width: 80vw;
@@ -39,7 +44,7 @@ page {
 .topRecord{
   display: flex;
   flex-direction: row;
-  font-size: 14px;
+  font-size: 12px;
   width: 75vw;
   justify-content: space-between;
   padding: 5rpx 0 5rpx 0;
@@ -56,16 +61,12 @@ white-space:nowrap;
   padding: 10rpx 0 10rpx 0;
   display: flex;
   flex-direction: row;
-  font-size: 14px;
+  font-size: 12px;
   width: 75vw;
 }
-.dailyCount{
-  color: #45ce90;
-}
-
 .notice{
   height: 5vh;
   line-height: 5vh;
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 5vh;
 }

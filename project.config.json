@@ -12,6 +12,8 @@
 	"appid": "wxd422e4a71b224d86",
 	"projectname": "song_rank_wxapp",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

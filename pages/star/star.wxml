@@ -1,10 +1,10 @@
 <!--pages/star/star.wxml-->
 <view class='wrapper'>
-  <view class='server'>服务器运行状态 <text class='dailyCount'>{{proxyCount}}</text></view>
+  <view class='server'>服务器运行状态 <text style="color:{{proxyColor}}">{{proxyText}}</text></view>
   <view class='leftView'>今日小程序关注用户累计播放歌曲 <text class='dailyCount'>{{dailyCount}}</text> 次</view>
   <view class='leftView'>今日小程序关注用户播放歌曲Top5</view>
     <view class="divLine"></view>
-  <view  class='recordView'>
+  <view  class='topRecordView'>
     <view class='topRecord' wx:for="{{top}}" wx:for-item="item" wx:key="songId" >
       <view class='topRecordSong'>{{item.song}} - {{item.singer}} </view>
       <view>{{item.count}}次</view>
@@ -15,7 +15,7 @@
     <view class="divLine"></view>
   <view class='recordView'>
     <view class='latestRecord' wx:for="{{latest}}" wx:for-item="item" wx:key="id" >
-      <view>20秒前某用户播放了 {{item.song}} - {{item.singer}}</view>
+      <view>{{item.changeTime}}前 有用户播放了 {{item.song}} - {{item.singer}}</view>
     </view>
   </view>
   <view class='notice'>本页面每5秒更新一次</view>
