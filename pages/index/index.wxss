@@ -162,5 +162,11 @@
   height: 40vh;
   width: 80vw;
   display: flex;
-  justify-content: left;
+  flex-direction: column;
+}
+.notice{
+  font-size: 26rpx;
+  margin-top: 2vh;
+  color: #AFB3AF;
+  margin-left: 1vw;
 }

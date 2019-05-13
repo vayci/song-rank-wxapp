@@ -1,4 +1,5 @@
 const app = getApp()
+const logger = wx.getLogManager({ level: 0 })
 const innerAudioContext = wx.createInnerAudioContext()
 var utils = require('../../utils/util.js')
 
@@ -52,8 +53,13 @@ Page({
         //根据是否为系统自动批量更新的记录，对时间进行不同的format
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].isBatchUpdate == 0) {
-            res.data[i].changeTime
-              = utils.formatTimeStamp(utils.str2Date(res.data[i].changeTime));
+            if (res.data[i].changeTime == undefined){
+              logger.warn({ str: res.data })
+              res.data[i].changeTime= '';
+            }else{
+              res.data[i].changeTime
+                = utils.formatTimeStamp(utils.str2Date(res.data[i].changeTime));
+            }
           } else {
             res.data[i].changeTime
               = utils.formatTimeStampToDate(utils.str2Date(res.data[i].changeTime));

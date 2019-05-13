@@ -4,6 +4,7 @@
 </view> -->
 <view class='container'>
   <view class="search_bd">
+    <view class='userinfo-text-name' wx:if="{{userList.length==0}}">在主页关注好友之后才能进行订阅</view>
     <view class="userinfo" wx:for="{{userList}}" id='{{item.userId}}'
     data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' wx:for-item="item" wx:key="userId">
         <view class='left_view'>

@@ -21,9 +21,10 @@ page {
 }
 .server{
   color: #333;
+    width: 80vw;
   height: 5vh;
   line-height: 5vh;
-  font-size: 14px;
+    align-items: left;
 }
 .topRecordView{
   padding-top: 1vh;

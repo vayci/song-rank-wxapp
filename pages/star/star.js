@@ -50,8 +50,10 @@ Page({
     latest.forEach(function (value, i) {
       let changetime = utils.str2Date(value.changeTime)
       let sub = (now.getTime()-changetime.getTime())/1000
-      if (sub < 60)
+      if (sub < 60){
+        if (sub < 0) {sub = 1}
         value.changeTime = parseInt(sub) + '秒'
+      }
       if (sub>=60){
         let min = parseInt(sub/60)
         let s = parseInt(sub%60)
@@ -63,9 +65,9 @@ Page({
   getStatus(count){
     if (count == 0) 
     return '极差'
-    if (count <= 3)
+    if (count <= 4)
     return'较差'
-    if (count > 3 && count <= 10) 
+    if (count > 4 && count <= 10) 
     return '一般'
     if (count > 10 && count <= 20) 
     return '良好'
@@ -74,13 +76,13 @@ Page({
   },
   getColor(count){
     if (count == 0)
-      return '#fe5151'
-    if (count <= 3)
-      return '#ffd153'
-    if (count > 3 && count <= 10)
-      return '#45ce90'
+      return '#FD7070'
+    if (count <= 4)
+      return '#FFAE00'
+    if (count > 4 && count <= 10)
+      return '#45CE90'
     if (count > 10)
-      return '#45ce90'
+      return '#45CE90'
   },
   data: {
     userList: []

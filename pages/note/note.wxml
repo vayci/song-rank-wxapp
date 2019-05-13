@@ -14,4 +14,5 @@
       <view bindtap='jump' data-index='4' data-title='成长经历' class='question'><text>成长经历</text><image class='more_png' src='../images/more.png'></image></view>
       <view bindtap='jump' data-index='5' data-title='关于作者' class='question'><text>关于作者</text><image class='more_png' src='../images/more.png'></image></view>
     </view>
+    <official-account class='account'></official-account>
   </view>

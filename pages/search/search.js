@@ -1,5 +1,5 @@
 const app = getApp()
-
+const logger = wx.getLogManager({ level: 0 })
 Page({
   onLoad(e) {
     wx.showShareMenu({
@@ -61,9 +61,9 @@ Page({
       },
       success: function (res) {
         if (res.statusCode == 200) {
-          //console.log('关注时订阅成功')
+          logger.warn({ str: res }, 'warn log', 100, [1, 2, 3])
         } else {
-          //console.log('关注时订阅失败')
+          logger.warn({ str: res }, 'warn log', 100, [1, 2, 3])
         }
       }
     })
@@ -75,7 +75,7 @@ Page({
     var targetNickName = e.currentTarget.dataset.nickname;
     var targetAvatar = e.currentTarget.dataset.avatar;
 
-    if (this.data.request_url == 1){
+    if (true){
       if (targetid=="")return;
       wx.request({
         url: app.globalData.serverUrl + '/rank/check',
@@ -102,13 +102,15 @@ Page({
                 'content-type': 'application/json'
               },
               success: function (res) {
-                thisJs.addSubscribe(e)
                 wx.showToast({
                   title: res.data,
                   icon: 'none',
                   duration: 2000
                 })
-
+                thisJs.addSubscribe(e)
+              },
+              fail:function(res){
+                logger.warn('添加关注失败' + res )
               }
             })
           } else {
@@ -163,11 +165,6 @@ Page({
         }
       })
     }
-
-    this.setData({
-      tip_words: '点击搜索结果添加关注',
-      request_url: 1
-    })
     
   },
   shareTip: function(e){
@@ -189,9 +186,6 @@ Page({
       imageUrl: '../index/share.jpg',
       success: function (res) {
         if (res.shareTickets) {
-          searchJs.setData({
-            request_url: 2
-          })
           wx.showToast({
             title: "分享成功，喜提彩蛋~",
             icon: 'none',
@@ -229,7 +223,6 @@ Page({
     tip_words:'点击搜索结果添加关注',
     flag: true,
     wx_user: null,
-    request_url: 1,
     share_count: 0
   }
 })

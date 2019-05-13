@@ -38,7 +38,8 @@
 					"id": 0,
 					"name": "update",
 					"pathName": "pages/index/index",
-					"query": ""
+					"query": "",
+					"scene": 1089
 				}
 			]
 		}

@@ -35,7 +35,7 @@
       </view> 
       <view wx:if="{{index==3}}">
         <view class='block'>
-            <view>作者太懒啦！有意见直接在“联系作者”内找TA的联系方式吧</view>
+            <button open-type='feedback'>上报错误</button>
         </view> 
       </view>
       <view wx:if="{{index==4}}">

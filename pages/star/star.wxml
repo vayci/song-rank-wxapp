@@ -1,6 +1,6 @@
 <!--pages/star/star.wxml-->
 <view class='wrapper'>
-  <view class='server'>服务器运行状态 <text style="color:{{proxyColor}}">{{proxyText}}</text></view>
+  <view class='server'>————当前服务器运行状态 <text style="color:{{proxyColor}}">{{proxyText}}</text>————</view>
   <view class='leftView'>今日小程序关注用户累计播放歌曲 <text class='dailyCount'>{{dailyCount}}</text> 次</view>
   <view class='leftView'>今日小程序关注用户播放歌曲Top5</view>
     <view class="divLine"></view>

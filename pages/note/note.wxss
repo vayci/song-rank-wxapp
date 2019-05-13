@@ -46,8 +46,9 @@
   width: 100vw;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:space-between;
   align-items:center;
+  height: 100vh;
 }
 .question{
   height: 8vh;
@@ -78,4 +79,7 @@
 .title{
   color: #646664;
   font-weight: bold;
+}
+.account{
+  margin-bottom: 5vh;
 }
