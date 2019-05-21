@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/search/search",
-    "pages/record/record",
-    "pages/note/note",
-    "pages/star/star",
-    "pages/subscribe/subscribe",
     "pages/logs/logs",
-    "pages/note-detail/note-detail"
+    "pages/note/note",
+    "pages/note-detail/note-detail",
+    "pages/record/record",
+    "pages/search/search",
+    "pages/star/star",
+    "pages/subscribe/subscribe"
   ],
   "window": {
     "backgroundTextStyle": "light",

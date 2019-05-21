@@ -16,7 +16,7 @@ App({
         }
       }
     })
-    if (wx.getUpdateManager()){
+    if (wx.canIUse('getUpdateManager')){
       const updateManager = wx.getUpdateManager()
       updateManager.onUpdateReady(function () {
         wx.showModal({

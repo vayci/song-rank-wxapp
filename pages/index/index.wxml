@@ -23,7 +23,7 @@
   <view class='tagetuserinfo'>
   <view class='tagetusers'>
       <view class='tagetuser' wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId" 
-      bindtap='getRankRecord' bindlongtap='deleteJob' id='{{job.targetUserId}}' data-jobid='{{job.id}}' 
+      bindtap='getRankRecord' bindlongpress='deleteJob' id='{{job.targetUserId}}' data-jobid='{{job.id}}' 
       data-tusername='{{job.targetNickname}}'>
         <image src='{{job.targetAvatar}}' wx:if="{{job.s_flag}}"  class="userinfo-avatar green_avatar"        background-size="cover"></image>
         <image src='{{job.targetAvatar}}' wx:else="{{job.s_flag}}"  class="userinfo-avatar" background-size="cover"></image>

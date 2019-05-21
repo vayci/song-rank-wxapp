@@ -1,5 +1,4 @@
 const app = getApp()
-const logger = wx.getLogManager({ level: 0 })
 Page({
   onLoad(e) {
     wx.showShareMenu({
@@ -32,7 +31,6 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res)
         if (res.data.length==0){
           pageobj.setData({
             show_img: true
@@ -61,9 +59,9 @@ Page({
       },
       success: function (res) {
         if (res.statusCode == 200) {
-          logger.warn({ str: res }, 'warn log', 100, [1, 2, 3])
+          
         } else {
-          logger.warn({ str: res }, 'warn log', 100, [1, 2, 3])
+          
         }
       }
     })
@@ -110,7 +108,7 @@ Page({
                 thisJs.addSubscribe(e)
               },
               fail:function(res){
-                logger.warn('添加关注失败' + res )
+                console.log('添加关注失败' + res )
               }
             })
           } else {
