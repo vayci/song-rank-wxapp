@@ -7,15 +7,12 @@
   </view> -->
 <view class='container'>
   <view class="search_box">
+    <view class="search_input">
     <image class='s_icon' src='../images/search.png'></image>
     <input class='s_input' focus='{{true}}' placeholder-class="phcolor" placeholder="输入网易云音乐昵称" bindconfirm='searchButtonTap' bindinput='nickNameInput'/>
-    <!-- <button class='s_button'  bindtap='searchButtonTap'>搜索</button> -->
   </view>
-
-  <!-- <view class='search_tips'>
-      <text>{{tip_words}}</text>
-  </view> -->
-
+    <button class='s_button'  bindtap='searchButtonTap'>搜索</button>
+  </view>
   <view wx:if="{{show_img}}" class="search_bd">
       <view class='no_found'>
       <image class='back_image' src='../images/pic3.jpg'></image>

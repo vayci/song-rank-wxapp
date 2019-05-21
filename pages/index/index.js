@@ -1,4 +1,4 @@
- //index.js
+//index.js
 const app = getApp()
 Page({
   data: {
@@ -8,7 +8,7 @@ Page({
     jobs: [],
     subscribe: [],
     lock: false,
-    addBtntouched:false
+    addBtntouched: false
   },
 
   onLoad: function () {
@@ -23,12 +23,12 @@ Page({
     this.getAppNotice();
   },
 
-  onShow: function(){
+  onShow: function () {
     app.globalData.openId = wx.getStorageSync('openid');
     //jsCode2Session 获取到openid后回调获取用户任务
-    if (app.globalData.openId != null && app.globalData.openId != ''){
-        this.getTimerJobs(app.globalData.openId);
-    }else{
+    if (app.globalData.openId != null && app.globalData.openId != '') {
+      this.getTimerJobs(app.globalData.openId);
+    } else {
       this.openIdReadyCallback = res => {
         this.getTimerJobs(app.globalData.openId);
       }
@@ -61,18 +61,18 @@ Page({
       }
     })
   },
-  onButtonTap(e){
+  onButtonTap(e) {
     this.setData({
-      addBtntouched:true
+      addBtntouched: true
     })
   },
-  onButtonTapCancel(e){
+  onButtonTapCancel(e) {
     this.setData({
       addBtntouched: false
     })
   },
   //点击添加按钮 上报用户信息 跳转搜索页
-  onGotUserInfo(userInfo){
+  onGotUserInfo(userInfo) {
     app.globalData.userInfo = userInfo.detail.rawData;
     var isUpload = wx.getStorageSync('isUpload');
     if (!isUpload) {
@@ -80,11 +80,11 @@ Page({
       if (app.globalData.userInfo != null && app.globalData.openId != null) {
         this.uploadUserInfo(app.globalData.openId, app.globalData.userInfo)
       }
-    } 
+    }
     wx.vibrateShort({})
     wx.navigateTo({
-        url: '/pages/search/search'
-      })
+      url: '/pages/search/search'
+    })
   },
 
   //上传用户信息
@@ -99,24 +99,21 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        if(res.statusCode == 200){
+        wx.setStorage({
+          key: "isUpload",
+          data: true
+        })
+        if (res.statusCode == 200) {
           console.log("用户信息提交成功");
-          wx.setStorage({
-            key: "isUpload",
-            data: true
-          })
-        } else if (res.statusCode == 500){
-          wx.setStorage({
-            key: "isUpload",
-            data: false
-          })
+        } else if (res.statusCode == 500) {
+          console.log("用户信息提交失败");
         }
       }
     })
   },
 
   //获取用户关联爬虫任务
-  getTimerJobs(openid){
+  getTimerJobs(openid) {
     var indexPage = this;
     wx.request({
       url: app.globalData.serverUrl + '/task',
@@ -130,10 +127,10 @@ Page({
         indexPage.data.jobs = res.data;
         //indexPage.getSubscribe(openid);
         //indexPage.showTimerJobs(res.data);
-          indexPage.setData({
-            jobs: indexPage.data.jobs
-          })
-        
+        indexPage.setData({
+          jobs: indexPage.data.jobs
+        })
+
       }
     })
   },
@@ -149,10 +146,10 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        for(var i = 0 ; i < res.data.length ; i++){
-            for (var j = 0; j < indexPage.data.jobs.length; j++) {
-              if (indexPage.data.jobs[j].targetUserId == res.data[i].targetUserId){
-                indexPage.data.jobs[j].s_flag = true
+        for (var i = 0; i < res.data.length; i++) {
+          for (var j = 0; j < indexPage.data.jobs.length; j++) {
+            if (indexPage.data.jobs[j].targetUserId == res.data[i].targetUserId) {
+              indexPage.data.jobs[j].s_flag = true
             }
           }
         }
@@ -165,28 +162,37 @@ Page({
   },
 
   //显示关注好友数量
-  showTimerJobs(timerJobs){
-      if(timerJobs.length>0){
-        this.setData({
-          jobs: timerJobs
-        })
-      }
+  showTimerJobs(timerJobs) {
+    if (timerJobs.length > 0) {
+      this.setData({
+        jobs: timerJobs
+      })
+    }
   },
 
   //点击关注头像 跳转至听歌记录页面
-  getRankRecord(e){
-    if(!this.data.lock){
+  getRankRecord(e) {
+    let isUpload = wx.getStorageSync('isUpload');
+    if (!isUpload){
+      wx.showToast({
+        title: '请先点击右侧添加关注按钮进行用户授权',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    if (!this.data.lock) {
       var targetid = e.currentTarget.id;
       var tusername = e.currentTarget.dataset.tusername;
       wx.navigateTo({
-        url: '../record/record?userId=' + targetid + '&tusername=' + tusername +'&fromApp=true'
+        url: '../record/record?userId=' + targetid + '&tusername=' + tusername + '&fromApp=true'
       })
     }
-    
+
   },
 
   // 长按删除任务
-  deleteJob(e){
+  deleteJob(e) {
     var indexPage = this;
     indexPage.data.lock = true;
     wx.showModal({
@@ -219,7 +225,7 @@ Page({
   },
 
   //获取系统公告
-  getAppNotice(){
+  getAppNotice() {
     var indexPage = this;
     wx.request({
       url: app.globalData.serverUrl + '/notice/type/warn',
@@ -227,7 +233,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        if(res.statusCode == 200){
+        if (res.statusCode == 200) {
           var notice_arr = [];
           res.data.forEach(function (value) {
             notice_arr.push({ id: value.id, url: "url", title: value.content });
@@ -237,14 +243,14 @@ Page({
           });
         }
       },
-      fail:function(e){
+      fail: function (e) {
         wx.showToast({
           title: '服务器连接失败',
           icon: 'none',
           duration: 2000
         })
       }
-      
+
     })
   },
 

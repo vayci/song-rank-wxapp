@@ -20,7 +20,8 @@ Page({
         duration: 2000
       })
       return;
-    }
+    } 
+    wx.showLoading({})
     var pageobj = this;
     wx.request({
       url: app.globalData.serverUrl + '/wx/netease/user',
@@ -31,6 +32,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        wx.hideLoading()
         if (res.data.length==0){
           pageobj.setData({
             show_img: true
