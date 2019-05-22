@@ -18,10 +18,14 @@ Page({
   //获取用户关联爬虫任务
   getTargetUsers() {
     let self = this;
+    let openid = app.globalData.openId
+    if(openid==null||openid==undefined){
+      return;
+    }
     wx.request({
       url: app.globalData.serverUrl + '/msg',
       data: {
-        openid: app.globalData.openId
+        openid: openid
       },
       header: {
         'content-type': 'application/json'

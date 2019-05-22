@@ -24,14 +24,8 @@
       </view>
       <view wx:if="{{index==2}}">
         <view class='block'>
-            <view>1.点击右上角“更多”图标</view>
+            <view>敬请期待</view>
         </view>
-        <view class='block'>
-          <view>2.关于你在听歌吗</view>
-        </view> 
-        <view class='block'>
-            <view>3.为该小程序点赞</view>
-        </view> 
       </view> 
       <view wx:if="{{index==3}}">
         <view class='block'>

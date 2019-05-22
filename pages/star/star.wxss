@@ -6,6 +6,27 @@
   flex-direction:column;
   align-items:center;
 }
+.topSwiper{
+  width: 80vw;
+  margin-top: 2vh;
+  height: 20vw;
+}
+.topItem{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.topText{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+}
+.slide-image{
+  width: 20vw;
+  height: 20vw;
+}
 page {
   color: #898b89;
   font-size: 30rpx;
@@ -39,8 +60,11 @@ page {
   height: 5vh;
   align-items: left;
   line-height:5vh;
-  margin-top: 20rpx;
-  color: #333;
+  margin-top: 30rpx;
+  font-size:38rpx;
+  font-weight:bold;
+  color:#323332;
+
 }
 .topRecord{
   display: flex;
@@ -51,18 +75,23 @@ page {
   padding: 5rpx 0 5rpx 0;
 }
 .topRecordSong{
-  width: 65vw;
+  /* width: 40vw; */
   display:block;
-overflow:hidden;
+  padding: 0 30rpx 0 30rpx;
+  color: #646664;
+/* overflow:hidden;
 text-overflow:ellipsis;
-white-space:nowrap;
+white-space:nowrap; */
 
 }
+.playCount{
+  color: #979997;
+}
 .latestRecord{
-  padding: 10rpx 0 10rpx 0;
+  padding: 15rpx 0 15rpx 0;
   display: flex;
   flex-direction: row;
-  font-size: 12px;
+  font-size: 26rpx;
   width: 75vw;
 }
 .notice{

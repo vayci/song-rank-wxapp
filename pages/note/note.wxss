@@ -5,7 +5,10 @@
   color: #AFB3AF;
   font-size: 26rpx;
 }
-
+.payImg{
+  width: 60vw;
+  height: 60vw;
+}
 .foot{
   height: 20vh;
   display: flex;

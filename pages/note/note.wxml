@@ -9,10 +9,11 @@
   <view class='wrapper'>
     <view class='question_box'>
       <view bindtap='jump' data-index='1' data-title='常见问题' class='question'><text>常见问题</text><image class='more_png' src='../images/more.png'></image></view>
-      <view bindtap='jump' data-index='2' data-title='给予好评' class='question'><text>给予好评</text><image class='more_png' src='../images/more.png'></image></view>
       <view bindtap='jump' data-index='3' data-title='意见反馈' class='question'><text>意见反馈</text><image class='more_png' src='../images/more.png'></image></view>
       <view bindtap='jump' data-index='4' data-title='成长经历' class='question'><text>成长经历</text><image class='more_png' src='../images/more.png'></image></view>
+      <view bindtap='jump' data-index='2' data-title='赞助列表' class='question'><text>赞助列表</text><image class='more_png' src='../images/more.png'></image></view>
       <view bindtap='jump' data-index='5' data-title='关于作者' class='question'><text>关于作者</text><image class='more_png' src='../images/more.png'></image></view>
     </view>
+    <image class='payImg' src="http://cdn.olook.me/pay2.png" data-src="http://cdn.olook.me/pay2.png" bindtap="previewImage"></image>
     <official-account class='account'></official-account>
   </view>

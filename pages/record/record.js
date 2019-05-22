@@ -31,6 +31,7 @@ Page({
       title: '♥ ' + options.tusername,
     })
     var recordPage = this;
+    wx.showLoading({})
     //获取听歌记录
     wx.request({
       url: app.globalData.serverUrl + '/rank/record',
@@ -52,9 +53,8 @@ Page({
         //根据是否为系统自动批量更新的记录，对时间进行不同的format
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].changeTime == undefined) {
-            res.data[i].changeTime = '';
-          }
-          if (res.data[i].isBatchUpdate == 0) {
+             res.data[i].changeTime = '';
+          }else if (res.data[i].isBatchUpdate == 0) {
               res.data[i].changeTime
                 = utils.formatTimeStamp(utils.str2Date(res.data[i].changeTime));
           } else {
@@ -69,6 +69,7 @@ Page({
           //isBatchUpdate: res.data.isBatchUpdate,
           recordList: res.data
         })
+        wx.hideLoading()
       }
     })
   },

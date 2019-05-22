@@ -1,23 +1,29 @@
 <!--pages/star/star.wxml-->
 <view class='wrapper'>
-  <view class='server'>————当前服务器运行状态 <text style="color:{{proxyColor}}">{{proxyText}}</text>————</view>
-  <view class='leftView'>今日小程序关注用户累计播放歌曲 <text class='dailyCount'>{{dailyCount}}</text> 次</view>
-  <view class='leftView'>今日小程序关注用户播放歌曲Top5</view>
-    <view class="divLine"></view>
-  <view  class='topRecordView'>
-    <view class='topRecord' wx:for="{{top}}" wx:for-item="item" wx:key="songId" >
-      <view class='topRecordSong'>{{item.song}} - {{item.singer}} </view>
-      <view>{{item.count}}次</view>
-    </view>
-  </view>
+  <view class='leftView'>服务器状态 <text style="color:{{proxyColor}}">{{proxyText}}</text></view>
+  <view class='leftView'>今日共播放 <text class='dailyCount'>{{dailyCount}}</text> 次</view>
+  <view class='leftView'>播放日榜</view>
+  <swiper class='topSwiper'  indicator-dots="{{false}}"
+  autoplay="{{true}}"
+  interval="3000"
+  duration="1000">
+    <block wx:for="{{top}}" wx:for-item="item" wx:key="songId">
+    <swiper-item class='topItem'>
+      <image src="{{item.picUrl}}" class="slide-image"/>
+      <view class='topText'>
+        <view class='topRecordSong'>{{item.song}} - {{item.singer}} </view>
+        <view class='playCount'>{{item.count}}次</view>
+      </view>
+    </swiper-item>
+  </block>
+  </swiper>
 
-  <view class='leftView'>最新获取的播放数据</view>
-    <view class="divLine"></view>
+  <view class='leftView'>最新记录</view>
   <view class='recordView'>
     <view class='latestRecord' wx:for="{{latest}}" wx:for-item="item" wx:key="id" >
       <view>{{item.changeTime}}前 有用户播放了 {{item.song}} - {{item.singer}}</view>
     </view>
   </view>
-  <view class='notice'>本页面每5秒更新一次</view>
+  <!-- <view class='notice'>本页面每5秒更新一次</view> -->
 </view>
 
