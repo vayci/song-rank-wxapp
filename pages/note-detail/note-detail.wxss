@@ -5,7 +5,23 @@
   color: #AFB3AF;
   font-size: 26rpx;
 }
-
+.userinfo-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.scrollBox{
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+}
+.sponsorBox{
+  width: 120rpx;
+  height: 160rpx;
+  display: inline-block;
+  text-align: center;
+  margin: 15rpx;
+}
 .foot{
   height: 20vh;
   display: flex;
@@ -74,6 +90,23 @@
   font-size: 28rpx;
   color: #AFB3AF;
   padding: 15rpx 0 15rpx 0;
+}
+.bottomBlock{
+  height: 15vh;
+    width: 80vw;
+  font-size: 28rpx;
+  color: #AFB3AF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.userinfo-nickname{
+    font-size: 28rpx;
+  color: #AFB3AF;
+      overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
 }
 .title{
   color: #646664;

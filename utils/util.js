@@ -18,10 +18,12 @@ const formatDate = date => {
 }
 
 function formatTimeStamp(number) {
+  if (number == undefined || number==null){return '';}
   var data = new Date(number);
   return formatTime(data);
 }
 function formatTimeStampToDate(number) {
+  if (number == undefined || number == null) { return ''; }
   var data = new Date(number);
   return formatDate(data);
 }
@@ -32,6 +34,7 @@ const formatNumber = n => {
 }
 
 const str2Date = str => {
+  if(str==undefined){return null;}
   str = str.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '').replace(/(-)/g, '/')
   str = str.slice(0, str.indexOf("."))
   return new Date(str)

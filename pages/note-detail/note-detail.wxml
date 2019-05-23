@@ -23,9 +23,18 @@
       </view>
       </view>
       <view wx:if="{{index==2}}">
-        <view class='block'>
-            <view>敬请期待</view>
-        </view>
+     <scroll-view
+            class='scrollBox'
+            scroll-y
+            style="height: 85vh;"
+          >
+            <view  class='sponsorBox' wx:for="{{sponsor}}"  wx:for-item="user"  wx:key="id">
+              <image class='userinfo-avatar' src='{{user.avatarUrl}}'/>
+              <view class='userinfo-nickname'>{{user.nickName}}</view>
+            </view>
+        </scroll-view>
+        <view class='bottomBlock'><view>感谢以上微信用户对本小程序的支持</view>
+        <view>(排名不分先后)</view></view>
       </view> 
       <view wx:if="{{index==3}}">
         <view class='block'>

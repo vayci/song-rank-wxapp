@@ -34,12 +34,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "update",
-					"pathName": "pages/index/index",
+					"pathName": "pages/note/note",
 					"query": "",
 					"scene": 1089
 				},

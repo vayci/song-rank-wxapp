@@ -1,5 +1,5 @@
+const app = getApp()
 Page({
-
   data: {
     showNav: true,
     index: 1,
@@ -7,7 +7,7 @@ Page({
   },
 
   onLoad: function (options) {
-
+    let _this = this
     this.setData({
       index: options.index
     })
@@ -16,7 +16,17 @@ Page({
     })
 
     if (options.index=='2'){
-      console.log('请求数据')
+      wx.request({
+        url: app.globalData.serverUrl + '/user/sponsor',
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          _this.setData({
+            sponsor: res.data
+          })
+        }
+      })
     }
   },
 
