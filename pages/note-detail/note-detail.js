@@ -3,18 +3,22 @@ Page({
   data: {
     showNav: true,
     index: 1,
-    sponsor:[]
+    sponsor:[],
+    unkownData:false
   },
 
   onLoad: function (options) {
     let _this = this
-    this.setData({
-      index: options.index
-    })
+    this.setData({index: options.index})
     wx.setNavigationBarTitle({
       title: options.title
     })
-
+    if(options.index=='3'){
+      const unkownData = wx.getStorageSync('unkownData')
+      this.setData({
+        unkownData: unkownData
+      })
+    }
     if (options.index=='2'){
       wx.request({
         url: app.globalData.serverUrl + '/user/sponsor',
@@ -37,24 +41,10 @@ Page({
   onShow: function () {
 
   },
-
-  onHide: function () {
-
+  openUnkownData(e) {
+    wx.setStorage({
+      key: 'unkownData',
+      data: e.detail.value
+    })
   },
-
-  onUnload: function () {
-
-  },
-
-  onPullDownRefresh: function () {
-
-  },
-
-  onReachBottom: function () {
-
-  },
-
-  onShareAppMessage: function () {
-
-  }
 })

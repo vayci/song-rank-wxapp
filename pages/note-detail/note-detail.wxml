@@ -21,6 +21,7 @@
         <view class='title'>订阅通知后为什么不能一直进行提醒？</view>
         <view>由于官方限制，订阅推送存在有效期并且需要用户点击进行订阅</view>
       </view>
+      <view class='block'><button open-type='feedback'>上报错误</button></view>
       </view>
       <view wx:if="{{index==2}}">
      <scroll-view
@@ -38,7 +39,7 @@
       </view> 
       <view wx:if="{{index==3}}">
         <view class='block'>
-            <button open-type='feedback'>上报错误</button>
+          <view class='rowBlock'><view class='title'>显示不确定数据：</view><switch checked='{{unkownData}}' bindchange="openUnkownData" /></view>
         </view> 
       </view>
       <view wx:if="{{index==4}}">

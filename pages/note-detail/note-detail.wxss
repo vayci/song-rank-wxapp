@@ -112,3 +112,11 @@
   color: #646664;
   font-weight: bold;
 }
+.rowBlock{
+  display: flex;
+  flex-direction: row;
+  height: 5vh;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5vh;
+}

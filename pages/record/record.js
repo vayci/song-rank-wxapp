@@ -30,21 +30,29 @@ Page({
     wx.setNavigationBarTitle({
       title: '♥ ' + options.tusername,
     })
-    var recordPage = this;
+    this.loadData(this.data.offset)
+
+  },
+  loadData: function(offset){
+    var _this = this;
+    const unkownData = wx.getStorageSync('unkownData')
     wx.showLoading({})
     //获取听歌记录
     wx.request({
       url: app.globalData.serverUrl + '/rank/record',
       data: {
-        userId: options.userId
+        userId: _this.data.userId,
+        isBatchUpdate: unkownData ? 1 : 0,
+        offset: offset,
+        limit: 10
       },
       header: {
         'content-type': 'application/json'
       },
       success: function (res) {
         if (res.data == undefined || res.data.length == 0) {
-          recordPage.data.tips = "正在努力获取Ta的听歌记录，请耐心等待...";
-          recordPage.setData({
+          _this.data.tips = "正在努力获取Ta的听歌记录，请耐心等待...";
+          _this.setData({
             tips: recordPage.data.tips,
             showImg: true
           })
@@ -53,21 +61,19 @@ Page({
         //根据是否为系统自动批量更新的记录，对时间进行不同的format
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].changeTime == undefined) {
-             res.data[i].changeTime = '';
-          }else if (res.data[i].isBatchUpdate == 0) {
-              res.data[i].changeTime
-                = utils.formatTimeStamp(utils.str2Date(res.data[i].changeTime));
+            res.data[i].changeTime = '';
+          } else if (res.data[i].isBatchUpdate == 0) {
+            res.data[i].changeTime
+              = utils.formatTimeStamp(utils.str2Date(res.data[i].changeTime));
           } else {
-              res.data[i].changeTime
-                = utils.formatTimeStampToDate(utils.str2Date(res.data[i].changeTime));
+            res.data[i].changeTime
+              = utils.formatTimeStampToDate(utils.str2Date(res.data[i].changeTime));
           }
 
         }
-        recordPage.data.recordList = res.data;
-        //recordPage.data.isBatchUpdate = res.data.isBatchUpdate;
-        recordPage.setData({
-          //isBatchUpdate: res.data.isBatchUpdate,
-          recordList: res.data
+        let records = _this.data.recordList.concat(res.data)
+        _this.setData({
+          recordList: records
         })
         wx.hideLoading()
       }
@@ -155,6 +161,10 @@ Page({
       }
     }
   },
+  lower:function(e){
+    this.data.offset = this.data.offset + 1
+    this.loadData(this.data.offset)
+  },
   data: {
     userId: null,
     tuserName: null,
@@ -164,6 +174,7 @@ Page({
     showTmpMsg: false,
     showImg: false,
     playing: '',
-    fromApp: ''
+    fromApp: '',
+    offset:0
   }
 })  

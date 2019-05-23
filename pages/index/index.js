@@ -4,7 +4,6 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     jobs: [],
     subscribe: [],
     lock: false,
@@ -15,7 +14,7 @@ Page({
     //appjs获取到code后回调获取openid sessionKey
     if (app.globalData.code) {
       this.jsCode2Session(app.globalData.code);
-    } else if (this.data.canIUse) {
+    } else {
       app.codeReadyCallback = res => {
         this.jsCode2Session(res.code);
       }
@@ -37,7 +36,7 @@ Page({
 
   //code换取openid sessionKey
   jsCode2Session(code) {
-    var indexPage = this;
+    var _this = this;
     wx.request({
       url: app.globalData.serverUrl + '/wx/session',
       data: {
@@ -53,8 +52,8 @@ Page({
           key: "openid",
           data: res.data.openid
         })
-        if (indexPage.openIdReadyCallback) {
-          indexPage.openIdReadyCallback(res.data.openid);
+        if (_this.openIdReadyCallback) {
+          _this.openIdReadyCallback(res.data.openid);
         }
       },
       fail: function (res) {
