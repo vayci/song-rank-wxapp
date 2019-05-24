@@ -18,9 +18,17 @@ Page({
   //获取用户关联爬虫任务
   getTargetUsers() {
     let self = this;
-    let openid = app.globalData.openId
-    if(openid==null||openid==undefined){
-      return;
+    let openid = wx.getStorageSync('openid');
+    if (!openid) {
+      openid = app.globalData.openid;
+      if (!openid) {
+        wx.showToast({
+          title: "出错啦！没获取到您的身份信息~",
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
     }
     wx.request({
       url: app.globalData.serverUrl + '/msg',

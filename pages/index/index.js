@@ -113,7 +113,7 @@ Page({
 
   //获取用户关联爬虫任务
   getTimerJobs(openid) {
-    var indexPage = this;
+    var _this = this;
     wx.request({
       url: app.globalData.serverUrl + '/task',
       data: {
@@ -123,17 +123,13 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        indexPage.data.jobs = res.data;
-        //indexPage.getSubscribe(openid);
-        //indexPage.showTimerJobs(res.data);
-        indexPage.setData({
-          jobs: indexPage.data.jobs
+        _this.setData({
+          jobs: res.data
         })
-
       }
     })
   },
-
+  //弃用
   getSubscribe(openid) {
     var indexPage = this;
     wx.request({

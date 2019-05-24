@@ -18,7 +18,7 @@
     <view class='box' wx:for="{{recordList}}" wx:for-item="recrod" wx:key="id">
         <view class='leftview'>
           <image src='{{recrod.picUrl}}?param=140y140' class="song_cover {{playing==recrod.songId?'':'gray'}}"></image>
-          <view class='song_info'>
+          <view class='song_info' bindlongpress='copyname' data-song='{{recrod.song}}'>
           <text class="record_song width_limit song_title">{{recrod.song}}</text>
           <text class="record_singer width_limit">{{recrod.singer}}</text>
           <text class="record_singer">{{recrod.changeTime}}</text>

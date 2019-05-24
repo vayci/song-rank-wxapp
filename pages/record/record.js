@@ -115,6 +115,18 @@ Page({
       }
     }
   },
+  copyname:function(e){
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.song,
+      success(res) {
+        wx.showToast({
+          title: "复制歌名成功",
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  },
   //点击订阅，生成模板消息记录
   formSubmit: function (e) {
     var recordPage = this;

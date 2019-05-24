@@ -10,7 +10,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.0",
+	"libVersion": "1.9.9",
 	"appid": "wxd422e4a71b224d86",
 	"projectname": "song_rank_wxapp",
 	"isGameTourist": false,

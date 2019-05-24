@@ -77,6 +77,18 @@ Page({
 
     if (true){
       if (targetid=="")return;
+      let openid = wx.getStorageSync('openid');
+      if(!openid){
+        openid = app.globalData.openid;
+        if(!openid){
+          wx.showToast({
+            title: "出错啦！没获取到您的身份信息~",
+            icon: 'none',
+            duration: 2000
+          })
+          return;
+        }
+      }
       wx.request({
         url: app.globalData.serverUrl + '/rank/check',
         data: {
@@ -92,7 +104,7 @@ Page({
               method: 'POST',
               data: {
                 jobAlias: targetNickName + "的爬虫任务",
-                openId: app.globalData.openId,
+                openId: openid,
                 targetAvatar: targetAvatar + '?param=180y180',
                 targetNickname: targetNickName,
                 targetUserId: targetid,
