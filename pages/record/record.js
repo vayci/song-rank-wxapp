@@ -53,7 +53,7 @@ Page({
         if (res.data == undefined || res.data.length == 0) {
           _this.data.tips = "正在努力获取Ta的听歌记录，请耐心等待...";
           _this.setData({
-            tips: recordPage.data.tips,
+            tips: _this.data.tips,
             showImg: true
           })
           return;
