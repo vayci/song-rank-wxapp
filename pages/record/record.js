@@ -75,6 +75,8 @@ Page({
         _this.setData({
           recordList: records
         })
+      },
+      complete:function(res){
         wx.hideLoading()
       }
     })
