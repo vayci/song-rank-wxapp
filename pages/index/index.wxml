@@ -1,46 +1,38 @@
-<!--index.wxml-->
 <view class='wrapper'>
-<!-- <view class='nav_top'></view> -->
-<view class='top'>
-  <view class='banner'>
-  <text class='banner_title'>你在听歌吗\n</text><text class='banner_sub_title'>随时关注好友最近听的歌</text>
+  <view class='top'>
+    <view class='banner'>
+    <text class='banner_title'>你在听歌吗\n</text><text class='banner_sub_title'>随时关注好友最近听的歌</text>
+    </view>
   </view>
-</view>
+  <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="5000">
+    <block wx:for="{{msgList}}" wx:key="id">
+    <!-- <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate"> -->
+    <navigator>
+      <swiper-item>
+      <view class="swiper_item"></view>
+      </swiper-item>
+    </navigator>
+    </block>
+  </swiper>
 
-<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="5000">
-  <block wx:for="{{msgList}}" wx:key="id">
-   <!-- <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate"> -->
-   <navigator>
-    <swiper-item>
-     <view class="swiper_item"></view>
-    </swiper-item>
-   </navigator>
-  </block>
-</swiper>
-
-<view class='page_bd'>
-  <view class='sub_title'>关注用户</view>
-  <view class='tagetuserinfo'>
-  <view class='tagetusers'>
-      <view class='tagetuser' wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId" 
-      bindtap='getRankRecord' bindlongpress='deleteJob' id='{{job.targetUserId}}' data-jobid='{{job.id}}' 
-      data-tusername='{{job.targetNickname}}'>
-        <image src='{{job.targetAvatar}}' wx:if="{{job.s_flag}}"  class="userinfo-avatar green_avatar"        background-size="cover"></image>
-        <image src='{{job.targetAvatar}}' wx:else="{{job.s_flag}}"  class="userinfo-avatar" background-size="cover"></image>
-        <!-- <text class='nickname'>{{job.targetNickname}}</text> -->
-      </view>  
-
-      <button class='btn2' open-type="getUserInfo"  bindtouchstart='onButtonTap' bindtouchend='onButtonTapCancel'           bindgetuserinfo="onGotUserInfo">
-        <image class='btnImg' background-size="cover" 
-        src='{{addBtntouched?"../images/add-user.png":"../images/add-user-un.png"}}'></image>
-      </button>
-    </view>
-    </view>
-</view>
-<view class='statistics'>
-  <view class='sub_title'>最新动态</view>
-  <view class='notice' wx:for="{{msgList}}" wx:key="id">{{item.title}}</view>
-</view>
-
-
+  <view class='page_bd'>
+    <view class='sub_title'>关注用户</view>
+    <view class='tagetuserinfo'>
+    <view class='tagetusers'>
+        <view class='tagetuser' wx:for="{{jobs}}" wx:for-item="job" wx:key="targetUserId" 
+        bindtap='getRankRecord' bindlongpress='deleteJob' id='{{job.targetUserId}}' data-jobid='{{job.id}}' 
+        data-tusername='{{job.targetNickname}}'>
+          <image src='{{job.targetAvatar}}' wx:if="{{job.s_flag}}"  class="userinfo-avatar green_avatar" background-size="cover"></image>
+          <image src='{{job.targetAvatar}}' wx:else="{{job.s_flag}}"  class="userinfo-avatar" background-size="cover"></image>
+        </view>  
+        <button class='add_btn' open-type="getUserInfo"  bindtouchstart='onButtonTap' bindtouchend='onButtonTapCancel' bindgetuserinfo="onGotUserInfo">
+          <image class='btnImg' background-size="cover" src='{{addBtntouched?"../images/add-user.png":"../images/add-user-un.png"}}'></image>
+        </button>
+      </view>
+      </view>
+  </view>
+  <view class='statistics'>
+    <view class='sub_title'>最新动态</view>
+    <view class='notice' wx:for="{{msgList}}" wx:key="id">{{item.title}}</view>
+  </view>
 </view>

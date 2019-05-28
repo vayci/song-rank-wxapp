@@ -1,7 +1,3 @@
-<!--pages/subscribe/subscribe.wxml-->
-<!-- <view class='nav_top'>
-订阅听歌提醒
-</view> -->
 <view class='container'>
   <view class="search_bd">
     <view class='userinfo-text-name' wx:if="{{userList.length==0}}">在主页关注好友之后才能进行订阅</view>
