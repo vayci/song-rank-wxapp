@@ -1,4 +1,3 @@
-<!--pages/star/star.wxml-->
 <view class='wrapper'>
   <view class='leftView'>服务器状态 <text style="color:{{proxyColor}}">{{proxyText}}</text></view>
   <view class='leftView'>今日共播放 <text class='dailyCount'>{{dailyCount}}</text> 次</view>

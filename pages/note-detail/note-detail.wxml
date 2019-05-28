@@ -15,7 +15,7 @@
       </view>
       <view class='block'>
         <view class='title'>记录时间中的某个时刻是什么意思？</view>
-        <view>当小程序同一个时间检测到多条记录时，记录为“某个时刻”</view>
+        <view>当小程序同一个时间检测到多条记录时，记录为“某个时刻”。可在程序设置中调整是否显示这部分数据，默认为不显示</view>
       </view>
       <view class='block'>
         <view class='title'>订阅通知后为什么不能一直进行提醒？</view>
@@ -45,7 +45,7 @@
       <view wx:if="{{index==4}}">
         <view class='block'>
           <view class='title'>2018年3月</view>
-          <view>小程序创建</view>
+          <view>小程序项目创建</view>
         </view>
         <view class='block'>
           <view class='title'>2018年7月</view>
@@ -55,11 +55,15 @@
           <view class='title'>2019年1月</view>
           <view>小程序第二个版本更新</view>
         </view>
+        <view class='block'>
+          <view class='title'>2019年5月</view>
+          <view>小程序服务器架构调整，服务更加稳定</view>
+        </view>
       </view>
       <view wx:if="{{index==5}}">
         <view class='block'>
           <view class='title'>小程序开发者</view>
-          <view>小红（英文名：Red）</view>
+          <view>小红（Red）</view>
 
         </view>
         <view class='block'>

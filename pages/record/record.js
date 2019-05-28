@@ -50,6 +50,15 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        if(res.statusCode!=200){
+          wx.hideLoading()
+          wx.showToast({
+            title: res.data,
+            icon: 'none',
+            duration: 2000
+          })
+          return;
+        }
         if (res.data == undefined || res.data.length == 0) {
           _this.data.tips = "正在努力获取Ta的听歌记录，请耐心等待...";
           _this.setData({

@@ -48,13 +48,25 @@ Page({
   },
   addSubscribe(e){
     var self = this;
+    let openid = wx.getStorageSync('openid');
+    if (!openid) {
+      openid = app.globalData.openid;
+      if (!openid) {
+        wx.showToast({
+          title: "出错啦！没获取到您的身份信息~",
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
+    }
     wx.request({
       url: app.globalData.serverUrl + '/msg',
       method: 'POST',
       data: {
         formId: e.detail.formId,
         isValid: 0,
-        openid: app.globalData.openId,
+        openid: openid,
         targetUserId: e.target.dataset.userId
       },
       header: {
