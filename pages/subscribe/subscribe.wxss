@@ -11,9 +11,6 @@
   justify-content:center;
   align-items:center;
 }
-.nav_top {
-  justify-content:center;
-}
 .search_bd{
   height: 80vh;
   width: 80vw;

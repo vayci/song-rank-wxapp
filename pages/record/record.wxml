@@ -1,13 +1,4 @@
-<!--pages/record/record.wxml-->
-  <!-- <view class='nav_top'>
-    <navigator open-type='navigateBack' class='back_logo_box'>
-      <image class="back_logo" src='../images/back.png'></image>
-    </navigator>    
-      <text>{{tuserName}}</text>
-      <view class='back_logo_box'></view>
-  </view> -->
-
-  <view class='wrapper'>
+ <view class='wrapper'>
   <scroll-view  bindscrolltolower="lower" class='record_list' scroll-y='true'>
     <!-- 无数据处理 -->
     <view class="img_box" wx:if="{{showImg}}">

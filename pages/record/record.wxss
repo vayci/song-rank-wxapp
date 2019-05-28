@@ -40,27 +40,6 @@
   color: #646664;
   font-size: 30rpx;
 }
-.add_btn{
-    border-radius: 0.9;
-    width: 220rpx;
-    height: 58rpx;
-    line-height: 58rpx;
-    color: #fff;
-    margin-top: 50rpx;
-    font-size: 30rpx;
-    background: #74ACDC;
-}
-.disabled_add_btn{
-      border-radius: 0.9;
-    width: 220rpx;
-    height: 58rpx;
-    line-height: 58rpx;
-    color: #fff;
-    margin-top: 50rpx;
-    font-size: 30rpx;
-    background: #A9A9A9;
-}
-
 .record_list{
   height: 90vh;
   margin-top: 2vh;
@@ -71,14 +50,6 @@
   width: 80vw;
   border-radius: 5px;
   color: #9ba0b1;
-}
-.foot{
-  height: 22vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30rpx;
 }
 .img_box{
   width: 100%;
@@ -91,10 +62,6 @@
 .bd_img{
   width:85vw;
   height:85vw;
-}
-.tips{
-    color: #fff;
-    font-size: 25rpx;
 }
 .song_cover{
   width: 126rpx;
