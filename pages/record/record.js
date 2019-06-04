@@ -138,39 +138,6 @@ Page({
       }
     })
   },
-  //点击订阅，生成模板消息记录
-  formSubmit: function (e) {
-    var recordPage = this;
-    wx.request({
-      url: app.globalData.serverUrl + '/msg',
-      method: 'POST',
-      data: {
-        formId: e.detail.formId,
-        isValid: 0,
-        openid: app.globalData.openId,
-        targetUserId: recordPage.data.userId
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        wx.showToast({
-          title: '订阅成功！Ta下次听歌我会通知您噢~',
-          icon: 'none',
-          duration: 2000
-        })
-        recordPage.data.showTmpMsg = false;
-        recordPage.setData({
-          showTmpMsg: false
-        })
-      }
-    })
-  },
-  backIndex: function (e) {
-    wx.redirectTo({
-      url: '/pages/index/index'
-    })
-  },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮

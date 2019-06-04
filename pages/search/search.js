@@ -47,13 +47,17 @@ Page({
     })
   },
   addSubscribe(e) {
+    let openid = app.globalData.openId
+    if(!openid){
+      openid = wx.getStorageSync('openid')
+    }
     wx.request({
       url: app.globalData.serverUrl + '/msg',
       method: 'POST',
       data: {
         formId: e.detail.formId,
         isValid: 0,
-        openid: app.globalData.openId,
+        openid: openid,
         targetUserId: e.currentTarget.dataset.id
       },
       header: {
@@ -70,19 +74,19 @@ Page({
   },
   //选择订阅用户
   selectUser: function(e){
-    var thisJs = this;
+    var _this = this;
     var targetid = e.currentTarget.dataset.id;
     var targetNickName = e.currentTarget.dataset.nickname;
     var targetAvatar = e.currentTarget.dataset.avatar;
 
     if (true){
       if (targetid=="")return;
-      let openid = wx.getStorageSync('openid');
+      let openid = app.globalData.openid;
       if(!openid){
-        openid = app.globalData.openid;
+        openid = wx.getStorageSync('openid');
         if(!openid){
           wx.showToast({
-            title: "出错啦！没获取到您的身份信息~",
+            title: "获取您的身份信息失败\r\n请稍后再试!",
             icon: 'none',
             duration: 2000
           })
@@ -119,7 +123,7 @@ Page({
                   icon: 'none',
                   duration: 2000
                 })
-                thisJs.addSubscribe(e)
+                _this.addSubscribe(e)
               },
               fail:function(res){
                 console.log('添加关注失败' + res )
@@ -165,7 +169,7 @@ Page({
                 array.push(item);
             }
             console.log(array)
-            thisJs.setData({
+            _this.setData({
               array: array,
               tip_words: '以下微信用户关注了你噢~'
             })

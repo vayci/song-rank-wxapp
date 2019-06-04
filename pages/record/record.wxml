@@ -20,4 +20,5 @@
         </view>
   </view>
 </scroll-view>
+<view class='notice'>下拉加载更多 长按复制歌名</view>
 </view>

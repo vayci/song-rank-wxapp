@@ -1,4 +1,3 @@
-//index.js
 const app = getApp()
 Page({
   data: {
@@ -9,23 +8,34 @@ Page({
     lock: false,
     addBtntouched: false
   },
-
-  onLoad: function () {
-    //appjs获取到code后回调获取openid sessionKey
-    if (app.globalData.code) {
-      this.jsCode2Session(app.globalData.code);
-    } else {
-      app.codeReadyCallback = res => {
-        this.jsCode2Session(res.code);
+  setGlobalOpenid() {
+    let _this = this
+    app.getOpenid().then(function (res) {
+      if (res.status == 200 && res.data) {
+        app.globalData.openId = res.data
+        app.globalData.launchFail = false
+        if (_this.openIdReadyCallback) {
+          _this.openIdReadyCallback(res.data.openid);
+        }
+      } else {
+        wx.showToast({
+          title: "获取您的身份信息失败\r\n请稍后再试~",
+          icon: 'none',
+          duration: 2000
+        })
       }
-    }
-    this.getAppNotice();
+    });
   },
-
+  onLoad: function () {
+    this.setGlobalOpenid()
+    this.getAppNotice()
+  },
+ 
   onShow: function () {
-    app.globalData.openId = wx.getStorageSync('openid');
-    //jsCode2Session 获取到openid后回调获取用户任务
-    if (app.globalData.openId != null && app.globalData.openId != '') {
+    if (app.globalData.launchFail){
+      this.setGlobalOpenid()
+    }
+    if (app.globalData.openId) {
       this.getTimerJobs(app.globalData.openId);
     } else {
       this.openIdReadyCallback = res => {
@@ -33,49 +43,10 @@ Page({
       }
     }
   },
-
-  //code换取openid sessionKey
-  jsCode2Session(code) {
-    var _this = this;
-    wx.request({
-      url: app.globalData.serverUrl + '/wx/session',
-      data: {
-        code: app.globalData.code
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        app.globalData.openId = res.data.openid;
-        app.globalData.sessionKey = res.data.session_key;
-        wx.setStorage({
-          key: "openid",
-          data: res.data.openid
-        })
-        if (_this.openIdReadyCallback) {
-          _this.openIdReadyCallback(res.data.openid);
-        }
-      },
-      fail: function (res) {
-      }
-    })
-  },
-  onButtonTap(e) {
-    this.setData({
-      addBtntouched: true
-    })
-  },
-  onButtonTapCancel(e) {
-    this.setData({
-      addBtntouched: false
-    })
-  },
-  //点击添加按钮 上报用户信息 跳转搜索页
   onGotUserInfo(userInfo) {
     app.globalData.userInfo = userInfo.detail.rawData;
     var isUpload = wx.getStorageSync('isUpload');
     if (!isUpload) {
-      //用户信息已准备完成
       if (app.globalData.userInfo != null && app.globalData.openId != null) {
         this.uploadUserInfo(app.globalData.openId, app.globalData.userInfo)
       }
@@ -85,8 +56,6 @@ Page({
       url: '/pages/search/search'
     })
   },
-
-  //上传用户信息
   uploadUserInfo(openid, userInfo) {
     userInfo = JSON.parse(userInfo);
     userInfo.openId = openid;
@@ -110,9 +79,10 @@ Page({
       }
     })
   },
-
-  //获取用户关联爬虫任务
   getTimerJobs(openid) {
+    if(!openid){
+      openid = wx.getStorageSync('openid')
+    }
     var _this = this;
     wx.request({
       url: app.globalData.serverUrl + '/task',
@@ -129,46 +99,9 @@ Page({
       }
     })
   },
-  //弃用
-  getSubscribe(openid) {
-    var indexPage = this;
-    wx.request({
-      url: app.globalData.serverUrl + '/msg/getSubscribe',
-      data: {
-        openid: openid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        for (var i = 0; i < res.data.length; i++) {
-          for (var j = 0; j < indexPage.data.jobs.length; j++) {
-            if (indexPage.data.jobs[j].targetUserId == res.data[i].targetUserId) {
-              indexPage.data.jobs[j].s_flag = true
-            }
-          }
-        }
-        indexPage.setData({
-          jobs: indexPage.data.jobs
-        })
-        indexPage.showTimerJobs(indexPage.data.jobs);
-      }
-    })
-  },
-
-  //显示关注好友数量
-  showTimerJobs(timerJobs) {
-    if (timerJobs.length > 0) {
-      this.setData({
-        jobs: timerJobs
-      })
-    }
-  },
-
-  //点击关注头像 跳转至听歌记录页面
   getRankRecord(e) {
     let isUpload = wx.getStorageSync('isUpload');
-    if (!isUpload){
+    if (!isUpload) {
       wx.showToast({
         title: '请先点击右侧添加关注按钮进行用户授权',
         icon: 'none',
@@ -185,11 +118,10 @@ Page({
     }
 
   },
-
-  // 长按删除任务
+  //长按删除任务
   deleteJob(e) {
-    var indexPage = this;
-    indexPage.data.lock = true;
+    var _this = this;
+    _this.data.lock = true;
     wx.showModal({
       title: '提示',
       content: '确定要取消关注Ta吗?',
@@ -204,8 +136,8 @@ Page({
               'content-type': 'application/json'
             },
             success: function (res) {
-              indexPage.data.lock = false;
-              indexPage.getTimerJobs(app.globalData.openId);
+              _this.data.lock = false;
+              _this.getTimerJobs(_this.openid);
               wx.showToast({
                 title: res.data,
                 icon: 'none',
@@ -214,14 +146,48 @@ Page({
             }
           })
         }
-        indexPage.data.lock = false;
+        _this.data.lock = false;
+      }
+    })
+  },
+  //弃用
+  getSubscribe(openid) {
+    var _this = this;
+    wx.request({
+      url: app.globalData.serverUrl + '/msg/getSubscribe',
+      data: {
+        openid: openid
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        for (var i = 0; i < res.data.length; i++) {
+          for (var j = 0; j < _this.data.jobs.length; j++) {
+            if (_this.data.jobs[j].targetUserId == res.data[i].targetUserId) {
+              _this.data.jobs[j].s_flag = true
+            }
+          }
+        }
+        _this.setData({
+          jobs: _this.data.jobs
+        })
+        _this.showTimerJobs(_this.data.jobs);
       }
     })
   },
 
+  //显示关注好友数量
+  showTimerJobs(timerJobs) {
+    if (timerJobs.length > 0) {
+      this.setData({
+        jobs: timerJobs
+      })
+    }
+  },
   //获取系统公告
   getAppNotice() {
-    var indexPage = this;
+    var _this = this;
     wx.request({
       url: app.globalData.serverUrl + '/notice/type/warn',
       header: {
@@ -233,7 +199,7 @@ Page({
           res.data.forEach(function (value) {
             notice_arr.push({ id: value.id, url: "url", title: value.content });
           });
-          indexPage.setData({
+          _this.setData({
             msgList: notice_arr
           });
         }
@@ -245,10 +211,18 @@ Page({
           duration: 2000
         })
       }
-
     })
   },
-
+  onButtonTap(e) {
+    this.setData({
+      addBtntouched: true
+    })
+  },
+  onButtonTapCancel(e) {
+    this.setData({
+      addBtntouched: false
+    })
+  },
   //点击转发
   onShareAppMessage: function (res) {
     if (res.from === 'button') {

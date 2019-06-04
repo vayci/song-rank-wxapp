@@ -3,27 +3,18 @@ Page({
   data: {
     text: 'This is page data.'
   },
-  onLoad(options) {
-    // Do some initialize when page load.
-  },
-  onReady() {
-    // Do something when page ready.
-  },
   onShow() {
     this.getTargetUsers()
   },
-  onShareAppMessage() {
-    // return custom share data when user share.
-  },
   //获取用户关联爬虫任务
   getTargetUsers() {
-    let self = this;
-    let openid = wx.getStorageSync('openid');
+    let _this = this;
+    let openid = app.globalData.openid;
     if (!openid) {
-      openid = app.globalData.openid;
+      openid = wx.getStorageSync('openid');
       if (!openid) {
         wx.showToast({
-          title: "出错啦！没获取到您的身份信息~",
+          title: "获取您的身份信息失败\r\n请稍后再试~",
           icon: 'none',
           duration: 2000
         })
@@ -39,7 +30,7 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        self.setData({
+        _this.setData({
           userList: res.data
         });
 
@@ -47,13 +38,13 @@ Page({
     })
   },
   addSubscribe(e){
-    var self = this;
-    let openid = wx.getStorageSync('openid');
+    var _this = this;
+    let openid = app.globalData.openid;
     if (!openid) {
-      openid = app.globalData.openid;
+      openid = wx.getStorageSync('openid');
       if (!openid) {
         wx.showToast({
-          title: "出错啦！没获取到您的身份信息~",
+          title: "获取您的身份信息失败\r\n请稍后再试~",
           icon: 'none',
           duration: 2000
         })
@@ -79,7 +70,7 @@ Page({
             icon: 'none',
             duration: 2000
           })
-          self.getTargetUsers()
+          _this.getTargetUsers()
         }else{
           wx.showToast({
             title: res.data,

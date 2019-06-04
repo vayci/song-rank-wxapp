@@ -1,15 +1,6 @@
 //app.js
 App({
   onLaunch: function () {
-
-    wx.login({
-      success: res => {
-        this.globalData.code = res.code;
-        if (this.codeReadyCallback) {
-          this.codeReadyCallback(res)
-        }
-      }
-    })
     if (wx.canIUse('getUpdateManager')){
       const updateManager = wx.getUpdateManager()
       updateManager.onUpdateReady(function () {
@@ -24,12 +15,50 @@ App({
         })
       })
     }
-
     wx.getSystemInfo({
       success: function (res) {
         console.log("SDKVersion: "+res.SDKVersion);
       }
     })
+  },
+  getOpenid: function () {
+    let _this = this
+    return new Promise(function (resolve, reject) {
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.request({
+              url: _this.globalData.serverUrl + '/wx/session',
+              data: { "code": res.code },
+              method: 'GET',
+              header: {
+                'Content-type': 'application/json'
+              },
+              success: function (res) {
+                if(res.statusCode == 200){
+                  wx.setStorageSync('openid', res.data.openid);//存储openid
+                  var res = {
+                    status: res.statusCode,
+                    data: res.data.openid
+                  }
+                  _this.globalData.launchFail = false
+                  resolve(res);
+                }else{
+                  var res = {
+                    status: res.statusCode
+                  }
+                  resolve(res);
+                  console.log('获取用户登录态失败！' + res.status)
+                }
+              }
+            });
+          } else {
+            console.log('获取用户登录态失败！' + res.errMsg)
+            reject('error');
+          }
+        }
+      })
+    });
   },
   globalData: {
     userInfo: null,
@@ -40,6 +69,7 @@ App({
     unionId: null,
     sessionKey: null,
     authorize: false,
-    sdk:null
+    sdk:null,
+    launchFail:true
   }
 })

@@ -91,3 +91,8 @@
 .song_info .song_title{
   color: #646664;
 }
+.notice{
+  margin-top: 3vh;
+  font-size: 26rpx;
+  color: #AFB3AF;
+}
