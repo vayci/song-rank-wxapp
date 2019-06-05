@@ -6,15 +6,20 @@ Page({
     jobs: [],
     subscribe: [],
     lock: false,
-    addBtntouched: false
+    addBtntouched: false,
+    loginLock: false
   },
   setGlobalOpenid() {
+    if(this.loginLock){return}
+    this.loginLock = true
     let _this = this
     app.getOpenid().then(function (res) {
       if (res.status == 200 && res.data) {
+        console.log('openid ok ' + res.data)
         app.globalData.openId = res.data
         app.globalData.launchFail = false
         if (_this.openIdReadyCallback) {
+          console.log('invoke openid callback')
           _this.openIdReadyCallback(res.data.openid);
         }
       } else {
@@ -24,20 +29,24 @@ Page({
           duration: 2000
         })
       }
+      _this.loginLock = false
     });
   },
   onLoad: function () {
+    console.log('page index onLoad')
     this.setGlobalOpenid()
     this.getAppNotice()
   },
  
   onShow: function () {
+    console.log('page index onShow launchFaile:' + app.globalData.launchFail + ' openid:' + app.globalData.openId)
     if (app.globalData.launchFail){
       this.setGlobalOpenid()
     }
     if (app.globalData.openId) {
       this.getTimerJobs(app.globalData.openId);
     } else {
+      console.log('set openid callback')
       this.openIdReadyCallback = res => {
         this.getTimerJobs(app.globalData.openId);
       }
