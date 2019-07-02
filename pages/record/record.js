@@ -60,7 +60,7 @@ Page({
           return;
         }
         if (res.data == undefined || res.data.length == 0) {
-          _this.data.tips = "正在努力获取Ta的听歌记录，请耐心等待...";
+          _this.data.tips = "TA下次听歌才会获取到记录，耐心等一等吧...";
           _this.setData({
             tips: _this.data.tips,
             showImg: true
