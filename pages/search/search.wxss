@@ -51,7 +51,7 @@
    align-items: center;
    justify-content: space-between;
    border-radius: 10rpx;
-   margin: 2vh 0 2vh 0;
+   margin: 2vh 0 5vh 0;
    color: #000;
    font-size: 30rpx;
 }
@@ -129,4 +129,10 @@
 .userinfo-text-motto{
   font-size: 22rpx;
   color: #AFB3AF;
+}
+.notice-text{
+  margin-top: 3vh;
+  font-size: 26rpx;
+  color: #AFB3AF;
+  margin-bottom: 1vh;
 }

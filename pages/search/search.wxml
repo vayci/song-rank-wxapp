@@ -2,7 +2,7 @@
   <view class="search_box">
     <view class="search_input">
     <image class='s_icon' src='../images/search.png'></image>
-    <input class='s_input' focus='{{true}}' placeholder-class="phcolor" placeholder="输入网易云音乐昵称" bindconfirm='searchButtonTap' bindinput='nickNameInput'/>
+    <input class='s_input' focus='{{true}}' placeholder-class="phcolor" placeholder="输入网易云音乐昵称" data-offset='0' bindconfirm='searchButtonTap' bindinput='nickNameInput'/>
   </view>
     <button class='s_button'  bindtap='searchButtonTap'>搜索</button>
   </view>
@@ -12,7 +12,7 @@
       <!-- <view>没有找到你的好朋友呀</view> -->
       </view>
     </view>
-  <view wx:else class="search_bd">
+    <scroll-view wx:else bindscrolltolower="lower" class='search_bd' scroll-y='true'>
     <view class="userinfo" wx:for="{{array}}" id='{{item.userId}}'
     data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' wx:for-item="item" wx:key="userId">
         <view class='left_view'>
@@ -26,9 +26,6 @@
           <button formType="submit" class='sub_btn'>关注</button>
         </form>
     </view>
-  </view>
-  
-   <view class='tips'>
-    <!-- <text bindtap='shareTip'>转发小程序到群，查询谁关注了你</text> -->
-  </view>
+    </scroll-view>
+    <view wx:if="{{!show_img}}" class='notice-text'>下拉加载更多</view>
 </view>

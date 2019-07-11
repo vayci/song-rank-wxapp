@@ -12,7 +12,11 @@ Page({
   nickNameInput:function(e){
     this.data.nickname = e.detail.value;
   },
-  searchButtonTap:function(){
+  searchButtonTap:function(offset){
+    if (typeof offset == 'object'){
+        offset = 0
+        this.data.array = []
+    }
     if ('' == this.data.nickname){
       wx.showToast({
         title: "昵称都不输入，肯定找不到对象~",
@@ -22,11 +26,12 @@ Page({
       return;
     } 
     wx.showLoading({})
-    var pageobj = this;
+    var _this = this;
     wx.request({
       url: app.globalData.serverUrl + '/wx/netease/user',
       data: {
-        keyWord: this.data.nickname
+        keyWord: this.data.nickname,
+        offset: offset*this.data.limit
       },
       header: {
         'content-type': 'application/json'
@@ -34,12 +39,13 @@ Page({
       success: function (res) {
         wx.hideLoading()
         if (res.data.length==0){
-          pageobj.setData({
+          _this.setData({
             show_img: true
           });
         }else{
-          pageobj.setData({
-            array: res.data,
+          let array = _this.data.array.concat(res.data)
+          _this.setData({
+            array: array,
             show_img: false
           });
         }
@@ -183,6 +189,10 @@ Page({
     }
     
   },
+  lower: function (e) {
+    this.data.offset = this.data.offset + 1
+    this.searchButtonTap(this.data.offset)
+  },
   shareTip: function(e){
     wx.showToast({
       title: "转发在右上角，点我干什么",
@@ -239,6 +249,8 @@ Page({
     tip_words:'点击搜索结果添加关注',
     flag: true,
     wx_user: null,
-    share_count: 0
+    share_count: 0,
+    offset: 0,
+    limit: 5
   }
 })
