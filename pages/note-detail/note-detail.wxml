@@ -40,7 +40,10 @@
       <view wx:if="{{index==3}}">
         <view class='block'>
           <view class='rowBlock'><view class='title'>显示不确定数据：</view><switch checked='{{unkownData}}' bindchange="openUnkownData" /></view>
+          <view class='rowBlock'><view class='title'>短信通知手机号：</view><view>未绑定</view></view>
+          <view class='rowBlock'><view class='title'>短信通知频率限制：</view><view>未解除</view></view>
         </view> 
+
       </view>
       <view wx:if="{{index==4}}">
         <view class='block'>

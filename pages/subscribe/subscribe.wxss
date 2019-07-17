@@ -45,16 +45,17 @@
   border-radius: 50%;
 }
 .userinfo{
-    margin-bottom: 20rpx;
+   margin-bottom: 20rpx;
    width: 80vw;
    display: flex;
-   flex-direction: row;
+   flex-direction: column;
    align-items: center;
-   justify-content: space-between;
-   border-radius: 10rpx;
+   border-radius: 30rpx;
    margin: 2vh 0 2vh 0;
-   color: #000;
+   color: #fff;
    font-size: 30rpx;
+   background: #646664;
+   height: 20vh;
 }
 .sub_btn{
   display: flex;
@@ -70,4 +71,55 @@
 }
 .green{
   color: #45ce90
+}
+.top-view{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.bottom-view{
+  display: flex;
+  flex-direction: row;
+    width: 100%;
+  justify-content: flex-end;
+  padding-top: 10rpx;
+}
+.top-nickname{
+  margin: 30rpx 0 0 30rpx;
+  font-size: 38rpx;
+  font-weight: 600;
+}
+.top-switch{
+  font-size: 28rpx;
+  margin: 30rpx 30rpx 0 0;
+  border: 1px #fff solid;
+  border-radius: 10rpx;
+}
+.wechat-count{
+  font-size: 25rpx;
+  text-align: right;
+  padding-right: 20rpx;
+}
+.sms-count{
+  font-size: 25rpx;
+  text-align: right;
+  padding-right: 30rpx;
+}
+.count{
+  font-size: 60rpx;
+}
+.count-text{
+  opacity: 0.7;
+}
+.hidden-btn{
+  background-color: transparent;
+  padding: 0;
+  color: #fff;
+  border: none;
+  text-align: right;
+  line-height: unset;
+}
+.hidden-btn::after{
+  border: none;
 }
