@@ -45,4 +45,4 @@ module.exports = {
   formatTimeStamp: formatTimeStamp,
   formatTimeStampToDate: formatTimeStampToDate,
   str2Date: str2Date
-}
+};

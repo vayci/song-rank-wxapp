@@ -1,4 +1,7 @@
 const app = getApp()
+// 在页面中定义激励视频广告
+let videoAd = null
+
 Page({
   data: {
     text: 'This is page data.'
@@ -80,6 +83,55 @@ Page({
         }
       }
     })
+  },
+  addSmsCount(e){
+    let userid = e.currentTarget.dataset.userid
+    let openid = app.globalData.openid;
+    if (!openid) {
+      openid = wx.getStorageSync('openid');
+      if (!openid) {
+        wx.showToast({
+          title: "获取您的身份信息失败\r\n请稍后再试~",
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
+    }
+    if (wx.createRewardedVideoAd) {
+      videoAd = wx.createRewardedVideoAd({
+        adUnitId: 'adunit-a6f3ab1cbaf9f74d'
+      })
+      videoAd.onClose((res) => {
+        console.log(res)
+        if (res.isEnded) {
+          wx.request({
+            url: app.globalData.serverUrl + '/sms/subscribe',
+            method: 'POST',
+            data: {
+              openId: openid,
+              targetUserId: userid
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              console.log(res)
+            }
+          })
+        }
+      })
+    }
+
+    if (videoAd) {
+      videoAd.show().catch(() => {
+        videoAd.load()
+          .then(() => videoAd.show())
+          .catch(err => {
+            console.log('激励视频 广告显示失败')
+          })
+      })
+    }
   },
   data: {
     userList: []
