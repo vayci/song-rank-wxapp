@@ -17,7 +17,7 @@
           </view>
           <view class="sms-count">
               <view class="count-text">短信通知</view>
-              <view class="count" bindtap='addSmsCount' data-userid='{{item.userId}}'>7</view>
+              <view class="count" bindtap='addSmsCount' data-userid='{{item.userId}}'>{{item.smsSubscribe}}</view>
           </view>
         </view>
 

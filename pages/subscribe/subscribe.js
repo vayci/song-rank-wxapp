@@ -85,7 +85,29 @@ Page({
     })
   },
   addSmsCount(e){
-    let userid = e.currentTarget.dataset.userid
+    let _this = this
+    let ad_notice = wx.getStorageSync('ad_notice');
+    if(!ad_notice){
+      wx.showModal({
+        title: '提示',
+        content: '播放广告获得免费短信通知次数',
+        confirmText: '好的',
+        cancelText: '算了',
+        success(res) {
+          if (res.confirm) {
+            _this.playAd(e)
+          }
+        },
+        complete(res) {
+          wx.setStorageSync('ad_notice', true)
+        }
+      })
+    }else{
+      _this.playAd(e)
+    }
+  },
+  playAd(e){
+    this.data.targetUserId = e.currentTarget.dataset.userid
     let openid = app.globalData.openid;
     if (!openid) {
       openid = wx.getStorageSync('openid');
@@ -98,29 +120,30 @@ Page({
         return;
       }
     }
-    if (wx.createRewardedVideoAd) {
-      videoAd = wx.createRewardedVideoAd({
-        adUnitId: 'adunit-a6f3ab1cbaf9f74d'
-      })
-      videoAd.onClose((res) => {
-        console.log(res)
-        if (res.isEnded) {
-          wx.request({
-            url: app.globalData.serverUrl + '/sms/subscribe',
-            method: 'POST',
-            data: {
-              openId: openid,
-              targetUserId: userid
-            },
-            header: {
-              'content-type': 'application/json'
-            },
-            success: function (res) {
-              console.log(res)
-            }
-          })
-        }
-      })
+    if(!videoAd){
+      if (wx.createRewardedVideoAd) {
+        videoAd = wx.createRewardedVideoAd({
+          adUnitId: 'adunit-a6f3ab1cbaf9f74d'
+        })
+        videoAd.onClose((res) => {
+          if (res.isEnded) {
+            wx.request({
+              url: app.globalData.serverUrl + '/sms/subscribe',
+              method: 'POST',
+              data: {
+                openId: openid,
+                targetUserId: this.data.targetUserId
+              },
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function (res) {
+                console.log(res)
+              }
+            })
+          }
+        })
+      }
     }
 
     if (videoAd) {
@@ -134,6 +157,7 @@ Page({
     }
   },
   data: {
-    userList: []
+    userList: [],
+    targetUserId:''
   }
 })
