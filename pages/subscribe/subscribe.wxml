@@ -6,7 +6,7 @@
         
         <view class='top-view'>
           <view class="top-nickname">{{item.nickName}}</view>
-          <view  class="top-switch">开启通知</view>
+          <view  class="top-switch" data-target-user-id="{{item.userId}}" bindtap='changeSendFlag'>{{item.smsSendFlag?"开":"关"}}</view>
         </view>
         <view class='bottom-view'>
           <view class="wechat-count">
@@ -20,21 +20,6 @@
               <view class="count" bindtap='addSmsCount' data-userid='{{item.userId}}'>{{item.smsSubscribe}}</view>
           </view>
         </view>
-
-        <!-- <view class='left_view'>
-          <image  class="userinfo-avatar"  userid="{{item.userId}}" src="{{item.avatar}}"></image>
-          <view class='userinfo-text'>
-            <view class='userinfo-text-name'>{{item.nickName}}</view>
-            <view class='userinfo-text-motto'>还能提醒你 <text class="{{item.subscribe>0?'green':''}}">{{item.subscribe}}</text> 次</view>
-          </view>
-        </view>
-        <form bindsubmit="addSubscribe" data-user-id='{{item.userId}}' report-submit='true' bindreset="formReset">
-          <button formType="submit" class='sub_btn'>订阅</button>
-        </form>
-        <button bindtap='addSmsCount' data-userid='{{item.userId}}'>短信</button> -->
-
-
-
     </view>
   </view>
 </view>

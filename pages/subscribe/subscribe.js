@@ -167,6 +167,42 @@ Page({
       })
     }
   },
+  changeSendFlag(e){
+    let _this = this
+    let openid = app.globalData.openid;
+    if (!openid) {
+      openid = wx.getStorageSync('openid');
+      if (!openid) {
+        wx.showToast({
+          title: "获取您的身份信息失败\r\n请稍后再试~",
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
+    }
+    wx.request({
+      url: app.globalData.serverUrl + '/sms/send/flag?openId=' + openid + '&targetUserId=' + e.currentTarget.dataset.targetUserId,
+      method: 'PUT',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        let list = _this.data.userList
+        for (let i of list) {
+          if (i.userId == res.data.targetUserId){
+            i.smsSendFlag = res.data.sendFlag
+          }
+        }
+        _this.setData({
+          userList: list
+        })
+      }
+    })
+
+
+      
+  },
   data: {
     userList: [],
     targetUserId:''
