@@ -120,3 +120,12 @@
   justify-content: space-between;
   margin-top: 5vh;
 }
+.bind-btn{
+  color: #45ce90;
+}
+.phone-box{
+  position: fixed;
+  text-align: center;
+  background: #646664;
+  color: #fff;
+}

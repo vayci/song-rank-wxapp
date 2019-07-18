@@ -40,7 +40,9 @@
       <view wx:if="{{index==3}}">
         <view class='block'>
           <view class='rowBlock'><view class='title'>显示不确定数据：</view><switch checked='{{unkownData}}' bindchange="openUnkownData" /></view>
-          <view class='rowBlock'><view class='title'>短信通知手机号：</view><view>{{bindPhone?'已绑定':'未绑定'}}</view></view>
+          <view class='rowBlock'><view class='title'>短信通知手机号：</view><view>{{bindPhone?phone:'未绑定'}}
+          <a class="bind-btn" bindtap='addBindPhone'>{{bindPhone?'修改':'绑定'}}</a></view>
+          </view>
           <view class='rowBlock'><view class='title'>短信通知频率限制：</view><view>{{isWhiteList?'已解除':'未解除'}}</view></view>
         </view> 
 
@@ -83,5 +85,13 @@
           <view>获取更多本小程序的使用技巧及背后故事</view>
         </view>
       </view>
+    </view>
+
+    <view class="phone-box" wx:if="{{showPhoneBox}}">
+      <form bindsubmit="submitPhone" bindreset="formReset">
+        <view>请填写接收通知的手机号</view>
+        <input type="number" name="phone"></input>
+        <button form-type="submit">提交</button>
+      </form>
     </view>
   </view>
