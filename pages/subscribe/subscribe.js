@@ -132,6 +132,7 @@ Page({
       }
     }
     if(!videoAd){
+      let _this = this
       if (wx.createRewardedVideoAd) {
         videoAd = wx.createRewardedVideoAd({
           adUnitId: 'adunit-a6f3ab1cbaf9f74d'
@@ -149,7 +150,15 @@ Page({
                 'content-type': 'application/json'
               },
               success: function (res) {
-                console.log(res)
+                let list = _this.data.userList
+                for (let i of list) {
+                  if (i.userId == res.data.targetUserId) {
+                    i.smsSubscribe = res.data.remainCount
+                  }
+                }
+                _this.setData({
+                  userList: list
+                })
               }
             })
           }

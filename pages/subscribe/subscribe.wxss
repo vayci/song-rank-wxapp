@@ -54,7 +54,7 @@
    margin: 2vh 0 2vh 0;
    color: #fff;
    font-size: 30rpx;
-   background: #646664;
+   background: #979997;
    height: 20vh;
 }
 .sub_btn{
