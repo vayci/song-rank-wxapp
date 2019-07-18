@@ -90,7 +90,7 @@
     <view class="phone-box" wx:if="{{showPhoneBox}}">
       <form bindsubmit="submitPhone" bindreset="formReset">
         <view>请填写接收通知的手机号</view>
-        <input type="number" name="phone"></input>
+        <input type="number" name="phone" placeholder="直接提交可解绑手机号"></input>
         <button form-type="submit">提交</button>
       </form>
     </view>

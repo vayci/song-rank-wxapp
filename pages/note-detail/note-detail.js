@@ -92,7 +92,7 @@ Page({
   submitPhone(e){
     let phone = e.detail.value.phone
     let _this =this
-    if (!/^1(3|4|5|7|8|9)\d{9}$/.test(phone)) {
+    if (!/^1(3|4|5|7|8|9)\d{9}$/.test(phone)&&""!=phone) {
       wx.showToast({
         title: "手机号有误，请重新填写",
         icon: 'none',
@@ -123,15 +123,30 @@ Page({
         },
         success: function (res) {
           if (res.statusCode == 200) {
-            wx.showToast({
-              title: '通知手机号修改成功',
-              icon: 'none',
-              duration: 2000
-            })
-            _this.setData({
-              bindPhone:true,
-              phone:res.data.phone
-            })
+            if ("" != res.data.phone){
+              _this.setData({
+                bindPhone: true,
+                phone: res.data.phone
+              })
+              wx.setStorageSync('bind_phone', res.data.phone)
+              wx.showToast({
+                title: '手机号修改成功',
+                icon: 'none',
+                duration: 2000
+              })
+            }else{
+              _this.setData({
+                bindPhone: false,
+                phone: ""
+              })
+              wx.removeStorageSync('bind_phone')
+              wx.showToast({
+                title: '手机号解绑成功',
+                icon: 'none',
+                duration: 2000
+              })
+            }
+         
           } else {
             wx.showToast({
               title: res.data,

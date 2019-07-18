@@ -86,6 +86,17 @@ Page({
   },
   addSmsCount(e){
     let _this = this
+
+    let bindPhone = wx.getStorageSync('bind_phone')
+    if(!bindPhone){
+      wx.showToast({
+        title: "请先到 关于->程序设置 中绑定手机号再用此功能",
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+
     let ad_notice = wx.getStorageSync('ad_notice');
     if(!ad_notice){
       wx.showModal({
