@@ -8,6 +8,7 @@ Page({
   },
   onShow() {
     this.getTargetUsers()
+    this.loadBindInfo()
   },
   //获取用户关联爬虫任务
   getTargetUsers() {
@@ -211,6 +212,35 @@ Page({
 
 
       
+  },
+  loadBindInfo(){
+    let openid = app.globalData.openid;
+    if (!openid) {
+      openid = wx.getStorageSync('openid');
+      if (!openid) {
+        wx.showToast({
+          title: "获取您的身份信息失败\r\n请稍后再试~",
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
+    }
+    wx.request({
+      url: app.globalData.serverUrl + '/sms/phone',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        openId: openid
+      },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          wx.setStorageSync('bind_phone', res.data.phone)
+        }
+
+      }
+    })
   },
   data: {
     userList: [],

@@ -46,6 +46,7 @@ Page({
               phone:res.data.phone,
               isWhiteList:res.data.isWhiteList
             })
+            wx.setStorageSync('bind_phone', res.data.phone)
           }
 
         }

@@ -6,7 +6,7 @@
         
         <view class='top-view'>
           <view class="top-nickname">{{item.nickName}}</view>
-          <view  class="top-switch" data-target-user-id="{{item.userId}}" bindtap='changeSendFlag'>{{item.smsSendFlag?"开":"关"}}</view>
+          <view  class="{{item.smsSendFlag?'top-switch-on':'top-switch'}}" data-target-user-id="{{item.userId}}" bindtap='changeSendFlag'>{{item.smsSendFlag?"短信开启":"短信关闭"}}</view>
         </view>
         <view class='bottom-view'>
           <view class="wechat-count">

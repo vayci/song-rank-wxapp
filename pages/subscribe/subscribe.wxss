@@ -96,6 +96,14 @@
   border: 1px #fff solid;
   border-radius: 10rpx;
 }
+.top-switch-on{
+  background: #fff;
+  color: #979997;
+    font-size: 28rpx;
+  margin: 30rpx 30rpx 0 0;
+  border: 1px #fff solid;
+  border-radius: 10rpx;
+}
 .wechat-count{
   font-size: 25rpx;
   text-align: right;

@@ -39,7 +39,7 @@
       </view> 
       <view wx:if="{{index==3}}">
         <view class='block'>
-          <view class='rowBlock'><view class='title'>显示不确定数据：</view><switch checked='{{unkownData}}' bindchange="openUnkownData" /></view>
+          <view class='rowBlock'><view class='title'>显示不确定数据：</view><switch style='zoom:0.7;' checked='{{unkownData}}' bindchange="openUnkownData" /></view>
           <view class='rowBlock'><view class='title'>短信通知手机号：</view><view>{{bindPhone?phone:'未绑定'}}
           <a class="bind-btn" bindtap='addBindPhone'>{{bindPhone?'修改':'绑定'}}</a></view>
           </view>
