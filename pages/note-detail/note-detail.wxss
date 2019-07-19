@@ -137,5 +137,7 @@
 }
 .phone-input{
   border-bottom: 1px #646664 solid;
-
+}
+.green-text{
+  color: #45ce90;
 }

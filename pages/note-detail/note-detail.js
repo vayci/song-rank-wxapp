@@ -90,6 +90,7 @@ Page({
     this.data.phoneInput = e.detail.value;
   },
   addBindPhone(e){
+    wx.vibrateShort({})
     this.setData({
       showPhoneBox:true
     })

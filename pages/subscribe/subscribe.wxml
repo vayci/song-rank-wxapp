@@ -6,7 +6,8 @@
         
         <view class='top-view'>
           <view class="top-nickname">{{item.nickName}}</view>
-          <view  class="{{item.smsSendFlag?'top-switch-on':'top-switch'}}" data-target-user-id="{{item.userId}}" bindtap='changeSendFlag'>{{item.smsSendFlag?"短信开启":"短信关闭"}}</view>
+           <switch class="top-switch" color="#45ce90" checked='{{item.smsSendFlag}}' data-target-user-id="{{item.userId}}" style="zoom:0.7" bindchange="changeSendFlag"/>
+          <!-- <view  class="{{item.smsSendFlag?'top-switch-on':'top-switch'}}" data-target-user-id="{{item.userId}}" bindtap='changeSendFlag'>{{item.smsSendFlag?"短信开启":"短信关闭"}}</view> -->
         </view>
         <view class='bottom-view'>
           <view class="wechat-count">

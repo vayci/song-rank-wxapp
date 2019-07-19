@@ -55,6 +55,7 @@ Page({
         return;
       }
     }
+    wx.vibrateShort({})
     wx.request({
       url: app.globalData.serverUrl + '/msg',
       method: 'POST',
@@ -87,11 +88,11 @@ Page({
   },
   addSmsCount(e){
     let _this = this
-
+    wx.vibrateShort({})
     let bindPhone = wx.getStorageSync('bind_phone')
     if(!bindPhone){
       wx.showToast({
-        title: "请先到 关于->程序设置 中绑定手机号再用此功能",
+        title: "请先到 关于->程序设置 中添加接收通知的手机号",
         icon: 'none',
         duration: 2000
       })
