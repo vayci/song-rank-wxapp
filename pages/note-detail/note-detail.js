@@ -8,7 +8,8 @@ Page({
     bindPhone:false,
     phone:'',
     isWhiteList:false,
-    showPhoneBox:false
+    showPhoneBox:false,
+    phoneInput:''
   },
 
   onLoad: function (options) {
@@ -85,13 +86,16 @@ Page({
       data: e.detail.value
     })
   },
+  phoneInput(e){
+    this.data.phoneInput = e.detail.value;
+  },
   addBindPhone(e){
     this.setData({
       showPhoneBox:true
     })
   },
   submitPhone(e){
-    let phone = e.detail.value.phone
+    let phone = this.data.phoneInput
     let _this =this
     if (!/^1(3|4|5|7|8|9)\d{9}$/.test(phone)&&""!=phone) {
       wx.showToast({

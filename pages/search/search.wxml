@@ -27,5 +27,5 @@
         </form>
     </view>
     </scroll-view>
-    <view wx:if="{{!show_img}}" class='notice-text'>下拉加载更多</view>
+    <view class='notice-text'>下拉加载更多</view>
 </view>

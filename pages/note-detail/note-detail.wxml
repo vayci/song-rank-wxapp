@@ -43,6 +43,10 @@
           <view class='rowBlock'><view class='title'>短信通知手机号：</view><view>{{bindPhone?phone:'未绑定'}}
           <a class="bind-btn" bindtap='addBindPhone'>{{bindPhone?'修改':'绑定'}}</a></view>
           </view>
+          <view class='rowBlock' wx:if="{{showPhoneBox}}">
+            <input type="number" class="phone-input" bindinput="phoneInput" name="phone" placeholder="直接提交可解绑手机号"></input>
+            <view class="phone-btn" bindtap="submitPhone" form-type="submit">提交</view>
+          </view>
           <view class='rowBlock'><view class='title'>短信通知频率限制：</view><view>{{isWhiteList?'已解除':'未解除'}}</view></view>
         </view> 
 
@@ -87,11 +91,11 @@
       </view>
     </view>
 
-    <view class="phone-box" wx:if="{{showPhoneBox}}">
+    <!-- <view class="phone-box" wx:if="{{showPhoneBox}}">
       <form bindsubmit="submitPhone" bindreset="formReset">
         <view>请填写接收通知的手机号</view>
         <input type="number" name="phone" placeholder="直接提交可解绑手机号"></input>
         <button form-type="submit">提交</button>
       </form>
-    </view>
+    </view> -->
   </view>

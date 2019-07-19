@@ -129,3 +129,13 @@
   background: #646664;
   color: #fff;
 }
+.phone-btn{
+  padding: 5rpx 10rpx 5rpx 10rpx;
+  border: 1px #646664 solid;
+  border-radius: 10rpx;
+  color: #646664;
+}
+.phone-input{
+  border-bottom: 1px #646664 solid;
+
+}

@@ -6,8 +6,8 @@
   font-size: 26rpx;
 }
 .payImg{
-  width: 60vw;
-  height: 60vw;
+  width: 45vw;
+  height: 45vw;
 }
 .foot{
   height: 20vh;

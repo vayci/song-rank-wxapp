@@ -1,6 +1,6 @@
 /* pages/subscribe/subscribe.wxss */
 .container {
-  height: 80vh;
+  height: 95vh;
   margin-top: 3vh;
 } 
 .wrapper{
@@ -130,4 +130,9 @@
 }
 .hidden-btn::after{
   border: none;
+}
+.notice{
+  margin-top: 5vh;
+  font-size: 26rpx;
+  color: #AFB3AF;
 }

@@ -22,4 +22,5 @@
         </view>
     </view>
   </view>
+  <view class='notice'>点击数字进行订阅，开关启停短信通知</view>
 </view>
