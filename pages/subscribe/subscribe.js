@@ -173,7 +173,11 @@ Page({
         videoAd.load()
           .then(() => videoAd.show())
           .catch(err => {
-            console.log('激励视频 广告显示失败')
+            wx.showToast({
+              title: "该功能暂不可用",
+              icon: 'none',
+              duration: 2000
+            })
           })
       })
     }
