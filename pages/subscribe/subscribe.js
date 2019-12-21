@@ -41,6 +41,76 @@ Page({
       }
     })
   },
+  wxSubscribe(e){
+    var _this = this
+    let limit = false
+    this.data.userList.forEach(v=>{
+      if (v.userId == e.currentTarget.dataset.userid){
+        console.log(v.subscribe)
+        if (v.subscribe>=20){
+          limit = true
+        }
+      }
+    })
+    if(limit){
+      wx.showToast({
+        title: '订阅次数已达上限！',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    wx.requestSubscribeMessage({
+      tmplIds: ['jYc5pnVgv42aN2yKTAQHWwNB8FJTZXFtwBwQrBvIgOQ'],
+      success(res) {
+        let result = res['jYc5pnVgv42aN2yKTAQHWwNB8FJTZXFtwBwQrBvIgOQ']
+        if ('accept' == result){
+          let openid = app.globalData.openid;
+          if (!openid) {
+            openid = wx.getStorageSync('openid');
+            if (!openid) {
+              wx.showToast({
+                title: "获取您的身份信息失败\r\n请稍后再试~",
+                icon: 'none',
+                duration: 2000
+              })
+              return;
+            }
+          }
+          wx.vibrateShort({})
+          wx.request({
+            url: app.globalData.serverUrl + '/msg',
+            method: 'POST',
+            data: {
+              isValid: 0,
+              openid: openid,
+              targetUserId: e.currentTarget.dataset.userid
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              console.log(res)
+              if (res.statusCode == 200) {
+                wx.showToast({
+                  title: '订阅成功,Ta下次听歌您将收到通知!',
+                  icon: 'none',
+                  duration: 2000
+                })
+                _this.getTargetUsers()
+              } else {
+                wx.showToast({
+                  title: res.data,
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  },
   addSubscribe(e){
     var _this = this;
     let openid = app.globalData.openid;
@@ -60,7 +130,6 @@ Page({
       url: app.globalData.serverUrl + '/msg',
       method: 'POST',
       data: {
-        formId: e.detail.formId,
         isValid: 0,
         openid: openid,
         targetUserId: e.target.dataset.userId

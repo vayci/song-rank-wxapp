@@ -7,7 +7,9 @@ Page({
     subscribe: [],
     lock: false,
     addBtntouched: false,
-    loginLock: false
+    loginLock: false,
+    runDays:0,
+    proxyWarn:false
   },
   setGlobalOpenid() {
     if(this.loginLock){return}
@@ -40,6 +42,8 @@ Page({
  
   onShow: function () {
     console.log('page index onShow launchFaile:' + app.globalData.launchFail + ' openid:' + app.globalData.openId)
+    this.getDateDiff()
+    this.getProxyInfo()
     if (app.globalData.launchFail){
       this.setGlobalOpenid()
     }
@@ -88,6 +92,23 @@ Page({
       }
     })
   },
+  getProxyInfo(){
+    let _this = this
+    wx.request({
+      url: app.globalData.serverUrl + '/health/proxy/info',
+      header: {'content-type': 'application/json'},
+      success: function (res) {
+        if (res.statusCode == 200) {
+          let size = res.data.activeSize
+          if(size < 8){
+            _this.setData({
+              proxyWarn:true
+            })
+          }
+        }
+      }
+    })
+  },
   getTimerJobs(openid) {
     if(!openid){
       openid = wx.getStorageSync('openid')
@@ -126,6 +147,14 @@ Page({
       })
     }
 
+  },
+  getDateDiff(){
+    let now = new Date().getTime()
+    let start = new Date(2018,2,19).getTime()
+    let date = parseInt((now - start) / (1000 * 60 * 60 * 24))
+    this.setData({
+      runDays: date
+    })
   },
   //长按删除任务
   deleteJob(e) {

@@ -10,11 +10,15 @@
           <!-- <view  class="{{item.smsSendFlag?'top-switch-on':'top-switch'}}" data-target-user-id="{{item.userId}}" bindtap='changeSendFlag'>{{item.smsSendFlag?"短信开启":"短信关闭"}}</view> -->
         </view>
         <view class='bottom-view'>
-          <view class="wechat-count">
+          <!-- <view class="wechat-count">
               <view class="count-text">微信通知</view>
                <form bindsubmit="addSubscribe" data-user-id='{{item.userId}}' report-submit='true' bindreset="formReset">
                 <button formType="submit" class='count hidden-btn'>{{item.subscribe}}</button>
               </form>
+          </view> -->
+          <view class="wechat-count">
+              <view class="count-text">微信通知</view>
+              <view class="count" bindtap='wxSubscribe' data-userid='{{item.userId}}'>{{item.subscribe}}</view>
           </view>
           <view class="sms-count">
               <view class="count-text">短信通知</view>

@@ -7,9 +7,14 @@
   <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="5000">
     <block wx:for="{{msgList}}" wx:key="id">
     <!-- <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate"> -->
-    <navigator>
+    <navigator wx:if="{{proxyWarn}}">
       <swiper-item>
-      <view class="swiper_item"></view>
+            <view class="swiper_item warn_color">当前服务器状态较差，可能存在记录无法获取或延迟</view>
+      </swiper-item>
+    </navigator>
+      <navigator>
+      <swiper-item>
+            <view class="swiper_item">小程序已经运行 {{runDays}} 天</view>
       </swiper-item>
     </navigator>
     </block>
