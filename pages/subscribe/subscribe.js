@@ -46,7 +46,6 @@ Page({
     let limit = false
     this.data.userList.forEach(v=>{
       if (v.userId == e.currentTarget.dataset.userid){
-        console.log(v.subscribe)
         if (v.subscribe>=20){
           limit = true
         }
@@ -60,6 +59,14 @@ Page({
       })
       return;
     }
+    if (!wx.requestSubscribeMessage){
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本或使用短信通知'
+      })
+      return
+    }
+
     wx.requestSubscribeMessage({
       tmplIds: ['jYc5pnVgv42aN2yKTAQHWwNB8FJTZXFtwBwQrBvIgOQ'],
       success(res) {
@@ -90,7 +97,6 @@ Page({
               'content-type': 'application/json'
             },
             success: function (res) {
-              console.log(res)
               if (res.statusCode == 200) {
                 wx.showToast({
                   title: '订阅成功,Ta下次听歌您将收到通知!',

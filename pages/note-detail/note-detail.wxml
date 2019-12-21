@@ -68,6 +68,10 @@
           <view class='title'>2019年5月</view>
           <view>小程序服务器架构调整，服务更加稳定</view>
         </view>
+        <view class='block'>
+          <view class='title'>2019年12月</view>
+          <view>小程序累计用户13400</view>
+        </view>
       </view>
       <view wx:if="{{index==5}}">
         <view class='block'>
