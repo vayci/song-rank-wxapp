@@ -78,9 +78,13 @@ Page({
       }
     })
   },
+  wxSubscribe(e) {
+
+  },
   //选择订阅用户
   selectUser: function(e){
     var _this = this;
+    console.log(e)
     var targetid = e.currentTarget.dataset.id;
     var targetNickName = e.currentTarget.dataset.nickname;
     var targetAvatar = e.currentTarget.dataset.avatar;
@@ -129,7 +133,48 @@ Page({
                   icon: 'none',
                   duration: 2000
                 })
-                _this.addSubscribe(e)
+                //start
+                if (!wx.requestSubscribeMessage) {
+                  return
+                }
+
+                wx.requestSubscribeMessage({
+                  tmplIds: ['jYc5pnVgv42aN2yKTAQHWwNB8FJTZXFtwBwQrBvIgOQ'],
+                  success(res) {
+                    let result = res['jYc5pnVgv42aN2yKTAQHWwNB8FJTZXFtwBwQrBvIgOQ']
+                    if ('accept' == result) {
+                      let openid = app.globalData.openid;
+                      if (!openid) {
+                        openid = wx.getStorageSync('openid');
+                        if (!openid) {
+                          wx.showToast({
+                            title: "获取您的身份信息失败\r\n请稍后再试~",
+                            icon: 'none',
+                            duration: 2000
+                          })
+                          return;
+                        }
+                      }
+                      wx.request({
+                        url: app.globalData.serverUrl + '/msg',
+                        method: 'POST',
+                        data: {
+                          isValid: 0,
+                          openid: openid,
+                          targetUserId: e.currentTarget.dataset.id
+                        },
+                        header: {
+                          'content-type': 'application/json'
+                        },
+                        success: function (res) {
+                        }
+                      })
+                    }
+                  }
+                })
+                //end
+
+                _this.wxSubscribe(e)
               },
               fail:function(res){
                 console.log('添加关注失败' + res )

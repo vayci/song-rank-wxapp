@@ -12,9 +12,14 @@
             <view class="swiper_item warn_color">当前服务器状态较差，可能存在记录无法获取或延迟</view>
       </swiper-item>
     </navigator>
-      <navigator>
+    <navigator>
       <swiper-item>
             <view class="swiper_item">小程序已经运行 {{runDays}} 天</view>
+      </swiper-item>
+    </navigator>
+    <navigator url="/pages/note-detail/note-detail?index=2&title=赞助列表">
+      <swiper-item>
+            <view class="swiper_item">点击此处查看小程序赞助名单</view>
       </swiper-item>
     </navigator>
     </block>

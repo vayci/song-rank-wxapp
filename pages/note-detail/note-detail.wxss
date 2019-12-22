@@ -6,21 +6,36 @@
   font-size: 26rpx;
 }
 .userinfo-avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 64rpx;
+  height: 64rpx;
   border-radius: 50%;
 }
 .scrollBox{
   width: 80vw;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .sponsorBox{
-  width: 120rpx;
-  height: 160rpx;
-  display: inline-block;
-  text-align: center;
+  width: 80vw;
+  display: flex;
+  /* text-align: center; */
   margin: 15rpx;
+  justify-content: space-between;
+}
+.sponsorBoxHeader{
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #AFB3AF;
+}
+.leftSponsorBox{
+  display: flex;
+}
+.rightSponsorBox{
+  font-size: 28rpx;
+  color: #AFB3AF;
+  line-height: 64rpx;
+  width: 40vw;
 }
 .foot{
   height: 20vh;
@@ -92,7 +107,7 @@
   padding: 15rpx 0 15rpx 0;
 }
 .bottomBlock{
-  height: 15vh;
+  margin: 10rpx;
     width: 80vw;
   font-size: 28rpx;
   color: #AFB3AF;
@@ -107,6 +122,8 @@
       overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; 
+    line-height: 64rpx;
+    width: 30vw;
 }
 .title{
   color: #646664;
@@ -140,4 +157,7 @@
 }
 .green-text{
   color: #45ce90;
+}
+.center{
+  text-align: center;
 }

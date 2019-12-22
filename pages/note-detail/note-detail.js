@@ -1,4 +1,5 @@
 const app = getApp()
+var utils = require('../../utils/util.js')
 Page({
   data: {
     showNav: true,
@@ -65,8 +66,18 @@ Page({
           'content-type': 'application/json'
         },
         success: function (res) {
+          res.data.forEach(v => {
+            if (v.gender == 1){
+              v.avatarUrl ="../images/men.png"
+            }else if(v.gender == 2){
+              v.avatarUrl ="../images/women.png"
+            }else{
+              v.avatarUrl ="../images/unkown.png"
+            }
+            v.formatUpdateTime = utils.formatTimeStamp(utils.str2Date(v.updTime));
+          })  
           _this.setData({
-            sponsor: res.data
+            sponsor: res.data.reverse()
           })
         }
       })

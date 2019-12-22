@@ -22,9 +22,10 @@
           <view class='userinfo-text-motto'>{{item.signature}}</view>
         </view>
         </view>
-        <form bindsubmit="selectUser" data-id='{{item.userId}}' data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' report-submit='true'>
+        <!-- <form bindsubmit="selectUser" data-id='{{item.userId}}' data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' report-submit='true'>
           <button formType="submit" class='sub_btn'>关注</button>
-        </form>
+        </form> -->
+        <view><button data-id='{{item.userId}}' data-avatar='{{item.avatar}}' data-nickname='{{item.nickName}}' bindtap="selectUser" class='sub_btn'>关注</button></view>
     </view>
     </scroll-view>
     <view class='notice-text'>下拉加载更多</view>
