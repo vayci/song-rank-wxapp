@@ -6,6 +6,6 @@
       <view bindtap='jump' data-index='2' data-title='赞助列表' class='question'><text>赞助列表</text><image class='more_png' src='../images/more.png'></image></view>
       <view bindtap='jump' data-index='5' data-title='关于作者' class='question'><text>关于作者</text><image class='more_png' src='../images/more.png'></image></view>
     </view>
-    <image class='payImg' src="http://cdn.olook.me/pay2.png" data-src="http://cdn.olook.me/pay2.png" bindtap="previewImage"></image>
+    <image class='payImg' src="https://cdn.olook.me/qr.png" data-src="https://cdn.olook.me/qr.png" bindtap="previewImage"></image>
     <official-account class='account'></official-account>
 </view>
