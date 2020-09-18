@@ -62,6 +62,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    vip: false,
     serverUrl: 'https://127.0.0.1',
     timerJob: null,
     code: null,
