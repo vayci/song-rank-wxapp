@@ -42,7 +42,6 @@ Page({
   onShow: function () {
     console.log('page index onShow launchFaile:' + app.globalData.launchFail + ' openid:' + app.globalData.openId)
     this.getDateDiff()
-    this.getProxyInfo()
     if (app.globalData.launchFail){
       this.setGlobalOpenid()
     }
@@ -242,6 +241,7 @@ serverChange(openid){
     complete: function (res){
       _this.getTimerJobs(app.globalData.openId);
       _this.getAppNotice();
+      _this.getProxyInfo()
     }
   })
 },
