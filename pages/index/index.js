@@ -37,7 +37,6 @@ Page({
   onLoad: function () {
     console.log('page index onLoad')
     this.setGlobalOpenid()
-    this.getAppNotice()
   },
  
   onShow: function () {
@@ -48,11 +47,15 @@ Page({
       this.setGlobalOpenid()
     }
     if (app.globalData.openId) {
+      this.serverChange(app.globalData.openId);
       this.getTimerJobs(app.globalData.openId);
+      this.getAppNotice();
     } else {
       console.log('set openid callback')
       this.openIdReadyCallback = res => {
+        this.serverChange(app.globalData.openId);
         this.getTimerJobs(app.globalData.openId);
+        this.getAppNotice();
       }
     }
   },
@@ -223,6 +226,23 @@ Page({
       })
     }
   },
+//是否切换服务器
+serverChange(openid){
+  var _this = this;
+  wx.request({
+    url: 'https://v.olook.me/vip',
+    data: {
+      openid: openid
+    },
+    header: {
+      'content-type': 'application/json'
+    },
+    success: function (res) {
+      app.globalData.serverUrl = 'https://v.olook.me'
+    }
+  })
+},
+
   //获取系统公告
   getAppNotice() {
     var _this = this;
