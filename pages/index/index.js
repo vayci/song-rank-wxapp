@@ -103,7 +103,7 @@ Page({
       success: function (res) {
         if (res.statusCode == 200) {
           let size = res.data.activeSize
-          if(size < 8){
+          if(size < 8 && app.globalData.vip===false){
             _this.setData({
               proxyWarn:true
             })
