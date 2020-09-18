@@ -238,7 +238,10 @@ serverChange(openid){
       'content-type': 'application/json'
     },
     success: function (res) {
-      app.globalData.serverUrl = 'https://v.olook.me'
+      if (res.statusCode == 200) {
+        app.globalData.vip = true
+        app.globalData.serverUrl = 'https://v.olook.me'
+      }
     }
   })
 },

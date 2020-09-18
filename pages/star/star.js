@@ -63,6 +63,8 @@ Page({
     return latest;
   },
   getStatus(count){
+    if(app.globalData.vip===true)
+    return '极好'
     if (count == 0) 
     return '极差'
     if (count <= 4)
@@ -75,6 +77,8 @@ Page({
     return '极好'
   },
   getColor(count){
+    if(app.globalData.vip===true)
+    return '#45CE90'
     if (count == 0)
       return '#FD7070'
     if (count <= 4)

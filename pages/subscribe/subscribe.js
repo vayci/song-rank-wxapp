@@ -1,4 +1,5 @@
 const app = getApp()
+var utils = require('../../utils/util.js')
 // 在页面中定义激励视频广告
 let videoAd = null
 
@@ -34,6 +35,12 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        for (var i = 0; i < res.data.length; i++) {
+          console.log(res.data[i].lastSuccess)
+          res.data[i].lastSuccess
+          = utils.formatTimeStamp(res.data[i].lastSuccess);
+          console.log(res.data[i].lastSuccess)
+        }
         _this.setData({
           userList: res.data
         });

@@ -81,6 +81,10 @@
           <view class='title'>2019年12月</view>
           <view>小程序累计用户 13400 人</view>
         </view>
+        <view class='block'>
+          <view class='title'>2020年9月</view>
+          <view>小程序累计用户 21800 人, 专线服务器发布</view>
+        </view>
       </view>
       <view wx:if="{{index==5}}">
         <view class='block'>

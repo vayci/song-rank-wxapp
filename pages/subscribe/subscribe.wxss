@@ -93,7 +93,11 @@
 .top-switch{
   margin: 30rpx 30rpx 0 0;
 }
-
+.time-display{
+  font-size: 25rpx;
+  text-align: right;
+  padding-right: 20rpx;
+}
 .wechat-count{
   font-size: 25rpx;
   text-align: right;
@@ -104,6 +108,12 @@
   text-align: right;
   padding-right: 30rpx;
 }
+
+.time{
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
+
 .count{
   font-size: 60rpx;
 }

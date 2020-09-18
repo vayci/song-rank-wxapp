@@ -16,6 +16,10 @@
                 <button formType="submit" class='count hidden-btn'>{{item.subscribe}}</button>
               </form>
           </view> -->
+          <view class="time-display" wx:if="{{item.lastSuccess}}">
+              <view class="count-text">上次记录获取时间</view>
+              <view class="time">{{item.lastSuccess}}</view>
+          </view>
           <view class="wechat-count">
               <view class="count-text">微信通知</view>
               <view class="count" bindtap='wxSubscribe' data-userid='{{item.userId}}'>{{item.subscribe}}</view>
