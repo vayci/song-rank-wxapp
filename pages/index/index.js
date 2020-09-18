@@ -48,14 +48,10 @@ Page({
     }
     if (app.globalData.openId) {
       this.serverChange(app.globalData.openId);
-      this.getTimerJobs(app.globalData.openId);
-      this.getAppNotice();
     } else {
       console.log('set openid callback')
       this.openIdReadyCallback = res => {
         this.serverChange(app.globalData.openId);
-        this.getTimerJobs(app.globalData.openId);
-        this.getAppNotice();
       }
     }
   },
@@ -242,6 +238,10 @@ serverChange(openid){
         app.globalData.vip = true
         app.globalData.serverUrl = 'https://v.olook.me'
       }
+    },
+    complete: function (res){
+      _this.getTimerJobs(app.globalData.openId);
+      _this.getAppNotice();
     }
   })
 },
