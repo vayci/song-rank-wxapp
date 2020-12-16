@@ -9,7 +9,9 @@ Page({
     addBtntouched: false,
     loginLock: false,
     runDays:0,
-    proxyWarn:false
+    proxyWarn:false,
+    is_vip:false,
+    vip_invalid_time:''
   },
   setGlobalOpenid() {
     if(this.loginLock){return}
@@ -27,7 +29,7 @@ Page({
       } else {
         wx.showToast({
           title: "获取您的身份信息失败\r\n请稍后再试~",
-          icon: 'none',
+          icon: 'error',
           duration: 2000
         })
       }
@@ -111,6 +113,10 @@ Page({
     if(!openid){
       openid = wx.getStorageSync('openid')
     }
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     var _this = this;
     wx.request({
       url: app.globalData.serverUrl + '/task',
@@ -123,6 +129,23 @@ Page({
       success: function (res) {
         _this.setData({
           jobs: res.data
+        })
+        wx.hideLoading()
+      },
+      fail: function(res){
+        wx.hideLoading()
+        wx.showModal({
+          title: '提示',
+          content: '服务器连接失败,点击重试',
+          showCancel:false,
+          success (res) {
+            if (res.confirm) {
+              console.log(1111)
+              wx.reLaunch({
+                url: '/pages/index/index'
+              })
+            } 
+          }
         })
       }
     })
@@ -236,6 +259,16 @@ serverChange(openid){
       if (res.statusCode == 200) {
         app.globalData.vip = true
         app.globalData.serverUrl = 'https://v.olook.me'
+        _this.setData({
+          is_vip:true,
+          vip_invalid_time: res.data.invalidTime
+        })
+      }else if(res.statusCode == 403){
+        wx.showModal({
+          title: '提示',
+          content: '您的付费内容已过期，已自动切换为免费版本',
+          showCancel: false
+        })
       }
     },
     complete: function (res){
@@ -266,11 +299,7 @@ serverChange(openid){
         }
       },
       fail: function (e) {
-        wx.showToast({
-          title: '服务器连接失败',
-          icon: 'none',
-          duration: 2000
-        })
+
       }
     })
   },

@@ -44,5 +44,6 @@
   <view class='statistics'>
     <view class='sub_title'>最新动态</view>
     <view class='notice' wx:for="{{msgList}}" wx:key="id">{{item.title}}</view>
+    <view class='notice' wx:if="{{is_vip}}">您的付费信息将于 {{vip_invalid_time}} 过期</view>
   </view>
 </view>
